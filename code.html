@@ -644,8 +644,16 @@
 <button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="small" role="option" type="button">$10k - $25k</button>
 <button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="medium" role="option" type="button">$25k - $50k</button>
 <button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="large" role="option" type="button">$50k+</button>
+<button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="custom" role="option" type="button">Custom budget</button>
 </div>
 </div>
+</div>
+</div>
+<div class="hidden flex-col" id="custom-budget-field">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="custom-budget">Custom Budget</label>
+<div class="flex items-center border-b border-surface-variant focus-within:border-primary transition-colors">
+<span class="font-body-md text-primary pr-2">$</span>
+<input class="w-full bg-transparent border-0 focus:ring-0 font-body-md text-primary px-0 py-2 transition-colors" id="custom-budget" inputmode="numeric" min="1" name="custom-budget" pattern="[0-9]*" placeholder="3000" type="number"/>
 </div>
 </div>
 <div class="flex flex-col">
@@ -772,6 +780,8 @@
         { en: 'AI Integration', ru: 'AI-интеграция' },
         { en: 'Other', ru: 'Другое' },
         { en: 'Budget Range', ru: 'Бюджет' },
+        { en: 'Custom budget', ru: 'Свой бюджет' },
+        { en: 'Custom Budget', ru: 'Свой бюджет' },
         { en: 'Project Description', ru: 'Описание проекта' },
         { en: 'Briefly describe your goals and timeline...', ru: 'Кратко опишите цели и сроки...' },
         { en: 'Request a Project', ru: 'Отправить заявку' },
@@ -930,6 +940,22 @@
         });
     });
 
+    const customBudgetField = document.getElementById('custom-budget-field');
+    const customBudgetInput = document.getElementById('custom-budget');
+
+    const setCustomBudgetVisible = (isVisible) => {
+        if (!customBudgetField || !customBudgetInput) {
+            return;
+        }
+
+        customBudgetField.classList.toggle('hidden', !isVisible);
+        customBudgetField.classList.toggle('flex', isVisible);
+        customBudgetInput.required = isVisible;
+        if (!isVisible) {
+            customBudgetInput.value = '';
+        }
+    };
+
     const customSelects = document.querySelectorAll('[data-custom-select]');
 
     customSelects.forEach((select) => {
@@ -970,6 +996,9 @@
             option.addEventListener('click', () => {
                 input.value = option.dataset.value ?? '';
                 label.textContent = option.textContent;
+                if (input.id === 'budget') {
+                    setCustomBudgetVisible(input.value === 'custom');
+                }
                 options.forEach((item) => item.setAttribute('aria-selected', 'false'));
                 option.setAttribute('aria-selected', 'true');
                 setSelectOpen(false);
@@ -1041,6 +1070,9 @@
         select.querySelectorAll('.custom-select-option').forEach((option) => {
             option.setAttribute('aria-selected', 'false');
         });
+        if (input?.id === 'budget') {
+            setCustomBudgetVisible(false);
+        }
     };
 
     leadForm?.addEventListener('submit', async (event) => {
@@ -1053,12 +1085,15 @@
         const language = getCurrentLanguage();
         const selectedProjectType = document.querySelector('#project-type')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
         const selectedBudget = document.querySelector('#budget')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
+        const budgetValue = document.getElementById('budget')?.value || '';
+        const customBudgetValue = customBudgetInput?.value.trim() || '';
+        const normalizedBudget = budgetValue === 'custom' ? `$${customBudgetValue}` : selectedBudget;
         const payload = {
             language,
             name: document.getElementById('client-name')?.value.trim() || '',
             contact: document.getElementById('client-contact')?.value.trim() || '',
             projectType: selectedProjectType,
-            budget: selectedBudget,
+            budget: normalizedBudget,
             description: document.getElementById('description')?.value.trim() || '',
         };
 
@@ -1066,7 +1101,8 @@
             !payload.name ||
             !payload.contact ||
             !document.getElementById('project-type')?.value ||
-            !document.getElementById('budget')?.value ||
+            !budgetValue ||
+            (budgetValue === 'custom' && !customBudgetValue) ||
             !payload.description
         ) {
             setLeadMessage('Please fill in all required fields.', 'error');
