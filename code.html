@@ -611,9 +611,24 @@
 <input class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors" id="client-name" name="name" placeholder="Your name" required type="text"/>
 </div>
 <div class="flex flex-col">
-<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="client-contact">Contact</label>
-<input class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors" id="client-contact" name="contact" placeholder="Email / Telegram / WhatsApp" required type="text"/>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="contact-method-trigger">Contact</label>
+<div class="custom-select" data-custom-select>
+<input id="contact-method" name="contact-method" type="hidden"/>
+<button aria-expanded="false" class="custom-select-trigger w-full bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors flex items-center justify-between text-left" id="contact-method-trigger" type="button">
+<span data-select-label>Select an option</span>
+<span class="material-symbols-outlined text-2xl text-on-surface-variant transition-transform duration-300" data-select-icon>expand_more</span>
+</button>
+<div class="custom-select-menu hidden absolute left-0 right-0 top-full z-40 mt-3 bg-background border border-surface-variant/70 rounded-lg overflow-hidden" role="listbox">
+<button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="whatsapp" role="option" type="button">WhatsApp</button>
+<button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="telegram" role="option" type="button">Telegram</button>
+<button aria-selected="false" class="custom-select-option w-full px-4 py-4 text-left font-body-md text-body-md text-primary hover:bg-surface-container transition-colors" data-value="email" role="option" type="button">Email</button>
 </div>
+</div>
+</div>
+</div>
+<div class="hidden flex-col" id="contact-detail-field">
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="contact-detail" id="contact-detail-label">Contact Detail</label>
+<input class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors" id="contact-detail" name="contact-detail" placeholder="Select a contact method first" type="text"/>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="flex flex-col">
@@ -768,8 +783,18 @@
         { en: 'Name', ru: 'Имя' },
         { en: 'Contact', ru: 'Контакт' },
         { en: 'Your name', ru: 'Ваше имя' },
-        { en: 'Email / Telegram / WhatsApp', ru: 'Email / Telegram / WhatsApp' },
+        { en: 'Contact Detail', ru: 'Данные для связи' },
+        { en: 'WhatsApp number', ru: 'Номер WhatsApp' },
+        { en: 'Telegram username', ru: 'Telegram username' },
+        { en: 'Email address', ru: 'Email адрес' },
+        { en: 'Select a contact method first', ru: 'Сначала выберите способ связи' },
+        { en: '+7 707 123 45 67', ru: '+7 707 123 45 67' },
+        { en: '@username', ru: '@username' },
+        { en: 'name@example.com', ru: 'name@example.com' },
         { en: 'Please fill in all required fields.', ru: 'Заполните все обязательные поля.' },
+        { en: 'Please enter a valid email address.', ru: 'Введите корректный email.' },
+        { en: 'Please enter a valid Telegram username.', ru: 'Введите корректный Telegram username.' },
+        { en: 'Please enter a valid WhatsApp number.', ru: 'Введите корректный номер WhatsApp.' },
         { en: 'Request successfully sent', ru: 'Заявка успешно отправлена' },
         { en: 'Failed to send request. Please try again.', ru: 'Не удалось отправить заявку. Попробуйте ещё раз.' },
         { en: 'Sending...', ru: 'Отправка...' },
@@ -942,6 +967,9 @@
 
     const customBudgetField = document.getElementById('custom-budget-field');
     const customBudgetInput = document.getElementById('custom-budget');
+    const contactDetailField = document.getElementById('contact-detail-field');
+    const contactDetailInput = document.getElementById('contact-detail');
+    const contactDetailLabel = document.getElementById('contact-detail-label');
 
     const setCustomBudgetVisible = (isVisible) => {
         if (!customBudgetField || !customBudgetInput) {
@@ -957,6 +985,56 @@
     };
 
     const customSelects = document.querySelectorAll('[data-custom-select]');
+
+    const contactMethodMeta = {
+        whatsapp: {
+            label: 'WhatsApp number',
+            placeholder: '+7 707 123 45 67',
+            type: 'tel',
+            inputMode: 'tel',
+        },
+        telegram: {
+            label: 'Telegram username',
+            placeholder: '@username',
+            type: 'text',
+            inputMode: 'text',
+        },
+        email: {
+            label: 'Email address',
+            placeholder: 'name@example.com',
+            type: 'email',
+            inputMode: 'email',
+        },
+    };
+
+    const setContactDetailVisible = (contactMethod) => {
+        if (!contactDetailField || !contactDetailInput || !contactDetailLabel) {
+            return;
+        }
+
+        const language = localStorage.getItem('mononyxx-language') || 'en';
+        const meta = contactMethodMeta[contactMethod];
+        const isVisible = Boolean(meta);
+
+        contactDetailField.classList.toggle('hidden', !isVisible);
+        contactDetailField.classList.toggle('flex', isVisible);
+        contactDetailInput.required = isVisible;
+        contactDetailInput.value = '';
+
+        if (!meta) {
+            contactDetailLabel.textContent = translateText('Contact Detail', language);
+            contactDetailInput.type = 'text';
+            contactDetailInput.inputMode = 'text';
+            contactDetailInput.placeholder = translateText('Select a contact method first', language);
+            return;
+        }
+
+        contactDetailLabel.textContent = translateText(meta.label, language);
+        contactDetailInput.type = meta.type;
+        contactDetailInput.inputMode = meta.inputMode;
+        contactDetailInput.placeholder = translateText(meta.placeholder, language);
+        contactDetailInput.focus();
+    };
 
     customSelects.forEach((select) => {
         const trigger = select.querySelector('.custom-select-trigger');
@@ -998,6 +1076,9 @@
                 label.textContent = option.textContent;
                 if (input.id === 'budget') {
                     setCustomBudgetVisible(input.value === 'custom');
+                }
+                if (input.id === 'contact-method') {
+                    setContactDetailVisible(input.value);
                 }
                 options.forEach((item) => item.setAttribute('aria-selected', 'false'));
                 option.setAttribute('aria-selected', 'true');
@@ -1073,6 +1154,37 @@
         if (input?.id === 'budget') {
             setCustomBudgetVisible(false);
         }
+        if (input?.id === 'contact-method') {
+            setContactDetailVisible('');
+        }
+    };
+
+    const validateContactValue = (contactMethod, contactValue) => {
+        if (contactMethod === 'email') {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactValue);
+        }
+
+        if (contactMethod === 'telegram') {
+            return /^@?[a-zA-Z0-9_]{5,32}$/.test(contactValue);
+        }
+
+        if (contactMethod === 'whatsapp') {
+            return /^\+?[0-9\s()-]{7,20}$/.test(contactValue);
+        }
+
+        return false;
+    };
+
+    const getContactValidationMessage = (contactMethod) => {
+        if (contactMethod === 'email') {
+            return 'Please enter a valid email address.';
+        }
+
+        if (contactMethod === 'telegram') {
+            return 'Please enter a valid Telegram username.';
+        }
+
+        return 'Please enter a valid WhatsApp number.';
     };
 
     leadForm?.addEventListener('submit', async (event) => {
@@ -1085,13 +1197,18 @@
         const language = getCurrentLanguage();
         const selectedProjectType = document.querySelector('#project-type')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
         const selectedBudget = document.querySelector('#budget')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
+        const selectedContactMethod = document.querySelector('#contact-method')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
+        const contactMethodValue = document.getElementById('contact-method')?.value || '';
+        const contactValue = contactDetailInput?.value.trim() || '';
         const budgetValue = document.getElementById('budget')?.value || '';
         const customBudgetValue = customBudgetInput?.value.trim() || '';
         const normalizedBudget = budgetValue === 'custom' ? `$${customBudgetValue}` : selectedBudget;
         const payload = {
             language,
             name: document.getElementById('client-name')?.value.trim() || '',
-            contact: document.getElementById('client-contact')?.value.trim() || '',
+            contactMethod: contactMethodValue,
+            contactMethodLabel: selectedContactMethod,
+            contactValue,
             projectType: selectedProjectType,
             budget: normalizedBudget,
             description: document.getElementById('description')?.value.trim() || '',
@@ -1099,13 +1216,19 @@
 
         if (
             !payload.name ||
-            !payload.contact ||
+            !payload.contactMethod ||
+            !payload.contactValue ||
             !document.getElementById('project-type')?.value ||
             !budgetValue ||
             (budgetValue === 'custom' && !customBudgetValue) ||
             !payload.description
         ) {
             setLeadMessage('Please fill in all required fields.', 'error');
+            return;
+        }
+
+        if (!validateContactValue(payload.contactMethod, payload.contactValue)) {
+            setLeadMessage(getContactValidationMessage(payload.contactMethod), 'error');
             return;
         }
 
