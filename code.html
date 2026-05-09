@@ -604,23 +604,16 @@
 <h2 class="font-h1 text-h1 text-primary mb-4">Start a Conversation</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Detail your requirements below and our team will review your inquiry.</p>
 </div>
-<form class="space-y-8">
+<form class="space-y-8" id="lead-form" novalidate>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="flex flex-col">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Name</span>
-<p class="border-b border-surface-variant font-body-md text-body-md text-on-surface-variant px-0 py-2">mononyxx</p>
-<input id="name" name="name" type="hidden" value="mononyxx"/>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="client-name">Name</label>
+<input class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors" id="client-name" name="name" placeholder="Your name" required type="text"/>
 </div>
 <div class="flex flex-col">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Company</span>
-<p class="border-b border-surface-variant font-body-md text-body-md text-on-surface-variant px-0 py-2">mononyxx</p>
-<input id="company" name="company" type="hidden" value="mononyxx"/>
+<label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="client-contact">Contact</label>
+<input class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors" id="client-contact" name="contact" placeholder="Email / Telegram / WhatsApp" required type="text"/>
 </div>
-</div>
-<div class="flex flex-col">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-2">Email Address</span>
-<p class="border-b border-surface-variant font-body-md text-body-md text-on-surface-variant px-0 py-2">mononyxx@proton.me</p>
-<input id="email" name="email" type="hidden" value="mononyxx@proton.me"/>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="flex flex-col">
@@ -657,9 +650,10 @@
 </div>
 <div class="flex flex-col">
 <label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="description">Project Description</label>
-<textarea class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors resize-none" id="description" placeholder="Briefly describe your goals and timeline..." rows="4"></textarea>
+<textarea class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors resize-none" id="description" name="description" placeholder="Briefly describe your goals and timeline..." required rows="4"></textarea>
 </div>
-<button class="w-full py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors duration-300 mt-8" type="submit">
+<p aria-live="polite" class="hidden font-body-md text-body-md text-center" id="lead-form-message"></p>
+<button class="w-full py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors duration-300 mt-8 disabled:cursor-not-allowed disabled:opacity-70" id="lead-submit" type="submit">
                             Request a Project
                         </button>
 </form>
@@ -764,8 +758,13 @@
         { en: 'Start a Conversation', ru: 'Начать диалог' },
         { en: 'Detail your requirements below and our team will review your inquiry.', ru: 'Опишите задачу ниже, и наша команда изучит ваш запрос.' },
         { en: 'Name', ru: 'Имя' },
-        { en: 'Company', ru: 'Компания' },
-        { en: 'Email Address', ru: 'Email' },
+        { en: 'Contact', ru: 'Контакт' },
+        { en: 'Your name', ru: 'Ваше имя' },
+        { en: 'Email / Telegram / WhatsApp', ru: 'Email / Telegram / WhatsApp' },
+        { en: 'Please fill in all required fields.', ru: 'Заполните все обязательные поля.' },
+        { en: 'Request successfully sent', ru: 'Заявка успешно отправлена' },
+        { en: 'Failed to send request. Please try again.', ru: 'Не удалось отправить заявку. Попробуйте ещё раз.' },
+        { en: 'Sending...', ru: 'Отправка...' },
         { en: 'Project Type', ru: 'Тип проекта' },
         { en: 'Select an option', ru: 'Выберите вариант' },
         { en: 'Website', ru: 'Сайт' },
@@ -999,8 +998,108 @@
 
     applyLanguage(localStorage.getItem('mononyxx-language') || 'en');
 
-    document.querySelector('form')?.addEventListener('submit', (event) => {
+    const leadForm = document.getElementById('lead-form');
+    const leadSubmit = document.getElementById('lead-submit');
+    const leadFormMessage = document.getElementById('lead-form-message');
+
+    const getCurrentLanguage = () => localStorage.getItem('mononyxx-language') || 'en';
+
+    const setLeadMessage = (messageKey, type) => {
+        if (!leadFormMessage) {
+            return;
+        }
+
+        const language = getCurrentLanguage();
+        leadFormMessage.textContent = translateText(messageKey, language);
+        leadFormMessage.classList.remove('hidden', 'text-error', 'text-primary');
+        leadFormMessage.classList.add(type === 'error' ? 'text-error' : 'text-primary');
+    };
+
+    const resetCustomSelect = (select) => {
+        const input = select.querySelector('input[type="hidden"]');
+        const label = select.querySelector('[data-select-label]');
+        const icon = select.querySelector('[data-select-icon]');
+        const trigger = select.querySelector('.custom-select-trigger');
+        const menu = select.querySelector('.custom-select-menu');
+        const language = getCurrentLanguage();
+
+        if (input) {
+            input.value = '';
+        }
+        if (label) {
+            label.textContent = translateText('Select an option', language);
+        }
+        if (icon) {
+            icon.style.transform = 'rotate(0deg)';
+        }
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+        if (menu) {
+            menu.classList.add('hidden');
+        }
+        select.querySelectorAll('.custom-select-option').forEach((option) => {
+            option.setAttribute('aria-selected', 'false');
+        });
+    };
+
+    leadForm?.addEventListener('submit', async (event) => {
         event.preventDefault();
+
+        if (!leadForm || !leadSubmit) {
+            return;
+        }
+
+        const language = getCurrentLanguage();
+        const selectedProjectType = document.querySelector('#project-type')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
+        const selectedBudget = document.querySelector('#budget')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
+        const payload = {
+            language,
+            name: document.getElementById('client-name')?.value.trim() || '',
+            contact: document.getElementById('client-contact')?.value.trim() || '',
+            projectType: selectedProjectType,
+            budget: selectedBudget,
+            description: document.getElementById('description')?.value.trim() || '',
+        };
+
+        if (
+            !payload.name ||
+            !payload.contact ||
+            !document.getElementById('project-type')?.value ||
+            !document.getElementById('budget')?.value ||
+            !payload.description
+        ) {
+            setLeadMessage('Please fill in all required fields.', 'error');
+            return;
+        }
+
+        const defaultSubmitText = translateText('Request a Project', language);
+        leadSubmit.disabled = true;
+        leadSubmit.textContent = translateText('Sending...', language);
+        leadFormMessage?.classList.add('hidden');
+
+        try {
+            const result = await fetch('/api/send-lead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!result.ok) {
+                throw new Error('Failed to send lead');
+            }
+
+            leadForm.reset();
+            document.querySelectorAll('[data-custom-select]').forEach(resetCustomSelect);
+            setLeadMessage('Request successfully sent', 'success');
+        } catch (error) {
+            setLeadMessage('Failed to send request. Please try again.', 'error');
+        } finally {
+            leadSubmit.disabled = false;
+            leadSubmit.textContent = defaultSubmitText;
+        }
     });
 </script>
 </body></html>
