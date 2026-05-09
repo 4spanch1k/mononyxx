@@ -8,13 +8,22 @@ module.exports = async function handler(request, response) {
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    return response.status(500).json({ error: "Telegram environment variables are not configured" });
+    return response.status(500).json({
+      error: "Telegram environment variables are not configured",
+    });
   }
 
-  const body = typeof request.body === "string" ? JSON.parse(request.body) : request.body || {};
-  const { language, name, contact, projectType, budget, description } = body;
+  let body = {};
 
+  try {
+    body = typeof request.body === "string" ? JSON.parse(request.body) : request.body || {};
+  } catch {
+    return response.status(400).json({ error: "Invalid JSON body" });
+  }
+
+  const { language, name, contact, projectType, budget, description } = body;
   const requiredFields = [language, name, contact, projectType, budget, description];
+
   if (requiredFields.some((field) => typeof field !== "string" || field.trim() === "")) {
     return response.status(400).json({ error: "Missing required fields" });
   }
@@ -57,4 +66,4 @@ module.exports = async function handler(request, response) {
   }
 
   return response.status(200).json({ ok: true });
-}
+};
