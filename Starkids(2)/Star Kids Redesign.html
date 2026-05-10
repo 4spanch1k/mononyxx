@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Star Kids · Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="app/styles.css"/>
+
+<style>
+  html, body { background: #2A2522; min-height: 100%; }
+  body {
+    font-family: "Geist", system-ui, sans-serif;
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(60% 40% at 50% 0%, #3a302b 0%, transparent 70%),
+      radial-gradient(40% 30% at 100% 100%, #4a322c 0%, transparent 70%),
+      #1f1b18;
+    color: #F4EFEA;
+  }
+  .stage {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px 16px;
+  }
+  .device-wrap {
+    position: relative;
+  }
+  .device-wrap > .label {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Geist Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    white-space: nowrap;
+  }
+  /* Override iOS shadow for clarity on dark stage */
+  .device-wrap > * > *:first-child { box-shadow: 0 60px 120px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06) !important; }
+</style>
+</head>
+<body>
+
+<div id="app" class="stage"></div>
+
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<rect width="100" height="100" fill="#FBF7F4"/>
+<circle cx="50" cy="50" r="22" fill="#FF5A5F"/>
+<path d="M50 38 L54 47 L64 47 L56 53 L59 63 L50 57 L41 63 L44 53 L36 47 L46 47 Z" fill="#FFF"/>
+</svg>
+</template>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app/icons.jsx"></script>
+<script type="text/babel" src="app/screens/Login.jsx"></script>
+<script type="text/babel" src="app/screens/Home.jsx"></script>
+<script type="text/babel" src="app/screens/Birthdays.jsx"></script>
+<script type="text/babel" src="app/screens/Form.jsx"></script>
+<script type="text/babel" src="app/screens/Profile.jsx"></script>
+<script type="text/babel" src="app/screens/Menu.jsx"></script>
+<script type="text/babel" src="app/screens/Extra.jsx"></script>
+<script type="text/babel" src="app/App.jsx"></script>
+
+<script type="text/babel">
+function Mount() {
+  return (
+    <div className="device-wrap" data-screen-label="Star Kids App">
+      <span className="label">★ Star Kids · iPhone</span>
+      <window.IOSDevice width={402} height={874} dark={false}>
+        <div style={{ height: "100%", position: "relative", background: "var(--bg)" }}>
+          <div style={{ height: 60 }}></div>
+          <div style={{ position: "absolute", inset: "60px 0 0 0", overflow: "hidden" }}>
+            <window.App />
+          </div>
+        </div>
+      </window.IOSDevice>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("app")).render(<Mount/>);
+</script>
+
+</body>
+</html>
