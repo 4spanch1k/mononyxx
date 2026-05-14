@@ -37,6 +37,7 @@ tailwind.config = {
 </script>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+html, body { overflow-x: hidden; max-width: 100%; }
 .mobile-menu-panel:not(.hidden) { animation: mobileMenuDrop 280ms ease-out; }
 @keyframes mobileMenuDrop { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
 @media (prefers-reduced-motion:reduce) { .mobile-menu-panel:not(.hidden) { animation:none; } }
@@ -90,7 +91,7 @@ tailwind.config = {
     <!-- Hero -->
     <section class="w-full px-margin-mobile md:px-margin-desktop pt-16 pb-10 max-w-container-max-width mx-auto">
         <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">Пакеты и цены</span>
-        <h1 class="font-h1 text-h1 text-primary mb-4">Выберите пакет</h1>
+        <h1 class="font-h1 text-[2.25rem] md:text-h1 text-primary mb-4">Выберите пакет</h1>
         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
             Фиксированные цены, понятные сроки. Если нужно что-то нестандартное — обсудим в WhatsApp.
         </p>
@@ -103,7 +104,7 @@ tailwind.config = {
             <!-- Card 1 -->
             <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                 <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Лендинг для заявки</span>
-                <div class="font-h1 text-h1 text-primary mb-4">от 29&nbsp;990&nbsp;₸</div>
+                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 29&nbsp;990&nbsp;₸</div>
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-base text-secondary">schedule</span>
                     <span class="font-label-caps text-label-caps text-secondary">За 24 часа</span>
@@ -128,7 +129,7 @@ tailwind.config = {
             <!-- Card 2 -->
             <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                 <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Сайт для бизнеса</span>
-                <div class="font-h1 text-h1 text-primary mb-4">от 49&nbsp;990&nbsp;₸</div>
+                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 49&nbsp;990&nbsp;₸</div>
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-base text-secondary">schedule</span>
                     <span class="font-label-caps text-label-caps text-secondary">От 1–2 дней</span>
@@ -152,7 +153,7 @@ tailwind.config = {
             <!-- Card 3 -->
             <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                 <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Автоматизация бизнеса</span>
-                <div class="font-h1 text-h1 text-primary mb-4">от 69&nbsp;990&nbsp;₸</div>
+                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 69&nbsp;990&nbsp;₸</div>
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-base text-secondary">schedule</span>
                     <span class="font-label-caps text-label-caps text-secondary">Индивидуально</span>
@@ -176,7 +177,7 @@ tailwind.config = {
             <!-- Card 4 -->
             <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
                 <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Мобильное приложение / MVP</span>
-                <div class="font-h1 text-h1 text-primary mb-4">от 199&nbsp;990&nbsp;₸</div>
+                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 199&nbsp;990&nbsp;₸</div>
                 <div class="flex items-center gap-2 mb-6">
                     <span class="material-symbols-outlined text-base text-secondary">schedule</span>
                     <span class="font-label-caps text-label-caps text-secondary">Индивидуально</span>
