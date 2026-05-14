@@ -9,10 +9,17 @@
 <meta property="og:description" content="Делаем сайты и мобильные приложения для бизнеса в Казахстане. Лендинги от 29 990 ₸."/>
 <meta property="og:image" content="/og-image.png"/>
 <meta property="og:type" content="website"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="/css/home.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</noscript>
 <script id="tailwind-config">
+window.tailwind = window.tailwind || {};
 tailwind.config = {
     darkMode: "class",
     theme: {
@@ -103,12 +110,92 @@ tailwind.config = {
 }
 </script>
 <style>
+    html, body { overflow-x: hidden; max-width: 100%; }
+
     .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
 
     .mobile-menu-panel:not(.hidden) {
         animation: mobileMenuDrop 280ms ease-out;
+    }
+
+    .stack-hero {
+        min-height: calc(100vh - 73px);
+    }
+
+    .orbit-stage {
+        width: 50rem;
+        height: 50rem;
+        transform: translateX(44%);
+    }
+
+    .orbit-ring {
+        animation: orbitSpin var(--duration) linear infinite;
+    }
+
+    .orbit-icon {
+        transform: translate(-50%, -50%);
+    }
+
+    .orbit-icon .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 32;
+    }
+
+    .iphone-mockup {
+        width: min(17.5rem, 72vw);
+        aspect-ratio: 390 / 844;
+        border: 10px solid #151515;
+        border-radius: 2.5rem;
+        background: #151515;
+        padding: 0.45rem;
+        box-shadow: 0 24px 70px rgba(26, 28, 26, 0.18);
+        position: relative;
+    }
+
+    .iphone-mockup::before {
+        content: "";
+        position: absolute;
+        top: 0.7rem;
+        left: 50%;
+        width: 4.75rem;
+        height: 1.15rem;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #151515;
+        z-index: 2;
+    }
+
+    .iphone-mockup img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 1.75rem;
+        display: block;
+    }
+
+    .testimonials-mask {
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+        mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+    }
+
+    .testimonial-track {
+        animation: testimonialScroll var(--duration) linear infinite;
+    }
+
+    .testimonial-column:hover .testimonial-track {
+        animation-play-state: paused;
+    }
+
+    @keyframes orbitSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes testimonialScroll {
+        from { transform: translateY(0); }
+        to { transform: translateY(-50%); }
     }
 
     @keyframes mobileMenuDrop {
@@ -118,6 +205,20 @@ tailwind.config = {
 
     @media (prefers-reduced-motion: reduce) {
         .mobile-menu-panel:not(.hidden) { animation: none; }
+        .orbit-ring { animation: none; }
+        .testimonial-track { animation: none; }
+    }
+
+    @media (max-width: 767px) {
+        .stack-hero {
+            min-height: auto;
+        }
+
+        .orbit-stage {
+            width: 30rem;
+            height: 30rem;
+            transform: translateX(26%);
+        }
     }
 
     /* Quiz option cards */
@@ -166,7 +267,7 @@ tailwind.config = {
 <header class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-surface-variant/30">
     <nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-5 max-w-container-max-width mx-auto">
         <a class="flex items-center gap-2 hover:opacity-80 transition-opacity" href="/">
-            <img alt="MONONYXX" class="h-8 w-auto" src="/mononyxx-logo.png"/>
+            <img alt="MONONYXX" class="h-8 w-auto" width="32" height="32" src="/mononyxx-logo-96.png"/>
             <span class="sr-only">MONONYXX</span>
         </a>
 
@@ -207,40 +308,50 @@ tailwind.config = {
 <main class="pb-28 md:pb-0">
 
     <!-- ========= SECTION 1: HERO ========= -->
-    <section class="w-full px-margin-mobile md:px-margin-desktop py-16 md:py-24 max-w-container-max-width mx-auto">
-        <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-            <!-- Text -->
-            <div class="w-full md:w-1/2 text-center md:text-left">
-                <h1 class="font-h1 md:font-display text-h1 md:text-display text-primary mb-6 leading-tight">
-                    Делаем сайты и приложения<br class="hidden md:block"/> от 29&nbsp;990&nbsp;₸
-                </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto md:mx-0 mb-10">
-                    Быстро запускаем и помогаем получать клиентов — через WhatsApp, формы и рекламу.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a id="hero-wa-btn" href="#" target="_blank" rel="noopener"
-                       class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-                        Написать в WhatsApp
-                    </a>
-                    <a href="/quiz"
-                       class="px-8 py-4 bg-transparent text-primary border border-primary/20 font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:border-primary transition-colors duration-300">
-                        Рассчитать стоимость
-                    </a>
-                </div>
+    <section class="stack-hero relative w-full px-margin-mobile md:px-margin-desktop py-16 md:py-20 max-w-container-max-width mx-auto flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
+        <div class="w-full md:w-1/2 z-10 text-center md:text-left overflow-hidden">
+            <h1 class="font-h1 md:font-display text-[2.25rem] md:text-display text-primary max-w-[335px] md:max-w-3xl mx-auto md:mx-0 mb-6 leading-tight">
+                Делаем сайты и<br class="md:hidden"/> приложения<br/> от 29&nbsp;990&nbsp;₸
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[260px] md:max-w-xl mx-auto md:mx-0 mb-10">
+                Быстро запускаем и помогаем получать клиентов через WhatsApp, формы и рекламу.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a id="hero-wa-btn" href="#" target="_blank" rel="noopener"
+                   class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
+                    Написать в WhatsApp
+                </a>
+                <a href="/quiz"
+                   class="px-8 py-4 bg-transparent text-primary border border-primary/20 font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:border-primary transition-colors duration-300">
+                    Рассчитать стоимость
+                </a>
             </div>
-
-            <!-- Phone mockup images -->
-            <div class="w-full md:w-1/2 flex items-end justify-center gap-3 overflow-hidden rounded-xl"
-                 style="background: #FFF5F2; min-height: 22rem; padding: 2.5rem 2rem 0;">
-                <img alt="Star Kids — экран входа"
-                     class="h-64 md:h-72 w-auto rounded-t-2xl shadow-xl object-cover object-top"
-                     src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-10%20Star%20Kids.png"/>
-                <img alt="Star Kids — главный экран"
-                     class="hidden md:block h-56 md:h-64 w-auto rounded-t-2xl shadow-xl object-cover object-top"
-                     src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-48%20Star%20Kids.png"/>
-                <img alt="Star Kids — день рождения"
-                     class="h-64 md:h-72 w-auto rounded-t-2xl shadow-xl object-cover object-top"
-                     src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-47-45%20Star%20Kids.png"/>
+        </div>
+        <div class="relative w-full md:w-1/2 h-[24rem] md:h-[34rem] flex items-center justify-start overflow-hidden">
+            <div class="orbit-stage relative flex items-center justify-center">
+                <div class="w-24 h-24 rounded-full bg-surface-container-lowest shadow-lg border border-surface-variant flex items-center justify-center z-10">
+                    <span class="material-symbols-outlined text-[48px] text-primary">hub</span>
+                </div>
+                <div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/70" style="--duration: 12s; width: 20rem; height: 20rem;">
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">language</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 75%; top: 93%;"><span class="material-symbols-outlined text-[32px] text-primary">smartphone</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 25%; top: 93%;"><span class="material-symbols-outlined text-[32px] text-primary">psychology</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">bolt</span></div>
+                </div>
+                <div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/60" style="--duration: 18s; width: 28rem; height: 28rem;">
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">deployed_code</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 85%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">database</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 50%; top: 100%;"><span class="material-symbols-outlined text-[32px] text-primary">cloud</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 15%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">terminal</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">analytics</span></div>
+                </div>
+                <div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/50" style="--duration: 24s; width: 36rem; height: 36rem;">
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">code</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 87%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">security</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 50%; top: 100%;"><span class="material-symbols-outlined text-[32px] text-primary">rocket_launch</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 13%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">conversion_path</span></div>
+                    <div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">auto_awesome</span></div>
+                </div>
             </div>
         </div>
     </section>
@@ -752,7 +863,7 @@ tailwind.config = {
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
             <!-- Logo -->
             <a href="/" class="hover:opacity-80 transition-opacity">
-                <img alt="MONONYXX" class="h-8 w-auto" src="/mononyxx-logo.png"/>
+                <img loading="lazy" decoding="async" alt="MONONYXX" class="h-8 w-auto" width="32" height="32" src="/mononyxx-logo-96.png"/>
             </a>
 
             <!-- Nav -->
