@@ -365,27 +365,12 @@ tailwind.config = {
             </div>
 
             <article class="flex flex-col md:flex-row gap-12 items-center group">
-                <!-- Desktop: three stacked screenshots -->
-                <div class="hidden md:flex w-full md:w-3/5 overflow-hidden rounded-lg border border-surface-variant/30
-                            items-end justify-center gap-3 px-8 pt-10"
-                     style="background: #FFF5F2; min-height: 22rem;">
-                    <img alt="Star Kids — экран входа"
-                         class="h-72 w-auto rounded-t-2xl shadow-xl object-cover object-top transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
-                         src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-10%20Star%20Kids.png"/>
-                    <img alt="Star Kids — главный экран"
-                         class="h-64 w-auto rounded-t-2xl shadow-xl object-cover object-top transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
-                         src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-48%20Star%20Kids.png"/>
-                    <img alt="Star Kids — день рождения"
-                         class="h-72 w-auto rounded-t-2xl shadow-xl object-cover object-top transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"
-                         src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-47-45%20Star%20Kids.png"/>
-                </div>
-
-                <!-- Mobile: single screenshot + demo button -->
-                <div class="md:hidden w-full overflow-hidden rounded-lg border border-surface-variant/30">
-                    <div class="flex items-end justify-center px-6 pt-8" style="background: #FFF5F2; min-height: 16rem;">
-                        <img alt="Star Kids — экран входа"
-                             class="h-56 w-auto rounded-t-2xl shadow-xl object-cover object-top"
-                             src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-10%20Star%20Kids.png"/>
+                <div class="w-full md:w-3/5 overflow-hidden rounded-lg border border-surface-variant/30">
+                    <div class="flex items-center justify-center px-6 py-10 md:py-14" style="background: #FFF5F2; min-height: 22rem;">
+                        <div class="iphone-mockup transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out">
+                            <img loading="lazy" decoding="async" alt="Star Kids — интерфейс приложения в iPhone"
+                                 src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-48%20Star%20Kids.png"/>
+                        </div>
                     </div>
                     <div class="p-4 bg-surface-container-lowest">
                         <a href="/demo/starkids"
@@ -397,12 +382,12 @@ tailwind.config = {
                 </div>
 
                 <!-- Text -->
-                <div class="w-full md:w-2/5 flex flex-col items-start">
+                <div class="w-full md:w-2/5 flex flex-col items-start overflow-hidden">
                     <span class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-3 py-1 border border-outline-variant rounded-full">
                         Mobile · UX/UI · Дизайн-система
                     </span>
                     <h3 class="font-h2 text-h2 text-primary mb-4">Star Kids</h3>
-                    <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-[335px] md:max-w-none">
                         Полный редизайн Flutter-приложения детского игрового центра. От перенасыщенной фуксии — к тёплому, спокойному, премиальному интерфейсу с микро-анимациями.
                     </p>
                     <a href="/cases/starkids"
