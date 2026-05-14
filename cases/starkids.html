@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Star Kids — Case Study · MONONYXX</title>
-<meta name="description" content="Star Kids: редизайн Flutter-приложения детского игрового центра. Новая дизайн-система, 9 экранов, микро-анимации, light/dark тема, Flutter handoff."/>
+<title>Star Kids — кейс MONONYXX | Редизайн Flutter-приложения</title>
+<meta name="description" content="Полный редизайн Flutter-приложения детского игрового центра Star Kids: новая дизайн-система, 9 экранов, микро-анимации, light/dark тема, handoff для Flutter-разработчика."/>
+<meta property="og:title" content="Star Kids — кейс MONONYXX"/>
+<meta property="og:description" content="Редизайн Flutter-приложения: от перенасыщенной фуксии к тёплому, премиальному интерфейсу."/>
+<meta property="og:image" content="/og-image.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -150,13 +153,53 @@
         color: rgba(255, 255, 255, 0.3);
     }
 
-    @media (max-width: 480px) {
+    /* Mobile: hide iframe, show screenshot card */
+    .prototype-mobile-card {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
         .prototype-stage {
-            padding: 48px 0 40px;
+            padding: 40px 16px 32px;
         }
         .prototype-stage__frame {
-            max-width: calc(100% - 32px);
-            margin: 0 16px;
+            display: none !important;
+        }
+        .prototype-stage__hint {
+            display: none;
+        }
+        .prototype-mobile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 320px;
+        }
+        .prototype-mobile-card img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        .prototype-mobile-card .open-demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: #fff;
+            color: #1a1c1a;
+            border-radius: 8px;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: opacity 150ms;
+            min-height: 48px;
+        }
+        .prototype-mobile-card .open-demo-btn:hover {
+            opacity: 0.85;
         }
     }
 </style>
@@ -166,13 +209,13 @@
 <!-- Navigation -->
 <header class="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b border-surface-variant/30">
 <nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-8 max-w-container-max-width mx-auto">
-<a class="font-h2 text-h2 font-medium tracking-widest text-primary flex items-center gap-2 scale-100 hover:scale-[1.02] transition-transform" href="../code.html">
-    <img alt="MONONYXX Logo" class="h-8 w-auto" src="../mononyxx-logo.png"/>
+<a class="flex items-center gap-2 hover:opacity-80 transition-opacity" href="/">
+    <img alt="MONONYXX" class="h-8 w-auto" src="/mononyxx-logo.png"/>
     <span class="sr-only">MONONYXX</span>
 </a>
-<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="../code.html#portfolio">
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="/cases">
     <span class="material-symbols-outlined text-base">arrow_back</span>
-    Back
+    Кейсы
 </a>
 </nav>
 </header>
@@ -196,6 +239,8 @@
 <!-- ── Prototype Stage ── -->
 <section class="prototype-stage">
 <div class="prototype-stage__inner">
+
+    <!-- Desktop: live iframe demo -->
     <div class="prototype-stage__frame">
         <iframe
             src="../Starkids(2)/Star%20Kids%20Redesign.html"
@@ -209,6 +254,24 @@
         <span class="material-symbols-outlined">touch_app</span>
         Это работающий прототип — тапни любую кнопку, переключи экраны, попробуй Tweaks
     </p>
+
+    <!-- Mobile: screenshot + fullscreen button -->
+    <div class="prototype-mobile-card">
+        <img
+            src="../Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-10%20Star%20Kids.png"
+            alt="Star Kids — экран приложения"
+            loading="lazy"
+            width="320"
+            height="654"
+        />
+        <a class="open-demo-btn" href="/demo/starkids">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            Открыть демо в полный экран
+        </a>
+    </div>
+
 </div>
 </section>
 
@@ -266,14 +329,14 @@
 <footer class="w-full bg-surface-container-low text-primary border-t border-surface-variant/30">
 <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-12 max-w-container-max-width mx-auto gap-6">
 <div>
-    <img alt="MONONYXX Logo" class="h-8 w-auto" src="../mononyxx-logo.png"/>
+    <a href="/"><img alt="MONONYXX" class="h-8 w-auto" src="/mononyxx-logo.png"/></a>
 </div>
 <div class="flex gap-8">
     <a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="https://www.instagram.com/mononyxx/" rel="noopener noreferrer" target="_blank">Instagram</a>
-    <a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="../code.html#contact">Start a Project</a>
+    <a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/#contacts">Написать</a>
 </div>
 <div class="text-on-surface-variant font-label-caps text-label-caps">
-    © 2026 MONONYXX. ALL RIGHTS RESERVED.
+    © 2026 MONONYXX
 </div>
 </div>
 </footer>
