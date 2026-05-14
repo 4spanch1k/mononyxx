@@ -142,39 +142,6 @@ tailwind.config = {
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 32;
     }
 
-    .iphone-mockup {
-        width: min(17.5rem, 72vw);
-        aspect-ratio: 390 / 844;
-        border: 10px solid #151515;
-        border-radius: 2.5rem;
-        background: #151515;
-        padding: 0.45rem;
-        box-shadow: 0 24px 70px rgba(26, 28, 26, 0.18);
-        position: relative;
-    }
-
-    .iphone-mockup::before {
-        content: "";
-        position: absolute;
-        top: 0.7rem;
-        left: 50%;
-        width: 4.75rem;
-        height: 1.15rem;
-        transform: translateX(-50%);
-        border-radius: 999px;
-        background: #151515;
-        z-index: 2;
-    }
-
-    .iphone-mockup img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
-        border-radius: 1.75rem;
-        display: block;
-    }
-
     .testimonials-mask {
         -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
         mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
@@ -367,10 +334,13 @@ tailwind.config = {
             <article class="flex flex-col md:flex-row gap-12 items-center group">
                 <div class="w-full md:w-3/5 overflow-hidden rounded-lg border border-surface-variant/30">
                     <div class="flex items-center justify-center px-6 py-10 md:py-14" style="background: #FFF5F2; min-height: 22rem;">
-                        <div class="iphone-mockup transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out">
-                            <img loading="lazy" decoding="async" alt="Star Kids — интерфейс приложения в iPhone"
-                                 src="Starkids(2)/uploads/Screenshot%202026-05-02%20at%2000-13-48%20Star%20Kids.png"/>
-                        </div>
+                        <img
+                             src="/assets/images/starkids-mockup.jpg"
+                             alt="Star Kids — мобильное приложение"
+                             width="320"
+                             loading="lazy"
+                             decoding="async"
+                             class="max-w-full h-auto object-contain transform group-hover:scale-[1.03] transition-transform duration-700 ease-in-out"/>
                     </div>
                     <div class="p-4 bg-surface-container-lowest">
                         <a href="/demo/starkids.html"
