@@ -1,8 +1,10 @@
 {
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/code.html"
-    }
+    { "source": "/", "destination": "/code.html" },
+    { "source": "/cases", "destination": "/cases/index.html" },
+    { "source": "/cases/starkids", "destination": "/cases/starkids.html" },
+    { "source": "/demo/starkids", "destination": "/demo/starkids.html" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/quiz", "destination": "/quiz.html" }
   ]
 }
