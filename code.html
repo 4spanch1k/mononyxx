@@ -120,6 +120,11 @@ tailwind.config = {
         animation: mobileMenuDrop 280ms ease-out;
     }
 
+    .language-switch [aria-pressed="true"] {
+        background: #1a1c1a;
+        color: #ffffff;
+    }
+
     .stack-hero {
         min-height: calc(100vh - 73px);
     }
@@ -246,10 +251,16 @@ tailwind.config = {
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#contacts">КОНТАКТЫ</a>
         </div>
 
-        <a id="nav-wa-cta" href="#" target="_blank" rel="noopener"
-           class="hidden md:inline-flex px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-            Написать в WhatsApp
-        </a>
+        <div class="hidden md:flex items-center gap-4">
+            <div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden" role="group">
+                <button aria-pressed="true" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+                <button aria-pressed="false" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
+            </div>
+            <a href="/quiz"
+               class="px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
+                Начать проект
+            </a>
+        </div>
 
         <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню"
                 class="md:hidden text-primary" id="mobile-menu-button" type="button">
@@ -264,10 +275,14 @@ tailwind.config = {
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/pricing">ЦЕНЫ</a>
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/quiz">РАССЧИТАТЬ</a>
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#contacts">КОНТАКТЫ</a>
-            <a id="mobile-nav-wa-cta" href="#" target="_blank" rel="noopener"
+            <a href="/quiz"
                class="inline-flex px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-                Написать в WhatsApp
+                Начать проект
             </a>
+            <div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden self-start" role="group">
+                <button aria-pressed="true" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+                <button aria-pressed="false" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
+            </div>
         </div>
     </div>
 </header>
