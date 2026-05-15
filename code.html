@@ -120,6 +120,11 @@ tailwind.config = {
         animation: mobileMenuDrop 280ms ease-out;
     }
 
+    .language-switch [aria-pressed="true"] {
+        background: #1a1c1a;
+        color: #ffffff;
+    }
+
     .stack-hero {
         min-height: calc(100vh - 73px);
     }
@@ -246,10 +251,16 @@ tailwind.config = {
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#contacts">КОНТАКТЫ</a>
         </div>
 
-        <a id="nav-wa-cta" href="#" target="_blank" rel="noopener"
-           class="hidden md:inline-flex px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-            Написать в WhatsApp
-        </a>
+        <div class="hidden md:flex items-center gap-4">
+            <div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden" role="group">
+                <button aria-pressed="true" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+                <button aria-pressed="false" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
+            </div>
+            <a href="/quiz"
+               class="px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
+                Начать проект
+            </a>
+        </div>
 
         <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню"
                 class="md:hidden text-primary" id="mobile-menu-button" type="button">
@@ -264,10 +275,14 @@ tailwind.config = {
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/pricing">ЦЕНЫ</a>
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/quiz">РАССЧИТАТЬ</a>
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#contacts">КОНТАКТЫ</a>
-            <a id="mobile-nav-wa-cta" href="#" target="_blank" rel="noopener"
+            <a href="/quiz"
                class="inline-flex px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-                Написать в WhatsApp
+                Начать проект
             </a>
+            <div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden self-start" role="group">
+                <button aria-pressed="true" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+                <button aria-pressed="false" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
+            </div>
         </div>
     </div>
 </header>
@@ -278,19 +293,19 @@ tailwind.config = {
     <section class="stack-hero relative w-full px-margin-mobile md:px-margin-desktop py-16 md:py-20 max-w-container-max-width mx-auto flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
         <div class="w-full md:w-1/2 z-10 text-center md:text-left overflow-hidden">
             <h1 class="font-h1 md:font-display text-[2.25rem] md:text-display text-primary max-w-[335px] md:max-w-3xl mx-auto md:mx-0 mb-6 leading-tight">
-                Делаем сайты и<br class="md:hidden"/> приложения<br/> от 29&nbsp;990&nbsp;₸
+                Создайте свою идею
             </h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[260px] md:max-w-xl mx-auto md:mx-0 mb-10">
-                Быстро запускаем и помогаем получать клиентов через WhatsApp, формы и рекламу.
+                MONONYXX создает премиальные сайты, веб-приложения, мобильные продукты и AI-автоматизацию для амбициозных брендов.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a id="hero-wa-btn" href="#" target="_blank" rel="noopener"
+                <a href="#quiz"
                    class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-                    Написать в WhatsApp
+                    Оставить заявку
                 </a>
-                <a href="/quiz"
+                <a id="hero-wa-btn" href="https://wa.me/77089508019?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D0%B0%D0%B9%D1%82." target="_blank" rel="noopener"
                    class="px-8 py-4 bg-transparent text-primary border border-primary/20 font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:border-primary transition-colors duration-300">
-                    Рассчитать стоимость
+                    Написать в WhatsApp
                 </a>
             </div>
         </div>
@@ -333,7 +348,7 @@ tailwind.config = {
 
             <article class="flex flex-col md:flex-row gap-12 items-center group">
                 <div class="w-full md:w-3/5 overflow-hidden rounded-lg border border-surface-variant/30">
-                    <div class="flex items-center justify-center px-6 py-10 md:py-14" style="background: #FFF5F2; min-height: 22rem;">
+                    <div class="flex items-center justify-center px-6 py-10 md:py-14" style="background: #F5F0EA; border: 1px solid rgba(0,0,0,0.07); min-height: 22rem;">
                         <img
                              src="/assets/images/starkids-mockup.jpg"
                              alt="Star Kids — мобильное приложение"
@@ -895,13 +910,13 @@ tailwind.config = {
                 Напишите нам — обсудим задачу и назовём цену.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a id="cta-wa-btn" href="#" target="_blank" rel="noopener"
+                <a href="#quiz"
                    class="w-full sm:w-auto px-10 py-5 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300 text-base">
-                    Написать в WhatsApp
+                    Оставить заявку
                 </a>
-                <a href="tel:+77089508019"
-                   class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors">
-                    Или позвоните: +7 708 950 80 19
+                <a id="cta-wa-btn" href="https://wa.me/77089508019?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D0%B0%D0%B9%D1%82." target="_blank" rel="noopener"
+                   class="w-full sm:w-auto px-10 py-5 bg-transparent text-primary border border-primary/20 font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:border-primary transition-colors duration-300 text-base">
+                    Написать в WhatsApp
                 </a>
             </div>
         </div>
@@ -967,13 +982,26 @@ tailwind.config = {
         if (el) el.href = buildWhatsAppLink(text);
     }
 
-    // General WA buttons
-    setWaHref(document.getElementById('nav-wa-cta'), WA_GENERAL);
-    setWaHref(document.getElementById('mobile-nav-wa-cta'), WA_GENERAL);
-    setWaHref(document.getElementById('hero-wa-btn'), WA_GENERAL);
-    setWaHref(document.getElementById('cta-wa-btn'), WA_GENERAL);
+    // General WA buttons (hero and CTA have hardcoded hrefs now)
     setWaHref(document.getElementById('sticky-wa-mobile'), WA_GENERAL);
     setWaHref(document.getElementById('sticky-wa-desktop'), WA_GENERAL);
+
+    // ---- Language switcher ----
+    document.querySelectorAll('[data-lang-control]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var lang = btn.getAttribute('data-lang-control');
+            localStorage.setItem('mononyxx-language', lang);
+            document.querySelectorAll('[data-lang-control]').forEach(function (b) {
+                b.setAttribute('aria-pressed', String(b.getAttribute('data-lang-control') === lang));
+            });
+        });
+    });
+    (function () {
+        var saved = localStorage.getItem('mononyxx-language') || 'ru';
+        document.querySelectorAll('[data-lang-control]').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-lang-control') === saved));
+        });
+    })();
 
     // Pricing cards
     document.querySelectorAll('.pricing-wa-btn').forEach(function (btn) {
