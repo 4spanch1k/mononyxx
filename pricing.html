@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Цены — сайты и приложения от 29 990 ₸ | MONONYXX</title>
-<meta name="description" content="Пакеты и цены на разработку: лендинг от 29 990 ₸, сайт от 49 990 ₸, автоматизация от 69 990 ₸, мобильное приложение от 199 990 ₸. Казахстан."/>
+<title>Цены — сайты и приложения от 25 990 ₸ | MONONYXX</title>
+<meta name="description" content="Пакеты и цены на разработку: лендинг от 25 990 ₸, сайт от 49 990 ₸, автоматизация от 69 990 ₸, мобильное приложение от 259 000 ₸. Казахстан."/>
 <meta property="og:title" content="Цены на разработку — MONONYXX"/>
-<meta property="og:description" content="Пакеты на разработку сайтов и приложений для бизнеса в Казахстане. От 29 990 ₸."/>
+<meta property="og:description" content="Пакеты на разработку сайтов и приложений для бизнеса в Казахстане. От 25 990 ₸."/>
 <meta property="og:image" content="/og-image.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
@@ -38,12 +38,23 @@ tailwind.config = {
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
 html, body { overflow-x: hidden; max-width: 100%; }
-.mobile-menu-panel:not(.hidden) { animation: mobileMenuDrop 280ms ease-out; }
-@keyframes mobileMenuDrop { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
-@media (prefers-reduced-motion:reduce) { .mobile-menu-panel:not(.hidden) { animation:none; } }
-.faq-item.open .faq-chevron { transform: rotate(180deg); }
-.faq-body { display: none; }
-.faq-item.open .faq-body { display: block; }
+body { animation: pageEnter 420ms ease both; }
+body.page-leaving { animation: pageLeave 220ms ease both; pointer-events:none; }
+body.page-returning { animation: pageEnter 380ms ease both; }
+@keyframes pageEnter { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pageLeave { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-10px); } }
+.mobile-menu-panel { display:grid; grid-template-rows:0fr; opacity:0; transform:translateY(-10px); pointer-events:none; transition:grid-template-rows 320ms ease, opacity 240ms ease, transform 320ms ease; }
+.mobile-menu-panel > div { overflow:hidden; }
+.mobile-menu-panel.menu-open { grid-template-rows:1fr; opacity:1; transform:translateY(0); pointer-events:auto; }
+.mobile-menu-panel.menu-open a, .mobile-menu-panel.menu-open .language-switch { animation: mobileMenuItem 360ms ease-out both; }
+.mobile-menu-panel.menu-open a:nth-child(2) { animation-delay: 45ms; }
+.mobile-menu-panel.menu-open a:nth-child(3) { animation-delay: 90ms; }
+.mobile-menu-panel.menu-open a:nth-child(4) { animation-delay: 135ms; }
+.mobile-menu-panel.menu-open a:nth-child(5) { animation-delay: 180ms; }
+.mobile-menu-panel.menu-open .language-switch { animation-delay: 225ms; }
+@keyframes mobileMenuItem { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.language-switch [aria-pressed="true"] { background:#1a1c1a; color:#ffffff; }
+@media (prefers-reduced-motion:reduce) { body, body.page-leaving, body.page-returning, .mobile-menu-panel, .mobile-menu-panel.menu-open a, .mobile-menu-panel.menu-open .language-switch { animation:none; transition:none; } }
 </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-primary selection:text-on-primary">
@@ -56,217 +67,205 @@ html, body { overflow-x: hidden; max-width: 100%; }
             <span class="sr-only">MONONYXX</span>
         </a>
         <div class="hidden md:flex items-center gap-10">
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/">ГЛАВНАЯ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/cases">КЕЙСЫ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#services">УСЛУГИ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#portfolio">ПОРТФОЛИО</a>
             <a class="font-label-caps text-label-caps text-primary" href="/pricing">ЦЕНЫ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/quiz">РАССЧИТАТЬ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/#contacts">КОНТАКТЫ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#reviews">ОТЗЫВЫ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#process">ПРОЦЕСС</a>
+        </div>
+        <div aria-label="Переключатель языка" class="language-switch hidden md:flex items-center border border-surface-variant rounded overflow-hidden" role="group">
+            <button aria-pressed="false" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+            <button aria-pressed="true" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
         </div>
         <a id="nav-wa-cta" href="#" target="_blank" rel="noopener"
            class="hidden md:inline-flex px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
-            Написать в WhatsApp
+            Напишите нам
         </a>
         <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню"
                 class="md:hidden text-primary" id="mobile-menu-button" type="button">
             <span class="material-symbols-outlined text-2xl" id="mobile-menu-icon">menu</span>
         </button>
     </nav>
-    <div class="mobile-menu-panel hidden md:hidden border-t border-surface-variant/40 bg-background/95 px-margin-mobile pb-8 pt-4" id="mobile-menu">
-        <div class="flex flex-col gap-6">
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="/">ГЛАВНАЯ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="/cases">КЕЙСЫ</a>
+    <div class="mobile-menu-panel md:hidden border-t border-surface-variant/40 bg-background/95 px-margin-mobile pb-8 pt-2" id="mobile-menu">
+        <div class="flex flex-col gap-5">
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="/code.html#services">УСЛУГИ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="/code.html#portfolio">ПОРТФОЛИО</a>
             <a class="font-label-caps text-label-caps text-primary" href="/pricing">ЦЕНЫ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="/quiz">РАССЧИТАТЬ</a>
-            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary" href="/#contacts">КОНТАКТЫ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="/code.html#reviews">ОТЗЫВЫ</a>
+            <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300" href="/code.html#process">ПРОЦЕСС</a>
             <a id="mobile-nav-wa-cta" href="#" target="_blank" rel="noopener"
-               class="inline-flex px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors">
-                Написать в WhatsApp
+               class="inline-flex px-5 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300">
+                Напишите нам
             </a>
+            <div aria-label="Переключатель языка" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden self-start" role="group">
+                <button aria-pressed="false" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
+                <button aria-pressed="true" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
+            </div>
         </div>
     </div>
 </header>
 
 <main class="pb-28 md:pb-0">
+    <section class="w-full bg-background py-section-padding border-t border-surface-variant/30" id="pricing">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+                <div class="max-w-2xl">
+                    <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">Пакеты и цены</span>
+                    <h1 class="font-h1 text-h1 text-primary mb-5">Выберите пакет</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">Прозрачные стартовые цены на сайты, автоматизацию и мобильные продукты. Финальный объём фиксируем после короткого брифа.</p>
+                </div>
+                <a id="cta-wa-btn" class="hidden md:inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="#" target="_blank" rel="noopener">
+                    Напишите нам <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
 
-    <!-- Hero -->
-    <section class="w-full px-margin-mobile md:px-margin-desktop pt-16 pb-10 max-w-container-max-width mx-auto">
-        <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">Пакеты и цены</span>
-        <h1 class="font-h1 text-[2.25rem] md:text-h1 text-primary mb-4">Выберите пакет</h1>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-            Фиксированные цены, понятные сроки. Если нужно что-то нестандартное — обсудим в WhatsApp.
-        </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="relative flex flex-col bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000] transition-all duration-300 hover:-translate-y-1 hover:shadow-[7px_7px_0_0_#000]">
+                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px] text-primary">language</span></div>
+                    <h2 class="font-h3 text-h3 text-primary mb-2">Лендинг</h2>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-5 flex-grow">Для рекламы, Instagram, одной услуги или одного продукта.</p>
+                    <div class="font-h2 text-[28px] text-primary leading-tight mb-1">от 25&nbsp;990&nbsp;₸</div>
+                    <div class="font-label-caps text-label-caps text-on-surface-variant mb-6">Запуск от 24 часов</div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Адаптивный one-page сайт</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">CTA и контактная ссылка</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Базовая аналитика</span></li>
+                    </ul>
+                    <a class="pricing-wa-btn mt-auto w-full inline-flex items-center justify-center px-5 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors" href="#" target="_blank" rel="noopener" data-wa-text="Здравствуйте! Интересует лендинг от 25 990 ₸. Можно подробнее?">Напишите нам</a>
+                </div>
+
+                <div class="relative flex flex-col bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000] transition-all duration-300 hover:-translate-y-1 hover:shadow-[7px_7px_0_0_#000]">
+                    <div class="absolute -top-3 right-5 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded">Популярно</div>
+                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px] text-primary">web</span></div>
+                    <h2 class="font-h3 text-h3 text-primary mb-2">Сайт для бизнеса</h2>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-5 flex-grow">Несколько страниц, услуги, каталог, форма заявки и контакты.</p>
+                    <div class="font-h2 text-[28px] text-primary leading-tight mb-1">от 49&nbsp;990&nbsp;₸</div>
+                    <div class="font-label-caps text-label-caps text-on-surface-variant mb-6">От 1-2 дней</div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Многораздельная структура</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Форма заявки и контакты</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">SEO-ready страницы</span></li>
+                    </ul>
+                    <a class="pricing-wa-btn mt-auto w-full inline-flex items-center justify-center px-5 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors" href="#" target="_blank" rel="noopener" data-wa-text="Здравствуйте! Интересует сайт для бизнеса от 49 990 ₸. Можно подробнее?">Напишите нам</a>
+                </div>
+
+                <div class="relative flex flex-col bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000] transition-all duration-300 hover:-translate-y-1 hover:shadow-[7px_7px_0_0_#000]">
+                    <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px] text-primary">bolt</span></div>
+                    <h2 class="font-h3 text-h3 text-primary mb-2">Автоматизация</h2>
+                    <p class="font-body-md text-sm text-on-surface-variant mb-5 flex-grow">CRM-логика, заявки, админ-панели и Telegram-уведомления.</p>
+                    <div class="font-h2 text-[28px] text-primary leading-tight mb-1">от 69&nbsp;990&nbsp;₸</div>
+                    <div class="font-label-caps text-label-caps text-on-surface-variant mb-6">Срок индивидуально</div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Карта бизнес-процесса</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">База админки или dashboard</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-primary mt-0.5">check</span><span class="font-body-md text-sm text-primary">Telegram-уведомления</span></li>
+                    </ul>
+                    <a class="pricing-wa-btn mt-auto w-full inline-flex items-center justify-center px-5 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors" href="#" target="_blank" rel="noopener" data-wa-text="Здравствуйте! Интересует автоматизация бизнеса от 69 990 ₸. Можно подробнее?">Напишите нам</a>
+                </div>
+
+                <div class="relative flex flex-col bg-primary text-on-primary border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#cfc4c5] transition-all duration-300 hover:-translate-y-1 hover:shadow-[7px_7px_0_0_#cfc4c5]">
+                    <div class="w-10 h-10 rounded-full border-2 border-on-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px] text-on-primary">smartphone</span></div>
+                    <h2 class="font-h3 text-[20px] mb-2">Мобильное приложение / MVP</h2>
+                    <p class="font-body-md text-sm text-on-primary/80 mb-5 flex-grow">Lean-версия продукта, чтобы проверить идею и показать ключевую функциональность.</p>
+                    <div class="font-h2 text-[28px] leading-tight mb-1">от 259&nbsp;000&nbsp;₸</div>
+                    <div class="font-label-caps text-label-caps text-on-primary/70 mb-6">Срок индивидуально</div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-0.5">check</span><span class="font-body-md text-sm">Основные экраны и flow</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-0.5">check</span><span class="font-body-md text-sm">Дизайн и frontend-сборка</span></li>
+                        <li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm mt-0.5">check</span><span class="font-body-md text-sm">Планирование backend/API</span></li>
+                    </ul>
+                    <a class="pricing-wa-btn mt-auto w-full inline-flex items-center justify-center px-5 py-3 bg-on-primary text-primary font-label-caps text-label-caps rounded hover:bg-surface-container transition-colors" href="#" target="_blank" rel="noopener" data-wa-text="Здравствуйте! Интересует мобильное приложение / MVP от 259 000 ₸. Можно подробнее?">Напишите нам</a>
+                </div>
+            </div>
+
+            <div class="mt-10 flex md:hidden">
+                <a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="#" target="_blank" rel="noopener" id="mobile-pricing-contact">
+                    Напишите нам <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </section>
 
-    <!-- Pricing cards -->
-    <section class="w-full px-margin-mobile md:px-margin-desktop pb-section-padding max-w-container-max-width mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <!-- Card 1 -->
-            <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Лендинг для заявки</span>
-                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 29&nbsp;990&nbsp;₸</div>
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="material-symbols-outlined text-base text-secondary">schedule</span>
-                    <span class="font-label-caps text-label-caps text-secondary">За 24 часа</span>
+    <section class="w-full bg-surface-container-low py-section-padding border-t border-surface-variant/30">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-start">
+                <div>
+                    <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">Почему ниже рынка</span>
+                    <h2 class="font-h1 text-h1 text-primary mb-6">Цена ниже, потому что мы продаём запуск, а не лишний процесс</h2>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant">
+                        В Казахстане малому бизнесу часто нужен не большой агентский цикл на месяцы, а аккуратный сайт или MVP, который быстро проверит спрос и начнёт собирать заявки. Поэтому мы фиксируем понятный стартовый объём, используем готовую техническую базу и не закладываем в цену лишние менеджерские слои.
+                    </p>
                 </div>
-                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 flex-grow">
-                    Для рекламы, Instagram, WhatsApp, услуг или одного товара. Один экран — одно действие: написать вам.
-                </p>
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Адаптация под телефон и компьютер</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">WhatsApp-кнопка с готовым сообщением</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Форма заявки</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Базовая SEO-настройка</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Помощь с доменом и запуском</span></li>
-                </ul>
-                <a class="pricing-wa-btn w-full inline-flex items-center justify-center px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors"
-                   href="#" target="_blank" rel="noopener"
-                   data-wa-text="Здравствуйте! Интересует пакет «Лендинг для заявки» от 29 990 ₸. Можно подробнее?">
-                    Обсудить в WhatsApp
-                </a>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Сайт для бизнеса</span>
-                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 49&nbsp;990&nbsp;₸</div>
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="material-symbols-outlined text-base text-secondary">schedule</span>
-                    <span class="font-label-caps text-label-caps text-secondary">От 1–2 дней</span>
-                </div>
-                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 flex-grow">
-                    Несколько страниц: услуги, каталог, контакты, о компании. Форма заявки и WhatsApp-воронка.
-                </p>
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Всё из пакета «Лендинг»</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">До 5 страниц / разделов</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Каталог услуг или товаров</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Telegram-уведомления о заявках</span></li>
-                </ul>
-                <a class="pricing-wa-btn w-full inline-flex items-center justify-center px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors"
-                   href="#" target="_blank" rel="noopener"
-                   data-wa-text="Здравствуйте! Интересует пакет «Сайт для бизнеса» от 49 990 ₸. Можно подробнее?">
-                    Обсудить в WhatsApp
-                </a>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Автоматизация бизнеса</span>
-                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 69&nbsp;990&nbsp;₸</div>
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="material-symbols-outlined text-base text-secondary">schedule</span>
-                    <span class="font-label-caps text-label-caps text-secondary">Индивидуально</span>
-                </div>
-                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 flex-grow">
-                    CRM, заявки, уведомления в Telegram и WhatsApp, панель управления для вас.
-                </p>
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Всё из пакета «Сайт»</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Простая панель управления (CRM)</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">WhatsApp/Telegram-уведомления</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Автоответы и шаблоны сообщений</span></li>
-                </ul>
-                <a class="pricing-wa-btn w-full inline-flex items-center justify-center px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors"
-                   href="#" target="_blank" rel="noopener"
-                   data-wa-text="Здравствуйте! Интересует пакет «Автоматизация бизнеса» от 69 990 ₸. Можно подробнее?">
-                    Обсудить в WhatsApp
-                </a>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="flex flex-col bg-surface-container-lowest border border-surface-variant/50 rounded-xl p-8 md:p-10 hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <span class="font-label-caps text-label-caps text-on-surface-variant mb-3">Мобильное приложение / MVP</span>
-                <div class="font-h1 text-[2rem] md:text-h1 text-primary mb-4">от 199&nbsp;990&nbsp;₸</div>
-                <div class="flex items-center gap-2 mb-6">
-                    <span class="material-symbols-outlined text-base text-secondary">schedule</span>
-                    <span class="font-label-caps text-label-caps text-secondary">Индивидуально</span>
-                </div>
-                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 flex-grow">
-                    Базовая версия приложения для проверки идеи. iOS и Android, минимум экранов — максимум ценности.
-                </p>
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">iOS + Android из одной кодовой базы</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Ключевые экраны под вашу задачу</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Загрузка в App Store / Google Play</span></li>
-                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-[18px] text-primary mt-0.5 shrink-0">check</span><span class="font-body-md text-body-md text-on-surface-variant">Сопровождение после запуска</span></li>
-                </ul>
-                <a class="pricing-wa-btn w-full inline-flex items-center justify-center px-6 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors"
-                   href="#" target="_blank" rel="noopener"
-                   data-wa-text="Здравствуйте! Интересует пакет «Мобильное приложение / MVP» от 199 990 ₸. Можно подробнее?">
-                    Обсудить в WhatsApp
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Why lower price -->
-        <div class="mt-12 bg-primary text-on-primary rounded-xl px-8 py-10 md:px-14 md:py-12 text-center max-w-3xl mx-auto">
-            <h2 class="font-h2 text-h2 mb-4">Почему цена ниже рынка</h2>
-            <p class="font-body-lg text-body-lg opacity-80">
-                Мы сейчас собираем сильное портфолио и отзывы, поэтому первые проекты делаем по промо-цене. При этом сайт будет готов к реальному использованию: заявки, WhatsApp, адаптив и быстрый запуск.
-            </p>
-        </div>
-
-        <!-- FAQ -->
-        <div class="mt-16 max-w-3xl">
-            <h2 class="font-h2 text-h2 text-primary mb-8">Частые вопросы</h2>
-            <div class="space-y-3" id="faq-list">
-
-                <div class="faq-item open bg-surface-container-lowest border border-surface-variant/50 rounded-lg overflow-hidden">
-                    <button class="faq-header w-full flex justify-between items-center text-left px-7 py-5 gap-4" type="button">
-                        <span class="font-h3 text-h3 text-primary">Что входит в стартовую цену?</span>
-                        <span class="material-symbols-outlined faq-chevron text-on-surface-variant shrink-0 transition-transform duration-200">expand_more</span>
-                    </button>
-                    <div class="faq-body px-7 pb-6">
-                        <p class="font-body-md text-body-md text-on-surface-variant">Адаптация под телефон, WhatsApp-кнопка, базовая SEO-настройка, форма заявки, помощь с запуском.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000]">
+                        <span class="material-symbols-outlined text-[28px] text-primary mb-4 block">inventory_2</span>
+                        <h3 class="font-h3 text-h3 text-primary mb-3">Пакетный объём</h3>
+                        <p class="font-body-md text-sm text-on-surface-variant">В цену входит конкретный набор экранов, блоков и функций. Всё нестандартное считаем отдельно, без скрытых доплат.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000]">
+                        <span class="material-symbols-outlined text-[28px] text-primary mb-4 block">construction</span>
+                        <h3 class="font-h3 text-h3 text-primary mb-3">Своя база</h3>
+                        <p class="font-body-md text-sm text-on-surface-variant">Повторяющиеся части не делаем с нуля: формы, заявки, уведомления, адаптив и базовую структуру собираем быстрее.</p>
+                    </div>
+                    <div class="bg-surface-container-lowest border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#000]">
+                        <span class="material-symbols-outlined text-[28px] text-primary mb-4 block">speed</span>
+                        <h3 class="font-h3 text-h3 text-primary mb-3">Быстрый запуск</h3>
+                        <p class="font-body-md text-sm text-on-surface-variant">Сначала выпускаем рабочую версию, потом усиливаем её по данным: контент, SEO, личный кабинет, оплату или интеграции.</p>
+                    </div>
+                    <div class="bg-primary text-on-primary border-2 border-primary rounded-lg p-6 shadow-[4px_4px_0_0_#cfc4c5]">
+                        <span class="material-symbols-outlined text-[28px] mb-4 block">trending_down</span>
+                        <h3 class="font-h3 text-h3 mb-3">Рынок перегрет</h3>
+                        <p class="font-body-md text-sm text-on-primary/80">На рынке много цен за “присутствие”, презентации и долгие согласования. Мы оставляем в смете то, что влияет на результат.</p>
                     </div>
                 </div>
-
-                <div class="faq-item bg-surface-container-lowest border border-surface-variant/50 rounded-lg overflow-hidden">
-                    <button class="faq-header w-full flex justify-between items-center text-left px-7 py-5 gap-4" type="button">
-                        <span class="font-h3 text-h3 text-primary">Что НЕ входит?</span>
-                        <span class="material-symbols-outlined faq-chevron text-on-surface-variant shrink-0 transition-transform duration-200">expand_more</span>
-                    </button>
-                    <div class="faq-body px-7 pb-6">
-                        <p class="font-body-md text-body-md text-on-surface-variant">Сложная админка, онлайн-оплата, личный кабинет, большие каталоги, поддержка нескольких языков.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item bg-surface-container-lowest border border-surface-variant/50 rounded-lg overflow-hidden">
-                    <button class="faq-header w-full flex justify-between items-center text-left px-7 py-5 gap-4" type="button">
-                        <span class="font-h3 text-h3 text-primary">Можно ли без предоплаты?</span>
-                        <span class="material-symbols-outlined faq-chevron text-on-surface-variant shrink-0 transition-transform duration-200">expand_more</span>
-                    </button>
-                    <div class="faq-body px-7 pb-6">
-                        <p class="font-body-md text-body-md text-on-surface-variant">Работа начинается после предоплаты 50%.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item bg-surface-container-lowest border border-surface-variant/50 rounded-lg overflow-hidden">
-                    <button class="faq-header w-full flex justify-between items-center text-left px-7 py-5 gap-4" type="button">
-                        <span class="font-h3 text-h3 text-primary">Можно ли оплатить частями?</span>
-                        <span class="material-symbols-outlined faq-chevron text-on-surface-variant shrink-0 transition-transform duration-200">expand_more</span>
-                    </button>
-                    <div class="faq-body px-7 pb-6">
-                        <p class="font-body-md text-body-md text-on-surface-variant">Для крупных проектов можно обсудить поэтапную оплату.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
-
-        <!-- CTA -->
-        <div class="mt-16 text-center">
-            <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Не нашли нужное? Обсудим в WhatsApp — подберём под вашу задачу.</p>
-            <a id="cta-wa-btn" href="#" target="_blank" rel="noopener"
-               class="inline-flex px-10 py-5 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors duration-300">
-                Написать в WhatsApp
-            </a>
-        </div>
-
     </section>
 
+    <section class="w-full bg-background py-section-padding border-t border-surface-variant/30">
+        <div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+            <div class="max-w-2xl mb-12">
+                <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">FAQ</span>
+                <h2 class="font-h1 text-h1 text-primary mb-5">Частые вопросы</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Коротко о том, что обычно важно понять до старта проекта.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Это финальная цена?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Это стартовая цена за описанный пакет. После короткого брифа фиксируем точный объём, сроки и сумму до начала работы.</p>
+                </div>
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Что нужно от клиента?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Нужны цель проекта, примеры, тексты или черновики, контакты, логотип и понимание, какое действие должен сделать посетитель.</p>
+                </div>
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Можно ли сделать быстрее?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Да, если задача компактная и контент готов. Лендинг можно запустить от 24 часов, сайт обычно занимает от 1-2 дней.</p>
+                </div>
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Оплата сразу полностью?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Обычно стартуем с предоплаты 50%. Для приложений и автоматизации можно разбить оплату по этапам.</p>
+                </div>
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Входит ли поддержка после запуска?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Базовая проверка после запуска входит. Постоянную поддержку, изменения и развитие можно оформить отдельно.</p>
+                </div>
+                <div class="bg-surface-container-lowest border border-surface-variant/70 rounded-lg p-6">
+                    <h3 class="font-h3 text-h3 text-primary mb-3">Можно ли начать с малого?</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Да. Часто правильнее начать с лендинга или MVP, проверить заявки, а потом добавлять кабинет, оплату, CRM и интеграции.</p>
+                </div>
+            </div>
+            <div class="mt-12 bg-primary text-on-primary rounded-lg p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <h2 class="font-h2 text-h2 mb-3">Не уверены, какой пакет выбрать?</h2>
+                    <p class="font-body-md text-body-md text-on-primary/80">Напишите нам, коротко опишите задачу, и мы предложим самый рациональный формат запуска.</p>
+                </div>
+                <a id="bottom-wa-cta" href="#" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-6 py-4 bg-on-primary text-primary font-label-caps text-label-caps rounded hover:bg-surface-container transition-colors shrink-0">
+                    Напишите нам
+                </a>
+            </div>
+        </div>
+    </section>
 </main>
 
 <!-- FOOTER -->
@@ -277,11 +276,11 @@ html, body { overflow-x: hidden; max-width: 100%; }
                 <img alt="MONONYXX" class="h-8 w-auto" src="/mononyxx-logo.png"/>
             </a>
             <nav class="flex flex-wrap gap-x-8 gap-y-3">
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/">Главная</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/cases">Кейсы</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#services">Услуги</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#portfolio">Портфолио</a>
                 <a class="font-label-caps text-label-caps text-primary" href="/pricing">Цены</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/quiz">Рассчитать</a>
-                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/#contacts">Контакты</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#reviews">Отзывы</a>
+                <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/code.html#process">Процесс</a>
             </nav>
             <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
                href="https://www.instagram.com/mononyxx/" target="_blank" rel="noopener">Instagram</a>
@@ -298,20 +297,51 @@ html, body { overflow-x: hidden; max-width: 100%; }
    class="md:hidden fixed bottom-6 z-50 inline-flex items-center justify-center gap-3 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded-full shadow-lg hover:bg-tertiary-container transition-colors"
    style="left:50%;transform:translateX(-50%);width:calc(100% - 40px);">
     <span class="material-symbols-outlined text-base">chat</span>
-    Написать в WhatsApp
+    Напишите нам
 </a>
 <a id="sticky-wa-desktop" href="#" target="_blank" rel="noopener"
    class="hidden md:flex fixed bottom-8 right-8 z-50 w-14 h-14 bg-primary text-on-primary rounded-full items-center justify-center shadow-lg hover:bg-tertiary-container transition-colors">
     <span class="material-symbols-outlined">chat</span>
-    <span class="sr-only">Написать в WhatsApp</span>
+    <span class="sr-only">Напишите нам</span>
 </a>
 
 <script src="/js/contacts.js"></script>
 <script>
 (function () {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function isAnimatedPageLink(anchor) {
+        if (!anchor || anchor.target === '_blank' || anchor.hasAttribute('download')) return false;
+        var href = anchor.getAttribute('href') || '';
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('https://api.whatsapp.com')) return false;
+        try {
+            var url = new URL(anchor.href, window.location.href);
+            return url.origin === window.location.origin;
+        } catch (error) {
+            return false;
+        }
+    }
+    document.addEventListener('click', function (event) {
+        var anchor = event.target.closest('a');
+        if (!isAnimatedPageLink(anchor) || prefersReducedMotion.matches) return;
+        var url = new URL(anchor.href, window.location.href);
+        if (url.pathname === window.location.pathname && url.hash) return;
+        event.preventDefault();
+        document.body.classList.add('page-leaving');
+        window.setTimeout(function () {
+            window.location.href = anchor.href;
+        }, 210);
+    });
+    window.addEventListener('pageshow', function () {
+        document.body.classList.remove('page-leaving');
+        document.body.classList.add('page-returning');
+        window.setTimeout(function () {
+            document.body.classList.remove('page-returning');
+        }, 420);
+    });
+
     var WA_GENERAL = 'Здравствуйте! Хочу обсудить разработку — посмотрел сайт.';
     function setWaHref(el, text) { if (el) el.href = buildWhatsAppLink(text); }
-    ['nav-wa-cta','mobile-nav-wa-cta','cta-wa-btn','sticky-wa-mobile','sticky-wa-desktop'].forEach(function(id) {
+    ['nav-wa-cta','mobile-nav-wa-cta','cta-wa-btn','mobile-pricing-contact','bottom-wa-cta','sticky-wa-mobile','sticky-wa-desktop'].forEach(function(id) {
         setWaHref(document.getElementById(id), WA_GENERAL);
     });
     document.querySelectorAll('.pricing-wa-btn').forEach(function (btn) {
@@ -319,13 +349,127 @@ html, body { overflow-x: hidden; max-width: 100%; }
         if (text) btn.href = buildWhatsAppLink(text);
     });
 
+    var translations = [
+        ['УСЛУГИ', 'SERVICES'],
+        ['ПОРТФОЛИО', 'PORTFOLIO'],
+        ['ЦЕНЫ', 'PRICING'],
+        ['ОТЗЫВЫ', 'REVIEWS'],
+        ['ПРОЦЕСС', 'PROCESS'],
+        ['Услуги', 'Services'],
+        ['Портфолио', 'Portfolio'],
+        ['Цены', 'Pricing'],
+        ['Отзывы', 'Reviews'],
+        ['Процесс', 'Process'],
+        ['Напишите нам', 'Contact us'],
+        ['Пакеты и цены', 'Packages and pricing'],
+        ['Выберите пакет', 'Choose a package'],
+        ['Прозрачные стартовые цены на сайты, автоматизацию и мобильные продукты. Финальный объём фиксируем после короткого брифа.', 'Transparent starting prices for websites, automation and mobile products. Final scope is confirmed after a short brief.'],
+        ['Лендинг', 'Landing page'],
+        ['Для рекламы, Instagram, одной услуги или одного продукта.', 'For ads, Instagram, one service or one product.'],
+        ['от 25 990 ₸', 'from 25 990 ₸'],
+        ['Запуск от 24 часов', 'Launch from 24 hours'],
+        ['Адаптивный one-page сайт', 'Responsive one-page site'],
+        ['CTA и контактная ссылка', 'CTA and contact link'],
+        ['Базовая аналитика', 'Basic analytics setup'],
+        ['Популярно', 'Popular'],
+        ['Сайт для бизнеса', 'Business website'],
+        ['Несколько страниц, услуги, каталог, форма заявки и контакты.', 'Several pages, services, catalog, lead form and contacts.'],
+        ['от 49 990 ₸', 'from 49 990 ₸'],
+        ['От 1-2 дней', 'From 1-2 days'],
+        ['Многораздельная структура', 'Multi-section structure'],
+        ['Форма заявки и контакты', 'Lead form and contacts'],
+        ['SEO-ready страницы', 'SEO-ready pages'],
+        ['Автоматизация', 'Automation'],
+        ['CRM-логика, заявки, админ-панели и Telegram-уведомления.', 'CRM logic, requests, admin panels and Telegram notifications.'],
+        ['от 69 990 ₸', 'from 69 990 ₸'],
+        ['Срок индивидуально', 'Custom timeline'],
+        ['Карта бизнес-процесса', 'Workflow mapping'],
+        ['База админки или dashboard', 'Admin or dashboard basics'],
+        ['Telegram-уведомления', 'Telegram notifications'],
+        ['Мобильное приложение / MVP', 'Mobile app / MVP'],
+        ['Lean-версия продукта, чтобы проверить идею и показать ключевую функциональность.', 'A lean product version to validate the idea and show core functionality.'],
+        ['от 259 000 ₸', 'from 259 000 ₸'],
+        ['Основные экраны и flow', 'Core screens and flow'],
+        ['Дизайн и frontend-сборка', 'Design and frontend build'],
+        ['Планирование backend/API', 'Backend/API planning'],
+        ['Почему ниже рынка', 'Why below market'],
+        ['Цена ниже, потому что мы продаём запуск, а не лишний процесс', 'The price is lower because we sell launch, not excess process'],
+        ['В Казахстане малому бизнесу часто нужен не большой агентский цикл на месяцы, а аккуратный сайт или MVP, который быстро проверит спрос и начнёт собирать заявки. Поэтому мы фиксируем понятный стартовый объём, используем готовую техническую базу и не закладываем в цену лишние менеджерские слои.', 'In Kazakhstan, small businesses often need not a months-long agency cycle, but a clean website or MVP that quickly validates demand and starts collecting leads. We fix a clear starting scope, use our technical base, and avoid unnecessary management layers in the price.'],
+        ['Пакетный объём', 'Packaged scope'],
+        ['В цену входит конкретный набор экранов, блоков и функций. Всё нестандартное считаем отдельно, без скрытых доплат.', 'The price includes a specific set of screens, blocks and features. Anything custom is estimated separately, without hidden extras.'],
+        ['Своя база', 'Reusable base'],
+        ['Повторяющиеся части не делаем с нуля: формы, заявки, уведомления, адаптив и базовую структуру собираем быстрее.', 'Repeated parts are not built from scratch: forms, requests, notifications, responsive layout and base structure are assembled faster.'],
+        ['Быстрый запуск', 'Fast launch'],
+        ['Сначала выпускаем рабочую версию, потом усиливаем её по данным: контент, SEO, личный кабинет, оплату или интеграции.', 'We launch a working version first, then improve it using data: content, SEO, accounts, payments or integrations.'],
+        ['Рынок перегрет', 'The market is overheated'],
+        ['На рынке много цен за “присутствие”, презентации и долгие согласования. Мы оставляем в смете то, что влияет на результат.', 'The market often prices presence, presentations and long approvals. We keep the estimate focused on what affects results.'],
+        ['Частые вопросы', 'FAQ'],
+        ['Коротко о том, что обычно важно понять до старта проекта.', 'Short answers to what usually matters before starting.'],
+        ['Это финальная цена?', 'Is this the final price?'],
+        ['Это стартовая цена за описанный пакет. После короткого брифа фиксируем точный объём, сроки и сумму до начала работы.', 'This is the starting price for the described package. After a short brief, we fix the exact scope, timeline and amount before work starts.'],
+        ['Что нужно от клиента?', 'What do you need from the client?'],
+        ['Нужны цель проекта, примеры, тексты или черновики, контакты, логотип и понимание, какое действие должен сделать посетитель.', 'We need the project goal, references, copy or drafts, contacts, logo and the target visitor action.'],
+        ['Можно ли сделать быстрее?', 'Can it be done faster?'],
+        ['Да, если задача компактная и контент готов. Лендинг можно запустить от 24 часов, сайт обычно занимает от 1-2 дней.', 'Yes, if the task is compact and content is ready. A landing page can launch from 24 hours; a site usually takes 1-2 days.'],
+        ['Оплата сразу полностью?', 'Full payment upfront?'],
+        ['Обычно стартуем с предоплаты 50%. Для приложений и автоматизации можно разбить оплату по этапам.', 'Usually we start with a 50% prepayment. Apps and automation can be split by milestones.'],
+        ['Входит ли поддержка после запуска?', 'Is support included after launch?'],
+        ['Базовая проверка после запуска входит. Постоянную поддержку, изменения и развитие можно оформить отдельно.', 'A basic post-launch check is included. Ongoing support, changes and growth can be arranged separately.'],
+        ['Можно ли начать с малого?', 'Can we start small?'],
+        ['Да. Часто правильнее начать с лендинга или MVP, проверить заявки, а потом добавлять кабинет, оплату, CRM и интеграции.', 'Yes. Often it is better to start with a landing page or MVP, validate leads, then add accounts, payments, CRM and integrations.'],
+        ['Не уверены, какой пакет выбрать?', 'Not sure which package to choose?'],
+        ['Напишите нам, коротко опишите задачу, и мы предложим самый рациональный формат запуска.', 'Contact us, briefly describe the task, and we will suggest the most rational launch format.']
+    ];
+
+    var ruToEn = {};
+    var enToRu = {};
+    translations.forEach(function (item) {
+        ruToEn[item[0]] = item[1];
+        enToRu[item[1]] = item[0];
+    });
+    function normalizeText(text) {
+        return text.replace(/\s+/g, ' ').trim();
+    }
+    function translatePage(lang) {
+        var toMap = lang === 'en' ? ruToEn : enToRu;
+        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+                var parent = node.parentElement;
+                if (!parent || ['SCRIPT', 'STYLE'].indexOf(parent.tagName) !== -1) return NodeFilter.FILTER_REJECT;
+                return normalizeText(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+            }
+        });
+        var nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(function (node) {
+            var key = normalizeText(node.nodeValue);
+            if (toMap[key]) {
+                var leading = node.nodeValue.match(/^\s*/)[0];
+                var trailing = node.nodeValue.match(/\s*$/)[0];
+                node.nodeValue = leading + toMap[key] + trailing;
+            }
+        });
+        document.documentElement.lang = lang;
+        localStorage.setItem('mononyxx-language', lang);
+        document.querySelectorAll('[data-lang-control]').forEach(function (button) {
+            button.setAttribute('aria-pressed', String(button.getAttribute('data-lang-control') === lang));
+        });
+    }
+    document.querySelectorAll('[data-lang-control]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            translatePage(button.getAttribute('data-lang-control') || 'ru');
+        });
+    });
+    translatePage(localStorage.getItem('mononyxx-language') || 'ru');
+
     // Mobile menu
     var menuBtn = document.getElementById('mobile-menu-button');
     var menuPanel = document.getElementById('mobile-menu');
     var menuIcon = document.getElementById('mobile-menu-icon');
     function setMenuOpen(isOpen) {
-        menuPanel.classList.toggle('hidden', !isOpen);
+        menuPanel.classList.toggle('menu-open', isOpen);
         menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
         menuIcon.textContent = isOpen ? 'close' : 'menu';
     }
     if (menuBtn && menuPanel) {
@@ -334,16 +478,6 @@ html, body { overflow-x: hidden; max-width: 100%; }
         document.addEventListener('click', function (e) { if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) setMenuOpen(false); });
         menuPanel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenuOpen(false); }); });
     }
-
-    // FAQ
-    document.querySelectorAll('.faq-item').forEach(function (item) {
-        var header = item.querySelector('.faq-header');
-        header && header.addEventListener('click', function () {
-            var isOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item.open').forEach(function (o) { o.classList.remove('open'); });
-            if (!isOpen) item.classList.add('open');
-        });
-    });
 })();
 </script>
 </body>
