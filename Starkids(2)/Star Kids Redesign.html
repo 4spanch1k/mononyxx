@@ -22,12 +22,20 @@
   }
   .stage {
     min-height: 100vh;
+    min-height: 100dvh;
     display: grid;
     place-items: center;
-    padding: 32px 16px;
+    padding: 24px 16px;
+    overflow: hidden;
   }
   .device-wrap {
     position: relative;
+    width: 402px;
+    height: 874px;
+    transform: scale(var(--device-scale, 0.78));
+    transform-origin: center center;
+    transition: transform 180ms ease;
+    will-change: transform;
   }
   .device-wrap > .label {
     position: absolute;
@@ -43,6 +51,15 @@
   }
   /* Override iOS shadow for clarity on dark stage */
   .device-wrap > * > *:first-child { box-shadow: 0 60px 120px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06) !important; }
+
+  @media (max-width: 640px) {
+    .stage {
+      padding: 14px 10px;
+    }
+    .device-wrap > .label {
+      display: none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -74,9 +91,40 @@
 <script type="text/babel" src="app/App.jsx"></script>
 
 <script type="text/babel">
+function useFittedDeviceScale() {
+  const [scale, setScale] = React.useState(0.78);
+
+  React.useEffect(() => {
+    const fit = () => {
+      const viewportW = window.innerWidth || 402;
+      const viewportH = window.innerHeight || 874;
+      const horizontal = (viewportW - 28) / 402;
+      const vertical = (viewportH - 40) / 874;
+      const nextScale = Math.min(horizontal, vertical, 0.82);
+      setScale(Math.max(0.58, Number(nextScale.toFixed(3))));
+    };
+
+    fit();
+    window.addEventListener("resize", fit);
+    window.addEventListener("orientationchange", fit);
+    return () => {
+      window.removeEventListener("resize", fit);
+      window.removeEventListener("orientationchange", fit);
+    };
+  }, []);
+
+  return scale;
+}
+
 function Mount() {
+  const deviceScale = useFittedDeviceScale();
+
   return (
-    <div className="device-wrap" data-screen-label="Star Kids App">
+    <div
+      className="device-wrap"
+      data-screen-label="Star Kids App"
+      style={{ "--device-scale": deviceScale }}
+    >
       <span className="label">★ Star Kids · iPhone</span>
       <window.IOSDevice width={402} height={874} dark={false}>
         <div style={{ height: "100%", position: "relative", background: "var(--bg)" }}>
