@@ -1525,7 +1525,12 @@ Pricing &amp; FAQ <span class="material-symbols-outlined text-sm">arrow_forward<
         leadFormMessage?.classList.add('hidden');
 
         try {
-            const result = await fetch('/api/send-lead', {
+            const leadApiUrl =
+                window.location.hostname === 'mononyxx.com' || window.location.hostname === 'www.mononyxx.com'
+                    ? 'https://mononyxx.vercel.app/api/send-lead'
+                    : '/api/send-lead';
+
+            const result = await fetch(leadApiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
