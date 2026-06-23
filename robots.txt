@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Sitemap: https://mononyxx.com/sitemap.xml
+Host: mononyxx.com
