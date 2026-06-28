@@ -286,8 +286,11 @@ html, body { overflow-x: hidden; max-width: 100%; }
     }
 
     function calcPrice() {
-        var basePrices = { 'Лендинг': 34990, 'Сайт': 64990, 'Приложение': 349000, 'Автоматизация': 49900 };
-        var base = basePrices[quizState.answers.q1] || 34990;
+        if (quizState.answers.q1 === 'Приложение') {
+            return { consultation: true };
+        }
+        var basePrices = { 'Лендинг': 49900, 'Сайт': 99000, 'Автоматизация': 79900 };
+        var base = basePrices[quizState.answers.q1] || 49900;
         var multiplier = 1;
         if (quizState.answers.q3.indexOf('Админка') !== -1) multiplier += 0.30;
         if (quizState.answers.q3.indexOf('Онлайн-оплата') !== -1) multiplier += 0.50;
@@ -301,13 +304,16 @@ html, body { overflow-x: hidden; max-width: 100%; }
     function updateQuizWaLink() {
         var p = calcPrice();
         var phone = quizPhone ? quizPhone.value.trim() : '';
+        var estimate = p.consultation
+            ? '\nСтоимость приложения рассчитаем после консультации и уточнения функциональности.\n'
+            : '\nПримерная стоимость по квизу: от ' + p.min.toLocaleString('ru-KZ') + ' ₸ до ' + p.max.toLocaleString('ru-KZ') + ' ₸\n';
         var text = 'Здравствуйте! Прошёл(а) квиз на сайте.\n\n' +
             'Что нужно: ' + (quizState.answers.q1 || '—') + '\n' +
             'Тип бизнеса: ' + (quizState.answers.q2 || '—') + '\n' +
             'Что должно быть: ' + (quizState.answers.q3.length ? quizState.answers.q3.join(', ') : '—') + '\n' +
             'Сроки: ' + (quizState.answers.q4 || '—') + '\n' +
             (phone ? 'Телефон: ' + phone + '\n' : '') +
-            '\nПримерная стоимость по квизу: от ' + p.min.toLocaleString('ru-KZ') + ' ₸ до ' + p.max.toLocaleString('ru-KZ') + ' ₸\n' +
+            estimate +
             '\nПодскажите примерную цену, пожалуйста.';
         if (quizWaSendBtn) quizWaSendBtn.href = buildWhatsAppLink(text);
     }
@@ -318,7 +324,9 @@ html, body { overflow-x: hidden; max-width: 100%; }
         progressWrap.classList.add('hidden');
         resultDiv.classList.remove('hidden');
         var p = calcPrice();
-        priceRange.textContent = 'от ' + p.min.toLocaleString('ru-KZ') + ' ₸ до ' + p.max.toLocaleString('ru-KZ') + ' ₸';
+        priceRange.textContent = p.consultation
+            ? 'После консультации'
+            : 'от ' + p.min.toLocaleString('ru-KZ') + ' ₸ до ' + p.max.toLocaleString('ru-KZ') + ' ₸';
         updateQuizWaLink();
         quizPhone && quizPhone.addEventListener('input', updateQuizWaLink);
     }

@@ -43,6 +43,10 @@ h3 { margin: 0 0 14px; font-size: 25px; line-height: 1.2; }
 .section-head p { margin: 0; color: var(--muted); font-size: 18px; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pricing-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pricing-grid .card { padding: 26px; }
+.pricing-grid .card h2 { font-size: clamp(28px, 2.4vw, 36px); line-height: 1.12; }
+.pricing-grid .price { font-size: 23px; }
 .card { display: flex; flex-direction: column; padding: 30px; border: 2px solid var(--ink); background: var(--surface); box-shadow: 5px 5px 0 var(--ink); }
 .card.dark { background: var(--ink); color: #fff; box-shadow: 5px 5px 0 #cfc4c5; }
 .card p { margin: 0 0 22px; color: var(--muted); }
@@ -66,7 +70,7 @@ h3 { margin: 0 0 14px; font-size: 25px; line-height: 1.2; }
   .nav-links a:not(.button) { display: none; }
   .hero { padding: 68px 0 58px; }
   .section { padding: 62px 0; }
-  .grid, .grid.two { grid-template-columns: 1fr; }
+  .grid, .grid.two, .pricing-grid { grid-template-columns: 1fr; }
   .facts { grid-template-columns: 1fr; }
   .site-footer .wrap { flex-direction: column; }
 }
