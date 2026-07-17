@@ -50,11 +50,16 @@ module.exports = async function handler(request, response) {
     projectType,
     budget,
     description,
+    privacyConsent,
   } = body;
   const requiredFields = [language, name, contactMethod, contactValue, projectType, budget, description];
 
   if (requiredFields.some((field) => typeof field !== "string" || field.trim() === "")) {
     return response.status(400).json({ error: "Missing required fields" });
+  }
+
+  if (privacyConsent !== true) {
+    return response.status(400).json({ error: "Privacy consent is required" });
   }
 
   const normalizedContactMethod = contactMethod.trim().toLowerCase();

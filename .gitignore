@@ -1,4 +1,7 @@
 .vercel
+.DS_Store
+.playwright-cli/
+output/playwright/
 .env
 .env.*
 !.env.example

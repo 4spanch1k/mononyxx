@@ -15,14 +15,37 @@
   <meta property="og:image" content="https://mononyxx.com/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Hanken+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/seo-pages.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/seo-pages.css?v=20260715-1">
+  <script defer src="../js/seo-pages.js?v=20260715-1"></script>
 </head>
-<body>
-  <header class="site-header"><nav class="nav wrap" aria-label="Основная навигация">
-    <a class="logo" href="/"><img src="../mononyxx-logo-96.png" alt="Mononyxx — разработка сайтов и приложений"></a>
-    <div class="nav-links"><a href="/portfolio/">Портфолио</a><a href="/tseny/">Цены</a><a href="/kontakty/" class="button">Обсудить проект</a></div>
-  </nav></header>
+<body data-page="websites">
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Основная навигация">
+      <a class="logo" href="/" aria-label="Mononyxx — на главную"><img src="../mononyxx-logo-96.png" alt="Mononyxx"></a>
+      <div class="nav-actions">
+        <a href="/kontakty/" class="nav-cta">Обсудить проект</a>
+        <button class="seo-menu-button" id="seo-menu-button" type="button" aria-controls="seo-menu" aria-expanded="false" aria-label="Открыть меню">
+          <span class="seo-menu-button__icon" aria-hidden="true"></span><span data-menu-label>Меню</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="seo-menu" id="seo-menu" aria-label="Навигация по сайту">
+    <div class="seo-menu__inner wrap">
+      <nav class="seo-menu__links" aria-label="Основная навигация">
+        <a href="/#services" aria-current="page"><span>Услуги</span><span>01</span></a>
+        <a href="/#portfolio"><span>Кейсы</span><span>02</span></a>
+        <a href="/tseny/"><span>Цены</span><span>03</span></a>
+        <a href="/podderzhka/"><span>Поддержка</span><span>04</span></a>
+        <a href="/kontakty/"><span>Контакты</span><span>05</span></a>
+      </nav>
+      <div class="seo-menu__footer">
+        <div class="language-switch" role="group" aria-label="Выбор языка"><button type="button" data-lang-control="ru" aria-pressed="true">RU</button><button type="button" data-lang-control="en" aria-pressed="false">EN</button></div>
+        <span>Mononyxx / 2026 · Almaty</span>
+      </div>
+    </div>
+  </div>
   <main>
     <section class="hero"><div class="wrap">
       <p class="eyebrow">Сайты для бизнеса</p>
@@ -42,8 +65,8 @@
       <div><p class="eyebrow">Что входит</p><h2>От идеи до запуска</h2><p>Сначала обсуждаем аудиторию, продукт и желаемое действие на сайте. Затем собираем структуру, создаем дизайн, верстаем адаптивные экраны и подключаем формы или интеграции. Перед публикацией проверяем скорость, отображение и базовые SEO-настройки.</p></div>
       <ul class="facts"><li>Структура и прототип</li><li>UI/UX-дизайн</li><li>Адаптивная разработка</li><li>Метаданные и sitemap</li><li>Формы и аналитика</li><li>Запуск на домене</li></ul>
     </div></section>
-    <section class="section"><div class="wrap"><div class="section-head"><p class="eyebrow">Стоимость</p><h2>Цена после короткого брифа</h2><p>Точная цена зависит от страниц, контента, интеграций и сроков. Посмотрите стартовые ориентиры или отправьте описание задачи — ответим с подходящим форматом.</p></div><div class="hero-actions"><a class="button" href="/tseny/">Посмотреть цены</a><a class="button secondary" href="/kontakty/">Написать нам</a></div></div></section>
+    <section class="section"><div class="wrap"><div class="section-head"><p class="eyebrow">Стоимость</p><h2>Цена после разговора о задаче</h2><p>Точная цена зависит от страниц, контента, интеграций и сроков. Посмотрите стартовые ориентиры или отправьте описание задачи — ответим с подходящим форматом.</p></div><div class="hero-actions"><a class="button" href="/tseny/">Посмотреть цены</a><a class="button secondary" href="/kontakty/">Написать нам</a></div></div></section>
   </main>
-  <footer class="site-footer"><div class="wrap"><span>© 2026 MONONYXX</span><a href="/">На главную</a></div></footer>
+  <footer class="site-footer"><div class="wrap"><span>© 2026 MONONYXX</span><nav class="site-footer__links" aria-label="Документы и навигация"><a href="/privacy/">Конфиденциальность</a><a href="/terms/">Условия использования</a><a href="/">На главную</a></nav></div></footer>
 </body>
 </html>

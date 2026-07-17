@@ -8,6 +8,13 @@ window.__mononyxxInitialHash = window.location.hash;
 if (window.__mononyxxInitialHash) {
     history.replaceState(null, '', window.location.pathname + window.location.search);
 }
+try {
+    if (!sessionStorage.getItem('mononyxx-intro-seen')) {
+        document.documentElement.classList.add('intro-enabled');
+    }
+} catch (_) {
+    document.documentElement.classList.add('intro-enabled');
+}
 </script>
 <title>Разработка сайтов и приложений — Mononyxx | Алматы</title>
 <meta name="description" content="Mononyxx — разработка сайтов и мобильных приложений под ключ в Алматы и по Казахстану. Современный дизайн, SEO, быстрый запуск и поддержка."/>
@@ -81,7 +88,7 @@ if (window.__mononyxxInitialHash) {
     {
       "@type": "Question",
       "name": "Сколько времени занимает создание сайта?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Срок определяется после брифа. Небольшой лендинг запускается быстрее, корпоративный сайт или приложение требуют отдельных этапов проектирования, разработки и тестирования."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Срок определяется после короткого разговора о задаче. Небольшой лендинг запускается быстрее, корпоративный сайт или приложение требуют отдельных этапов проектирования, разработки и тестирования."}
     },
     {
       "@type": "Question",
@@ -105,109 +112,19 @@ if (window.__mononyxxInitialHash) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
    if (Number.isInteger(window.MONONYXX_YANDEX_METRICA_ID)) {
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
        ym(window.MONONYXX_YANDEX_METRICA_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
    }
 </script>
 <!-- /Yandex.Metrika counter -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="/css/tailwind.generated.css?v=20260714-1" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "tertiary": "#000000",
-                        "on-secondary-fixed": "#281801",
-                        "tertiary-container": "#1b1c1c",
-                        "surface-container": "#efeeeb",
-                        "inverse-primary": "#c6c6c6",
-                        "outline-variant": "#cfc4c5",
-                        "on-primary-fixed-variant": "#474747",
-                        "secondary-fixed-dim": "#e1c299",
-                        "on-secondary-fixed-variant": "#584324",
-                        "tertiary-fixed-dim": "#c8c6c6",
-                        "surface-variant": "#e3e2e0",
-                        "on-secondary-container": "#765f3d",
-                        "inverse-on-surface": "#f2f1ee",
-                        "on-error": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "primary": "#000000",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "tertiary-fixed": "#e4e2e1",
-                        "on-primary": "#ffffff",
-                        "secondary-fixed": "#feddb3",
-                        "on-primary-fixed": "#1b1b1b",
-                        "surface": "#faf9f6",
-                        "on-error-container": "#93000a",
-                        "primary-fixed": "#e2e2e2",
-                        "inverse-surface": "#2f312f",
-                        "on-tertiary-fixed-variant": "#474747",
-                        "background": "#faf9f6",
-                        "surface-tint": "#5e5e5e",
-                        "on-surface-variant": "#4c4546",
-                        "error-container": "#ffdad6",
-                        "surface-container-highest": "#e3e2e0",
-                        "on-background": "#1a1c1a",
-                        "error": "#ba1a1a",
-                        "surface-container-high": "#e9e8e5",
-                        "secondary": "#725a39",
-                        "on-tertiary-container": "#858383",
-                        "on-secondary": "#ffffff",
-                        "on-primary-container": "#848484",
-                        "surface-container-low": "#f4f3f1",
-                        "on-surface": "#1a1c1a",
-                        "primary-fixed-dim": "#c6c6c6",
-                        "secondary-container": "#fbdbb0",
-                        "outline": "#7e7576",
-                        "surface-dim": "#dbdad7",
-                        "surface-bright": "#faf9f6",
-                        "primary-container": "#1b1b1b",
-                        "on-tertiary": "#ffffff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "unit": "8px",
-                        "margin-desktop": "64px",
-                        "container-max-width": "1280px",
-                        "section-padding": "80px",
-                        "gutter": "24px",
-                        "margin-mobile": "20px"
-                    },
-                    "fontFamily": {
-                        "h2": ["Bodoni Moda"],
-                        "h1": ["Bodoni Moda"],
-                        "body-md": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "label-caps": ["Hanken Grotesk"],
-                        "display": ["Bodoni Moda"],
-                        "h3": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "h2": ["32px", { "lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500" }],
-                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "400" }],
-                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.15em", "fontWeight": "700" }],
-                        "display": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "h3": ["24px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
@@ -446,85 +363,69 @@ if (window.__mononyxxInitialHash) {
             }
         }
     </style>
+<link href="/css/home-v2.css?v=20260714-20" rel="stylesheet"/>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-primary selection:text-on-primary">
+<div class="brand-intro" id="site-intro" role="status" aria-label="Загрузка сайта Mononyxx">
+<div class="brand-intro__inner">
+<img class="brand-intro__logo" src="/mononyxx-logo-96.png" alt=""/>
+<p class="brand-intro__title">Собираем цифровые продукты целиком.</p>
+<p class="brand-intro__meta">Стратегия · дизайн · разработка · запуск</p>
+</div>
+</div>
 <!-- Navigation -->
-<header class="sticky top-0 z-50 w-full bg-white/97 backdrop-blur-sm border-b border-black/[0.06]" style="background: rgba(255,255,255,0.97)">
-<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-8 max-w-container-max-width mx-auto">
-<a class="font-h2 text-h2 font-medium tracking-widest text-primary flex items-center gap-2 scale-100 hover:scale-[1.02] transition-transform" href="#">
-<img alt="Mononyxx — разработка сайтов и приложений" class="h-8 w-auto" src="mononyxx-logo-96.png"/>
-<span class="sr-only">MONONYXX</span>
+<header class="studio-header">
+<a class="studio-header__logo" href="/" aria-label="Mononyxx — на главную">
+<img alt="Mononyxx" src="/mononyxx-logo-96.png"/>
 </a>
-<div class="hidden md:flex items-center gap-12">
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#services">УСЛУГИ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/tseny/">ЦЕНЫ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/portfolio/">КЕЙСЫ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/quiz">БРИФ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#contact">КОНТАКТЫ</a>
-</div>
-<div class="hidden md:flex items-center gap-4">
-<div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden" role="group">
-<button aria-pressed="false" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
-<button aria-pressed="true" class="px-3 py-2 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
-</div>
-<a class="inline-flex px-6 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300" href="/kontakty/">
-                Связаться
-            </a>
-</div>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu" class="md:hidden text-primary" id="mobile-menu-button" type="button">
-<span class="material-symbols-outlined text-2xl" id="mobile-menu-icon">menu</span>
+<div class="studio-header__meta" aria-hidden="true">Digital product studio / Almaty</div>
+<div class="studio-header__actions">
+<a class="studio-header__cta" href="#contact">Обсудить проект</a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню" class="studio-menu-button" id="mobile-menu-button" type="button">
+<span class="studio-menu-button__icon" aria-hidden="true"></span>
+<span id="mobile-menu-icon">Меню</span>
 </button>
-</nav>
-<div class="mobile-menu-panel md:hidden border-t border-surface-variant/40 bg-background/95 px-margin-mobile pb-8 pt-2" id="mobile-menu">
-<div class="flex flex-col gap-5">
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#services">УСЛУГИ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/tseny/">ЦЕНЫ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/portfolio/">КЕЙСЫ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="/quiz">БРИФ</a>
-<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#contact">КОНТАКТЫ</a>
-<a class="inline-flex px-5 py-3 bg-primary text-on-primary font-label-caps text-label-caps rounded items-center justify-center hover:bg-tertiary-container transition-colors duration-300" id="mobile-hero-wa-btn" href="#">Написать в WhatsApp</a>
-<div aria-label="Language switcher" class="language-switch flex items-center border border-surface-variant rounded overflow-hidden self-start" role="group">
-<button aria-pressed="false" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="en" type="button">EN</button>
-<button aria-pressed="true" class="px-4 py-3 font-label-caps text-label-caps text-primary transition-colors" data-lang-control="ru" type="button">RU</button>
-</div>
-</div>
 </div>
 </header>
+<div class="studio-menu" id="mobile-menu" aria-label="Навигация по сайту">
+<div class="studio-menu__main">
+<nav class="line-nav" data-line-nav aria-label="Основная навигация">
+<a class="line-nav__item" href="#services"><span class="line-nav__marker" aria-hidden="true"></span><span class="line-nav__index">01</span><span class="line-nav__text">Услуги</span></a>
+<a class="line-nav__item" href="#portfolio"><span class="line-nav__marker" aria-hidden="true"></span><span class="line-nav__index">02</span><span class="line-nav__text">Кейсы</span></a>
+<a class="line-nav__item" href="/tseny/" data-route="pricing"><span class="line-nav__marker" aria-hidden="true"></span><span class="line-nav__index">03</span><span class="line-nav__text">Цены</span></a>
+<a class="line-nav__item" href="/podderzhka/" data-route="support"><span class="line-nav__marker" aria-hidden="true"></span><span class="line-nav__index">04</span><span class="line-nav__text">Поддержка</span></a>
+<a class="line-nav__item" href="#contact"><span class="line-nav__marker" aria-hidden="true"></span><span class="line-nav__index">05</span><span class="line-nav__text">Контакты</span></a>
+</nav>
+<div class="studio-menu__language language-switch" role="group" aria-label="Выбор языка">
+<button type="button" data-lang-control="ru" aria-pressed="true">RU</button>
+<button type="button" data-lang-control="en" aria-pressed="false">EN</button>
+</div>
+</div>
+<aside class="studio-menu__side">
+<p class="studio-menu__eyebrow">Есть задача?</p>
+<p class="studio-menu__pitch">Пришлите ссылку, референс или голосовое. Разберёмся вместе.</p>
+<a class="studio-menu__contact" id="mobile-hero-wa-btn" href="#" target="_blank" rel="noopener"><span>Написать в WhatsApp</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
+<div class="studio-menu__footer"><span>Mononyxx / 2026</span><span>Алматы · KZ</span></div>
+</aside>
+</div>
 <main>
 <!-- Hero Section -->
-<section class="stack-hero relative w-full px-margin-mobile md:px-margin-desktop pt-8 pb-12 md:py-20 max-w-container-max-width mx-auto flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
-<div class="w-full md:w-1/2 z-10 text-center md:text-left">
-<h1 class="font-display text-h1 md:text-display text-primary max-w-3xl mb-6 leading-tight">Разработка сайтов и приложений под ключ</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10">Разработка сайтов и мобильные приложения под ключ для бизнеса в Алматы и по всему Казахстану. Проектируем понятный интерфейс, запускаем продукт и помогаем с дальнейшим развитием.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-<a class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:bg-tertiary-container transition-colors duration-300" href="#contact">Начать</a>
-<a class="px-8 py-4 bg-transparent text-primary border border-primary/20 font-label-caps text-label-caps rounded inline-flex items-center justify-center hover:border-primary transition-colors duration-300" href="#reviews">Отзывы</a>
+<section class="studio-hero">
+<div class="studio-hero__inner">
+<div class="studio-hero__topline"><span>Mononyxx / Digital product studio</span><span>Алматы · Казахстан · Работаем удалённо</span></div>
+<h1>Цифровые продукты,<span>собранные целиком.</span></h1>
+<div class="studio-hero__bottom">
+<div>
+<p class="studio-hero__copy">Проектируем и запускаем сайты, приложения и автоматизацию для бизнеса. От первой схемы до работающего продукта — в одной команде.</p>
+<div class="studio-hero__actions">
+<a class="studio-button studio-button--light" href="#portfolio"><span>Смотреть кейсы</span><span class="studio-arrow studio-arrow--down" aria-hidden="true"></span></a>
+<a class="studio-button" href="#contact"><span>Обсудить проект</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
 </div>
 </div>
-<div class="relative w-full md:w-1/2 h-[24rem] md:h-[34rem] flex items-center justify-start overflow-hidden">
-<div class="orbit-stage relative flex items-center justify-center">
-<div class="w-24 h-24 rounded-full bg-surface-container-lowest shadow-lg border border-surface-variant flex items-center justify-center z-10">
-<span class="material-symbols-outlined text-[48px] text-primary">hub</span>
-</div>
-<div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/70" style="--duration: 12s; width: 20rem; height: 20rem;">
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">language</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 75%; top: 93%;"><span class="material-symbols-outlined text-[32px] text-primary">smartphone</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 25%; top: 93%;"><span class="material-symbols-outlined text-[32px] text-primary">psychology</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">bolt</span></div>
-</div>
-<div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/60" style="--duration: 18s; width: 28rem; height: 28rem;">
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">deployed_code</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 85%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">database</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 50%; top: 100%;"><span class="material-symbols-outlined text-[32px] text-primary">cloud</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 15%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">terminal</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">analytics</span></div>
-</div>
-<div class="orbit-ring absolute rounded-full border-2 border-dotted border-outline-variant/50" style="--duration: 24s; width: 36rem; height: 36rem;">
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 100%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">code</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 87%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">security</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 50%; top: 100%;"><span class="material-symbols-outlined text-[32px] text-primary">rocket_launch</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 13%; top: 85%;"><span class="material-symbols-outlined text-[32px] text-primary">conversion_path</span></div>
-<div class="orbit-icon absolute bg-background rounded-full p-2 shadow-md border border-surface-variant" style="left: 0%; top: 50%;"><span class="material-symbols-outlined text-[32px] text-primary">auto_awesome</span></div>
+<div class="studio-capabilities" aria-label="Направления работы">
+<div class="studio-capabilities__row"><span>01</span><strong>Сайты и e-commerce</strong><span>Web</span></div>
+<div class="studio-capabilities__row"><span>02</span><strong>Приложения и MVP</strong><span>Mobile</span></div>
+<div class="studio-capabilities__row"><span>03</span><strong>Автоматизация и AI</strong><span>Systems</span></div>
 </div>
 </div>
 </div>
@@ -590,75 +491,84 @@ if (window.__mononyxxInitialHash) {
 </div>
 </section>
 <!-- Featured Cases -->
-<section class="w-full py-section-padding" id="portfolio">
-<div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
-<div class="mb-10">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">Портфолио</span>
-<h2 class="font-h1 text-h1 text-primary">Наши работы</h2>
+<section class="case-stories" id="portfolio">
+<div class="case-stories__inner">
+<header class="case-stories__head" data-reveal>
+<p class="studio-index-label">02 / Избранные работы</p>
+<h2>Не просто показываем экраны. Объясняем, что они решают.</h2>
+</header>
+
+<article class="case-study" data-reveal>
+<div class="case-study__media case-study__media--phone" data-index="CASE / 01">
+<picture>
+<source srcset="/assets/images/starkids-phone-408.avif 408w, /assets/images/starkids-phone-816.avif 816w" sizes="(max-width: 767px) 195px, 291px" type="image/avif"/>
+<img src="/assets/images/starkids-phone.png" alt="Мобильное приложение Star Kids в мокапе iPhone" loading="lazy" decoding="async" fetchpriority="low" width="816" height="1282"/>
+</picture>
 </div>
-<div class="flex flex-col gap-14">
-<!-- Star Kids -->
-<article class="flex flex-col md:flex-row gap-12 items-center group">
-<div class="w-full md:w-3/5 overflow-hidden rounded-lg" style="border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 12px 40px rgba(0,0,0,0.04);">
-<div class="relative w-full overflow-hidden min-h-[26rem] md:min-h-[34rem] flex items-center justify-center" style="background: #fff;">
-<img alt="Разработка мобильного приложения для сети детских центров Star Kids" class="relative z-10 h-[31rem] md:h-[40rem] max-h-[92%] w-auto object-contain object-center drop-shadow-[0_12px_40px_rgba(0,0,0,0.10)]" loading="lazy" src="assets/images/starkids-mockup.jpg"/>
-</div>
-</div>
-<div class="w-full md:w-2/5 flex flex-col items-start">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-3 py-1 border border-outline-variant rounded-full">Mobile · UX/UI · Design System · Flutter</span>
-<h3 class="font-h2 text-h2 text-primary mb-4">Star Kids</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8">Full Flutter app redesign for a children's play center network. From overloaded screens to a warm, calm, premium interface with micro-interactions and a complete design system.</p>
-<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="cases/starkids.html">
-View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</article>
-<!-- Coffee cases grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<!-- Aura02 Coffee -->
-<article class="flex flex-col group rounded-lg overflow-hidden" style="border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 12px 40px rgba(0,0,0,0.04);">
-<div class="w-full overflow-hidden flex items-center justify-center px-8 py-10" style="background: radial-gradient(circle at 50% 32%, rgba(67,118,87,0.16), transparent 34%), linear-gradient(135deg, #f8f6f0 0%, #f0ece2 54%, #ded2bf 100%); min-height: 24rem;">
-<div class="relative w-[13.5rem] h-[29rem] rounded-[2.5rem] bg-[#101312] p-2 shadow-[0_24px_70px_rgba(42,34,22,0.22)] transition-transform duration-500 ease-out group-hover:-translate-y-1">
-<div class="absolute left-1/2 top-4 z-20 h-6 w-20 -translate-x-1/2 rounded-full bg-[#050606]"></div>
-<div class="absolute -left-1 top-24 h-10 w-1 rounded-l bg-[#101312]"></div>
-<div class="absolute -right-1 top-32 h-14 w-1 rounded-r bg-[#101312]"></div>
-<div class="relative h-full w-full overflow-hidden rounded-[2rem] bg-[#f8f5ef]">
-<img alt="Разработка сайта для кофейни Aura02 Coffee" class="h-full w-full object-cover object-top" loading="lazy" src="assets/images/aura02-mobile.png"/>
-</div>
-</div>
-</div>
-<div class="flex flex-col items-start p-8">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-3 py-1 border border-outline-variant rounded-full">Landing · UX/UI · SEO</span>
-<h3 class="font-h2 text-h2 text-primary mb-3">Aura02 Coffee</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Лендинг для кофейни. Клиенты находят через Google и сразу видят меню и адрес.</p>
-<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="https://aura02-coffee.pages.dev" target="_blank" rel="noopener">
-Смотреть кейс <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
+<div class="case-study__story">
+<p class="case-study__meta">Mobile · UX/UI · Design system · Flutter</p>
+<h3>Star Kids</h3>
+<p class="case-study__lead">Пересобрали приложение сети детских центров: от перегруженных экранов — к понятному продукту для родителей, гостей и постоянных клиентов.</p>
+<dl class="case-study__facts">
+<div><dt>Контекст</dt><dd>В одном приложении нужно было связать филиалы, праздники, меню, заявки и программу лояльности.</dd></div>
+<div><dt>Задача</dt><dd>Сделать основные сценарии заметными с первого экрана и убрать визуальный шум, не потеряв характер бренда.</dd></div>
+<div><dt>Решение</dt><dd>Новая навигация, спокойная дизайн-система, единые состояния компонентов и микроанимации для ключевых действий.</dd></div>
+<div><dt>Результат</dt><dd>Цельный Flutter-продукт, который можно развивать новыми разделами без повторной пересборки интерфейса.</dd></div>
+</dl>
+<a class="case-study__link" href="/cases/starkids"><span>Разобрать проект</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
 </div>
 </article>
-<!-- Myoneuromassage -->
-<article class="flex flex-col group rounded-lg overflow-hidden" style="border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 12px 40px rgba(0,0,0,0.04);">
-<div class="w-full overflow-hidden flex items-center justify-center px-8 py-10" style="background: radial-gradient(circle at 50% 35%, rgba(166,136,91,0.16), transparent 36%), linear-gradient(135deg, #f7f3ec 0%, #f2eee7 54%, #e8e0d4 100%); min-height: 24rem;">
-<div class="relative w-[13.5rem] h-[29rem] rounded-[2.5rem] bg-[#101312] p-2 shadow-[0_24px_70px_rgba(43,35,24,0.24)] transition-transform duration-500 ease-out group-hover:-translate-y-1">
-<div class="absolute left-1/2 top-4 z-20 h-6 w-20 -translate-x-1/2 rounded-full bg-[#050606]"></div>
-<div class="absolute -left-1 top-24 h-10 w-1 rounded-l bg-[#101312]"></div>
-<div class="absolute -right-1 top-32 h-14 w-1 rounded-r bg-[#101312]"></div>
-<div class="relative h-full w-full overflow-hidden rounded-[2rem] bg-[#f8f5ef]">
-<img alt="Разработка сайта для студии массажа Myoneuromassage" class="h-full w-full object-cover object-top" loading="lazy" src="assets/images/myoneuromassage-mobile.png"/>
+
+<article class="case-study case-study--reverse" data-reveal>
+<div class="case-study__media case-study__media--coffee" data-index="CASE / 02">
+<div class="case-study__device" aria-hidden="true">
+<picture>
+<source media="(max-width: 767px)" srcset="/assets/images/aura02-mockup-320.avif" type="image/avif"/>
+<source media="(min-width: 768px)" srcset="/assets/images/aura02-mockup-640.jpg" type="image/jpeg"/>
+<source media="(max-width: 767px)" srcset="/assets/images/aura02-mockup-320.jpg" type="image/jpeg"/>
+<img src="/assets/images/aura02-mockup.jpg" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1178" height="2513"/>
+</picture>
 </div>
+<span class="sr-only">Лендинг кофейни Aura02 Coffee в мокапе смартфона</span>
 </div>
-</div>
-<div class="flex flex-col items-start p-8">
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-3 py-1 border border-outline-variant rounded-full">Landing · UX/UI · SEO · Beauty</span>
-<h3 class="font-h2 text-h2 text-primary mb-3">Myoneuromassage</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Лендинг для студии массажа в Алматы: спокойная подача услуг, SEO-база и быстрый переход к записи.</p>
-<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-on-surface-variant hover:border-on-surface-variant transition-colors" href="https://myoneuromassage.com" target="_blank" rel="noopener">
-Смотреть кейс <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
+<div class="case-study__story">
+<p class="case-study__meta">Landing · UX/UI · Local SEO</p>
+<h3>Aura02 Coffee</h3>
+<p class="case-study__lead">Собрали компактный сайт для локальной кофейни, чтобы посетитель из поиска сразу находил главное: атмосферу, меню, адрес и способ связаться.</p>
+<dl class="case-study__facts">
+<div><dt>Контекст</dt><dd>Аудитория приходит с телефона и принимает решение за несколько секунд — длинная презентация здесь только мешает.</dd></div>
+<div><dt>Задача</dt><dd>Дать кофейне аккуратное цифровое присутствие и подготовить страницу для локального поиска.</dd></div>
+<div><dt>Решение</dt><dd>Короткая структура, мобильный приоритет, заметные контакты и техническая SEO-подготовка без лишних экранов.</dd></div>
+<div><dt>Результат</dt><dd>Гости находят кофейню через Google и получают адрес и нужную информацию без дополнительного звонка.</dd></div>
+</dl>
+<a class="case-study__link" href="https://aura02-coffee.pages.dev" target="_blank" rel="noopener"><span>Открыть сайт</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
 </div>
 </article>
+
+<article class="case-study" data-reveal>
+<div class="case-study__media case-study__media--myoneuro" data-index="CASE / 03">
+<div class="case-study__device" aria-hidden="true">
+<picture>
+<source media="(max-width: 767px)" srcset="/assets/images/myoneuromassage-mobile-320.jpg" type="image/jpeg"/>
+<img src="/assets/images/myoneuromassage-mobile.png" alt="" loading="lazy" decoding="async" fetchpriority="low" width="390" height="831"/>
+</picture>
 </div>
+<span class="sr-only">Главный экран сайта Myoneuromassage в мокапе смартфона</span>
 </div>
+<div class="case-study__story">
+<p class="case-study__meta">Landing · UX/UI · Booking flow · Local SEO</p>
+<h3>Myoneuro<wbr/>massage</h3>
+<p class="case-study__lead">Собрали сайт студии массажа в Алматы: спокойная визуальная система, понятная презентация направлений и запись без лишнего пути.</p>
+<dl class="case-study__facts">
+<div><dt>Контекст</dt><dd>На одной странице нужно было раскрыть разные практики, показать подход специалиста и дать достаточно информации перед первой записью.</dd></div>
+<div><dt>Задача</dt><dd>Сделать сложную тему понятной с телефона и выстроить доверие без перегруженных медицинских формулировок.</dd></div>
+<div><dt>Решение</dt><dd>Выразительный первый экран, последовательные разделы услуг и процесса, реальные отзывы, прайс и прямые переходы в WhatsApp и 2GIS.</dd></div>
+<div><dt>Результат</dt><dd>Единый мобильный сценарий: посетитель знакомится с подходом, выбирает направление и переходит к записи в удобном канале.</dd></div>
+</dl>
+<a class="case-study__link" href="https://myoneuromassage.com" target="_blank" rel="noopener"><span>Открыть сайт</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
+</div>
+</article>
+
 </div>
 </section>
 <!-- Process -->
@@ -671,83 +581,69 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
 <div class="flex flex-col items-center text-center">
 <div class="w-12 h-12 rounded-full border border-primary flex items-center justify-center font-label-caps text-label-caps mb-6 bg-surface-container-lowest">01</div>
-<h4 class="font-h3 text-h3 text-primary mb-2">Discovery</h4>
+<h3 class="font-h3 text-h3 text-primary mb-2">Discovery</h3>
 <p class="font-body-md text-body-md text-on-surface-variant text-sm">Deep dive into requirements and architecture.</p>
 </div>
 <div class="flex flex-col items-center text-center">
 <div class="w-12 h-12 rounded-full border border-primary flex items-center justify-center font-label-caps text-label-caps mb-6 bg-surface-container-lowest">02</div>
-<h4 class="font-h3 text-h3 text-primary mb-2">Strategy</h4>
+<h3 class="font-h3 text-h3 text-primary mb-2">Strategy</h3>
 <p class="font-body-md text-body-md text-on-surface-variant text-sm">Defining the technical stack and user journeys.</p>
 </div>
 <div class="flex flex-col items-center text-center">
 <div class="w-12 h-12 rounded-full border border-primary flex items-center justify-center font-label-caps text-label-caps mb-6 bg-surface-container-lowest">03</div>
-<h4 class="font-h3 text-h3 text-primary mb-2">Design</h4>
+<h3 class="font-h3 text-h3 text-primary mb-2">Design</h3>
 <p class="font-body-md text-body-md text-on-surface-variant text-sm">Crafting minimal, high-fidelity interfaces.</p>
 </div>
 <div class="flex flex-col items-center text-center">
 <div class="w-12 h-12 rounded-full border border-primary flex items-center justify-center font-label-caps text-label-caps mb-6 bg-surface-container-lowest">04</div>
-<h4 class="font-h3 text-h3 text-primary mb-2">Development</h4>
+<h3 class="font-h3 text-h3 text-primary mb-2">Development</h3>
 <p class="font-body-md text-body-md text-on-surface-variant text-sm">Rigorous engineering and QA testing.</p>
 </div>
 <div class="flex flex-col items-center text-center">
 <div class="w-12 h-12 rounded-full border border-primary flex items-center justify-center font-label-caps text-label-caps mb-6 bg-surface-container-lowest">05</div>
-<h4 class="font-h3 text-h3 text-primary mb-2">Launch</h4>
+<h3 class="font-h3 text-h3 text-primary mb-2">Launch</h3>
 <p class="font-body-md text-body-md text-on-surface-variant text-sm">Deployment, monitoring, and scaling.</p>
 </div>
 </div>
 </div>
 </section>
 <!-- Trust / Features -->
-<section class="w-full py-section-padding">
-<div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-<div>
-<h2 class="font-h1 text-h1 text-primary mb-8">Почему выбирают Mononyxx</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">Берем проект целиком: уточняем задачу, проектируем интерфейс, разрабатываем, тестируем и запускаем. До старта фиксируем объем, этапы и стоимость, а во время работы показываем прогресс и объясняем решения без лишней технической сложности.</p>
-<ul class="space-y-4">
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">check</span>
-<span class="font-body-md text-sm text-primary">Архитектура под задачу, без лишних модулей</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">check</span>
-<span class="font-body-md text-sm text-primary">Быстрая загрузка и адаптация под все экраны</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">check</span>
-<span class="font-body-md text-sm text-primary">Понятная передача проекта и поддержка после запуска</span>
-</li>
-<li class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">check</span>
-<span class="font-body-md text-sm text-primary">Дизайн и разработка в одной команде</span>
-</li>
-</ul>
+<section class="studio-proof">
+<div class="studio-proof__inner">
+<div class="studio-proof__intro" data-reveal>
+<p class="studio-index-label">04 / Подход</p>
+<h2>Проект не перекидывается между подрядчиками.</h2>
+<p>Разбираем задачу, проектируем интерфейс, пишем код, тестируем и запускаем внутри одной связки. Поэтому решения не теряются между дизайном и разработкой.</p>
 </div>
-<div class="bg-surface-container p-12 rounded-lg border border-surface-variant/50 relative overflow-hidden">
-<div class="absolute -right-20 -bottom-20 opacity-5">
-<span class="material-symbols-outlined text-[300px]">code</span>
+<div class="studio-proof__list" data-reveal>
+<article class="studio-proof__item"><span class="studio-proof__number">01</span><h3>Сначала — задача</h3><p>Не добавляем страницы и функции «для объёма». Каждый блок должен помогать пользователю понять продукт или выполнить действие.</p></article>
+<article class="studio-proof__item"><span class="studio-proof__number">02</span><h3>Объём известен заранее</h3><p>До старта фиксируем состав работ, этапы, стоимость и ожидаемый результат. Дополнительные задачи обсуждаем отдельно.</p></article>
+<article class="studio-proof__item"><span class="studio-proof__number">03</span><h3>Прогресс виден</h3><p>Показываем промежуточные версии и объясняем решения обычным языком — без закрытой разработки до последнего дня.</p></article>
+<article class="studio-proof__item"><span class="studio-proof__number">04</span><h3>После запуска не исчезаем</h3><p>Передаём доступы и рабочий продукт. Дальнейшее развитие можно вести отдельными задачами или по плану поддержки.</p></article>
 </div>
-<blockquote class="relative z-10">
-<p class="font-h2 text-h2 text-primary mb-6 italic">"Запустили лендинг за 2 дня — с понедельника пошли заявки через WhatsApp. Всё просто и быстро, как и обещали."</p>
-<footer class="font-label-caps text-label-caps text-on-surface-variant">
-                                — Владелец автосервиса, Алматы
-                            </footer>
+<aside class="studio-quote" data-reveal>
+<blockquote>
+<p>«Запустили лендинг за два дня. С понедельника пошли заявки через WhatsApp — всё просто и быстро».</p>
+<footer>Владелец автосервиса · Алматы</footer>
 </blockquote>
-</div>
-</div>
+</aside>
 </div>
 </section>
 <!-- Pricing CTA -->
-<section class="w-full bg-surface-container-low py-16 border-t border-surface-variant/30" id="pricing">
-<div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-<div>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-3 block">Пакеты и услуги</span>
-<h2 class="font-h1 text-h1 text-primary">Стоимость разработки</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-lg">Стартовая цена зависит от типа продукта. Точную стоимость и сроки фиксируем после разговора о проекте и короткого брифа.</p>
+<section class="pricing-gateway" id="pricing">
+<div class="pricing-gateway__inner">
+<div class="pricing-gateway__intro" data-reveal>
+<p class="studio-index-label">05 / Стоимость</p>
+<h2>Понятный старт без скрытой сметы.</h2>
+<p>Показываем стартовые ориентиры, а точный объём фиксируем после короткого разговора о продукте — без отдельного длинного брифа.</p>
+<a class="studio-button" href="/tseny/"><span>Разобрать стоимость</span><span class="studio-arrow studio-arrow--external" aria-hidden="true"></span></a>
 </div>
-<a class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors whitespace-nowrap flex-shrink-0" href="/tseny/">
-Смотреть пакеты <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
+<div class="pricing-gateway__list" data-reveal>
+<div class="pricing-gateway__row"><span>01</span><strong>Лендинг</strong><span>от 49 900 ₸</span></div>
+<div class="pricing-gateway__row"><span>02</span><strong>Сайт для бизнеса</strong><span>от 99 000 ₸</span></div>
+<div class="pricing-gateway__row"><span>03</span><strong>Автоматизация</strong><span>от 79 900 ₸</span></div>
+<div class="pricing-gateway__row"><span>04</span><strong>Приложение / MVP</strong><span>после разговора</span></div>
+</div>
 </div>
 </section>
 
@@ -773,10 +669,6 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <p class="font-body-md text-sm text-primary flex-grow">"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"</p>
 <div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm shrink-0">A</div><div><div class="font-body-md text-primary font-semibold">Владелец Aura02 Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div>
 </div>
-<div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 flex flex-col min-h-[220px]">
-<p class="font-body-md text-sm text-primary flex-grow">"Работа классная: быстро, оперативно и по задаче. Даже с моими правками справились спокойно. Благодарю, буду рекомендовать коллегам 🔥"</p>
-<div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm shrink-0">M</div><div><div class="font-body-md text-primary font-semibold">Основатель Myoneuromassage</div><div class="font-body-md text-on-surface-variant text-sm">Студия массажа, Алматы</div></div></div>
-</div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 flex flex-col min-h-[220px]" aria-hidden="true">
 <p class="font-body-md text-sm text-primary flex-grow">"Мобильное приложение получилось огонь. Клиенты стали возвращаться чаще, бонусная система зашла на ура. Отдуши жигиттер 🔥"</p>
 <div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm shrink-0">S</div><div><div class="font-body-md text-primary font-semibold">Владелец Star Kids</div><div class="font-body-md text-on-surface-variant text-sm">Детские игровые центры, Шымкент</div></div></div>
@@ -796,7 +688,6 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">A</div><div><div class="font-body-md text-primary font-semibold">Владелец Aura02 Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Мобильное приложение получилось огонь. Клиенты стали возвращаться чаще, бонусная система зашла на ура. Отдуши жигиттер 🔥"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">S</div><div><div class="font-body-md text-primary font-semibold">Владелец Star Kids</div><div class="font-body-md text-on-surface-variant text-sm">Детские игровые центры, Шымкент</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Жигиттер рахмет! Сайт работает чётко — меню всё отображается, люди смотрят цены онлайн и сразу приходят в кофейню"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">G</div><div><div class="font-body-md text-primary font-semibold">Владелец GoGo Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
-<div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Работа классная: быстро, оперативно и по задаче. Даже с моими правками справились спокойно. Благодарю, буду рекомендовать коллегам 🔥"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">M</div><div><div class="font-body-md text-primary font-semibold">Основатель Myoneuromassage</div><div class="font-body-md text-on-surface-variant text-sm">Студия массажа, Алматы</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]" aria-hidden="true"><p class="font-body-md text-sm text-primary">"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">A</div><div><div class="font-body-md text-primary font-semibold">Владелец Aura02 Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]" aria-hidden="true"><p class="font-body-md text-sm text-primary">"Мобильное приложение получилось огонь. Клиенты стали возвращаться чаще, бонусная система зашла на ура. Отдуши жигиттер 🔥"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">S</div><div><div class="font-body-md text-primary font-semibold">Владелец Star Kids</div><div class="font-body-md text-on-surface-variant text-sm">Детские игровые центры, Шымкент</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]" aria-hidden="true"><p class="font-body-md text-sm text-primary">"Жигиттер рахмет! Сайт работает чётко — меню всё отображается, люди смотрят цены онлайн и сразу приходят в кофейню"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">G</div><div><div class="font-body-md text-primary font-semibold">Владелец GoGo Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
@@ -806,7 +697,6 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <div class="testimonial-track flex flex-col gap-5 pb-5" style="--duration: 20s; animation-delay: -13s;">
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Жигиттер рахмет! Сайт работает чётко — меню всё отображается, люди смотрят цены онлайн и сразу приходят в кофейню"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">G</div><div><div class="font-body-md text-primary font-semibold">Владелец GoGo Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">A</div><div><div class="font-body-md text-primary font-semibold">Владелец Aura02 Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
-<div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Работа классная: быстро, оперативно и по задаче. Даже с моими правками справились спокойно. Благодарю, буду рекомендовать коллегам 🔥"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">M</div><div><div class="font-body-md text-primary font-semibold">Основатель Myoneuromassage</div><div class="font-body-md text-on-surface-variant text-sm">Студия массажа, Алматы</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]"><p class="font-body-md text-sm text-primary">"Мобильное приложение получилось огонь. Клиенты стали возвращаться чаще, бонусная система зашла на ура. Отдуши жигиттер 🔥"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">S</div><div><div class="font-body-md text-primary font-semibold">Владелец Star Kids</div><div class="font-body-md text-on-surface-variant text-sm">Детские игровые центры, Шымкент</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]" aria-hidden="true"><p class="font-body-md text-sm text-primary">"Жигиттер рахмет! Сайт работает чётко — меню всё отображается, люди смотрят цены онлайн и сразу приходят в кофейню"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">G</div><div><div class="font-body-md text-primary font-semibold">Владелец GoGo Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
 <div class="p-8 rounded-lg border border-surface-variant/70 bg-surface-container-lowest shadow-lg shadow-primary/5 min-h-[220px]" aria-hidden="true"><p class="font-body-md text-sm text-primary">"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"</p><div class="flex items-center gap-3 mt-6"><div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-sm">A</div><div><div class="font-body-md text-primary font-semibold">Владелец Aura02 Coffee</div><div class="font-body-md text-on-surface-variant text-sm">Кофейня, Казахстан</div></div></div></div>
@@ -817,9 +707,9 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </div>
 </section>
 <!-- SEO Block -->
-<section class="w-full bg-surface-container-low py-section-padding border-t border-surface-variant/30">
+<section class="studio-about w-full bg-surface-container-low py-section-padding border-t border-surface-variant/30">
 <div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="studio-about__layout grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 <div>
 <span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-4 block">О студии</span>
 <h2 class="font-h1 text-h1 text-primary mb-6">Веб-разработка для бизнеса в Казахстане</h2>
@@ -828,7 +718,7 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <p>Веб-разработка включает аналитику задачи, структуру, UI/UX-дизайн, frontend и backend, базовую SEO-настройку и проверку перед запуском. Разработка приложений для iOS и Android строится по этапам: сначала ключевые сценарии и MVP, затем интеграции, аналитика и развитие продукта.</p>
 </div>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<div class="studio-about__stats grid grid-cols-1 sm:grid-cols-2 gap-5">
 <div class="min-h-[210px] p-6 bg-surface-container-lowest border-2 border-primary rounded-lg shadow-[5px_5px_0_0_#000] flex flex-col justify-between">
 <div class="font-sans text-[34px] font-extrabold leading-tight tracking-normal text-primary mb-6">50%</div>
 <p class="font-sans text-base font-semibold leading-relaxed text-on-surface-variant">предоплата, остаток после результата</p>
@@ -865,7 +755,7 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </details>
 <details class="group py-6">
 <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-h3 text-h3 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"><span>Сколько времени занимает создание сайта?</span><span aria-hidden="true" class="material-symbols-outlined transition-transform group-open:rotate-45">add</span></summary>
-<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-3xl">Срок определяем после брифа. Небольшой лендинг запускается быстрее, а корпоративный сайт или приложение требуют отдельных этапов проектирования, разработки и тестирования. До старта согласовываем календарный план.</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-3xl">Срок определяем после короткого разговора о задаче. Небольшой лендинг запускается быстрее, а корпоративный сайт или приложение требуют отдельных этапов проектирования, разработки и тестирования. До старта согласовываем календарный план.</p>
 </details>
 <details class="group py-6">
 <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-h3 text-h3 text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"><span>Входит ли SEO в разработку?</span><span aria-hidden="true" class="material-symbols-outlined transition-transform group-open:rotate-45">add</span></summary>
@@ -964,6 +854,11 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <label class="font-label-caps text-label-caps text-on-surface-variant mb-2" for="description">Project Description</label>
 <textarea class="bg-transparent border-0 border-b border-surface-variant focus:ring-0 focus:border-primary font-body-md text-primary px-0 py-2 transition-colors resize-none" id="description" name="description" placeholder="Briefly describe your goals and timeline..." required rows="4"></textarea>
 </div>
+<label class="legal-consent" for="privacy-consent">
+<input id="privacy-consent" name="privacy-consent" required type="checkbox"/>
+<span data-lang-copy="ru">Согласен с <a href="/privacy/">политикой конфиденциальности</a> и <a href="/terms/">условиями использования</a>, включая передачу данных сервисам хостинга и Telegram для обработки заявки.</span>
+<span data-lang-copy="en">I agree to the <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms of Use</a>, including the transfer of data to hosting services and Telegram to process my request.</span>
+</label>
 <p aria-live="polite" class="hidden font-body-md text-body-md text-center" id="lead-form-message"></p>
 <button class="w-full py-4 bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-tertiary-container transition-colors duration-300 mt-8 disabled:cursor-not-allowed disabled:opacity-70" id="lead-submit" type="submit">
                             Request a Project
@@ -989,8 +884,8 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 <div class="flex gap-8 mb-8 md:mb-0">
 <a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="https://instagram.com/mononyxx" rel="noopener noreferrer" target="_blank">@mononyxx</a>
 <a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="/kontakty/">Контакты</a>
-<a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="#">Privacy</a>
-<a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="#">Terms</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="/privacy/">Privacy</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps hover:underline transition-all duration-300 opacity-100 hover:opacity-80" href="/terms/">Terms</a>
 </div>
 <div class="text-on-surface-variant dark:text-on-tertiary-fixed-variant font-label-caps text-label-caps text-center md:text-right">
                 © 2026 MONONYXX. ALL RIGHTS RESERVED.
@@ -1044,6 +939,72 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
     });
 
     const translationEntries = [
+        { en: "We build complete digital products.", ru: "Собираем цифровые продукты целиком." },
+        { en: "Strategy · design · development · launch", ru: "Стратегия · дизайн · разработка · запуск" },
+        { en: "Discuss the project", ru: "Обсудить проект" },
+        { en: "Menu", ru: "Меню" },
+        { en: "Close", ru: "Закрыть" },
+        { en: "Cases", ru: "Кейсы" },
+        { en: "Pricing", ru: "Цены" },
+        { en: "Support", ru: "Поддержка" },
+        { en: "Contacts", ru: "Контакты" },
+        { en: "Have a project?", ru: "Есть задача?" },
+        { en: "Send a link, reference or voice message. We'll figure it out together.", ru: "Пришлите ссылку, референс или голосовое. Разберёмся вместе." },
+        { en: "Almaty · KZ", ru: "Алматы · KZ" },
+        { en: "Almaty · Kazakhstan · Working remotely", ru: "Алматы · Казахстан · Работаем удалённо" },
+        { en: "Digital products,", ru: "Цифровые продукты," },
+        { en: "built as one system.", ru: "собранные целиком." },
+        { en: "We design and launch websites, apps and automation for business. From the first scheme to a working product — with one team.", ru: "Проектируем и запускаем сайты, приложения и автоматизацию для бизнеса. От первой схемы до работающего продукта — в одной команде." },
+        { en: "Websites and e-commerce", ru: "Сайты и e-commerce" },
+        { en: "Apps and MVPs", ru: "Приложения и MVP" },
+        { en: "Selected work", ru: "Избранные работы" },
+        { en: "We don't just show screens. We explain what they solve.", ru: "Не просто показываем экраны. Объясняем, что они решают." },
+        { en: "We rebuilt the app for a children's center network: from overloaded screens to a clear product for parents, guests and returning customers.", ru: "Пересобрали приложение сети детских центров: от перегруженных экранов — к понятному продукту для родителей, гостей и постоянных клиентов." },
+        { en: "Context", ru: "Контекст" },
+        { en: "Task", ru: "Задача" },
+        { en: "Solution", ru: "Решение" },
+        { en: "Result", ru: "Результат" },
+        { en: "The app had to connect locations, celebrations, the menu, requests and the loyalty program.", ru: "В одном приложении нужно было связать филиалы, праздники, меню, заявки и программу лояльности." },
+        { en: "Make the primary scenarios obvious on the first screen and remove visual noise without losing the brand character.", ru: "Сделать основные сценарии заметными с первого экрана и убрать визуальный шум, не потеряв характер бренда." },
+        { en: "New navigation, a calmer design system, consistent component states and micro-animations for key actions.", ru: "Новая навигация, спокойная дизайн-система, единые состояния компонентов и микроанимации для ключевых действий." },
+        { en: "A coherent Flutter product that can grow with new sections without rebuilding the interface.", ru: "Цельный Flutter-продукт, который можно развивать новыми разделами без повторной пересборки интерфейса." },
+        { en: "Explore the project", ru: "Разобрать проект" },
+        { en: "We built a compact website for a local coffee shop so visitors from search immediately find what matters: atmosphere, menu, address and contact details.", ru: "Собрали компактный сайт для локальной кофейни, чтобы посетитель из поиска сразу находил главное: атмосферу, меню, адрес и способ связаться." },
+        { en: "The audience arrives on mobile and decides in seconds — a long presentation would only get in the way.", ru: "Аудитория приходит с телефона и принимает решение за несколько секунд — длинная презентация здесь только мешает." },
+        { en: "Give the coffee shop a refined digital presence and prepare the page for local search.", ru: "Дать кофейне аккуратное цифровое присутствие и подготовить страницу для локального поиска." },
+        { en: "A short structure, mobile-first layout, prominent contacts and technical SEO without unnecessary screens.", ru: "Короткая структура, мобильный приоритет, заметные контакты и техническая SEO-подготовка без лишних экранов." },
+        { en: "Guests find the coffee shop through Google and get the address and key information without an extra call.", ru: "Гости находят кофейню через Google и получают адрес и нужную информацию без дополнительного звонка." },
+        { en: "Open website", ru: "Открыть сайт" },
+        { en: "Main Myoneuromassage screen shown in a phone mockup", ru: "Главный экран сайта Myoneuromassage в мокапе смартфона" },
+        { en: "We built a website for an Almaty massage studio with a calm visual system, clear service presentation and a direct path to booking.", ru: "Собрали сайт студии массажа в Алматы: спокойная визуальная система, понятная презентация направлений и запись без лишнего пути." },
+        { en: "One page had to explain different practices, show the specialist's approach and give visitors enough information before their first booking.", ru: "На одной странице нужно было раскрыть разные практики, показать подход специалиста и дать достаточно информации перед первой записью." },
+        { en: "Make a complex topic clear on mobile and build trust without overloaded medical language.", ru: "Сделать сложную тему понятной с телефона и выстроить доверие без перегруженных медицинских формулировок." },
+        { en: "A distinctive first screen, structured service and process sections, real reviews, pricing and direct links to WhatsApp and 2GIS.", ru: "Выразительный первый экран, последовательные разделы услуг и процесса, реальные отзывы, прайс и прямые переходы в WhatsApp и 2GIS." },
+        { en: "One mobile journey: visitors understand the approach, choose a service and continue to booking in their preferred channel.", ru: "Единый мобильный сценарий: посетитель знакомится с подходом, выбирает направление и переходит к записи в удобном канале." },
+        { en: "Approach", ru: "Подход" },
+        { en: "The project never gets passed between disconnected contractors.", ru: "Проект не перекидывается между подрядчиками." },
+        { en: "We clarify the task, design the interface, write the code, test and launch within one team. Decisions don't get lost between design and development.", ru: "Разбираем задачу, проектируем интерфейс, пишем код, тестируем и запускаем внутри одной связки. Поэтому решения не теряются между дизайном и разработкой." },
+        { en: "Task first", ru: "Сначала — задача" },
+        { en: "We don't add pages or functions just to inflate the scope. Every block should help a user understand the product or complete an action.", ru: "Не добавляем страницы и функции «для объёма». Каждый блок должен помогать пользователю понять продукт или выполнить действие." },
+        { en: "Scope is known in advance", ru: "Объём известен заранее" },
+        { en: "Before starting, we confirm the scope, stages, price and expected result. Additional tasks are discussed separately.", ru: "До старта фиксируем состав работ, этапы, стоимость и ожидаемый результат. Дополнительные задачи обсуждаем отдельно." },
+        { en: "Progress stays visible", ru: "Прогресс виден" },
+        { en: "We show intermediate versions and explain decisions in plain language — no closed-door development until the last day.", ru: "Показываем промежуточные версии и объясняем решения обычным языком — без закрытой разработки до последнего дня." },
+        { en: "We stay after launch", ru: "После запуска не исчезаем" },
+        { en: "We hand over access and a working product. Further development can continue as separate tasks or under a support plan.", ru: "Передаём доступы и рабочий продукт. Дальнейшее развитие можно вести отдельными задачами или по плану поддержки." },
+        { en: "“We launched the landing page in two days. Leads started coming through WhatsApp on Monday — everything was simple and fast.”", ru: "«Запустили лендинг за два дня. С понедельника пошли заявки через WhatsApp — всё просто и быстро»." },
+        { en: "Auto service owner · Almaty", ru: "Владелец автосервиса · Алматы" },
+        { en: "Cost", ru: "Стоимость" },
+        { en: "A clear starting point without a hidden estimate.", ru: "Понятный старт без скрытой сметы." },
+        { en: "We show starting ranges and confirm the exact scope after a short product conversation — no separate long brief.", ru: "Показываем стартовые ориентиры, а точный объём фиксируем после короткого разговора о продукте — без отдельного длинного брифа." },
+        { en: "Break down the cost", ru: "Разобрать стоимость" },
+        { en: "Business website", ru: "Сайт для бизнеса" },
+        { en: "Landing page", ru: "Лендинг" },
+        { en: "App / MVP", ru: "Приложение / MVP" },
+        { en: "from 49,900 ₸", ru: "от 49 900 ₸" },
+        { en: "from 99,000 ₸", ru: "от 99 000 ₸" },
+        { en: "from 79,900 ₸", ru: "от 79 900 ₸" },
+        { en: "after a conversation", ru: "после разговора" },
         { en: 'SERVICES', ru: 'УСЛУГИ' },
         { en: 'PORTFOLIO', ru: 'ПОРТФОЛИО' },
         { en: 'PRICING', ru: 'ЦЕНЫ' },
@@ -1094,17 +1055,13 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
         { en: '"Mobile app turned out fire. Clients come back more often, the loyalty system hit great. Real guys 🔥"', ru: '"Мобильное приложение получилось огонь. Клиенты стали возвращаться чаще, бонусная система зашла на ура. Отдуши жигиттер 🔥"' },
         { en: '"Great job guys! The site works perfectly — the menu displays, people check prices online and come right in."', ru: '"Жигиттер рахмет! Сайт работает чётко — меню всё отображается, люди смотрят цены онлайн и сразу приходят в кофейню"' },
         { en: '"Good work. Now we\'re found on Google — people search for a coffee shop and land right on us."', ru: '"Сайт сделали хорошо. Теперь нас находят через Google — люди ищут кофейню и сразу попадают к нам"' },
-        { en: '"Great work: fast, clear and on task. Even with my edits, everything was handled calmly. Thank you, I will recommend you to colleagues 🔥"', ru: '"Работа классная: быстро, оперативно и по задаче. Даже с моими правками справились спокойно. Благодарю, буду рекомендовать коллегам 🔥"' },
         { en: 'Star Kids owner', ru: 'Владелец Star Kids' },
         { en: 'GoGo Coffee owner', ru: 'Владелец GoGo Coffee' },
         { en: 'Aura02 Coffee owner', ru: 'Владелец Aura02 Coffee' },
-        { en: 'Myoneuromassage founder', ru: 'Основатель Myoneuromassage' },
         { en: 'Children\'s play centers, Shymkent', ru: 'Детские игровые центры, Шымкент' },
         { en: 'Coffee shop, Kazakhstan', ru: 'Кофейня, Казахстан' },
-        { en: 'Massage studio, Almaty', ru: 'Студия массажа, Алматы' },
         { en: 'Landing page for a coffee shop. Clients find it on Google and immediately see the menu and address.', ru: 'Лендинг для кофейни. Клиенты находят через Google и сразу видят меню и адрес.' },
         { en: 'Landing page for a coffee shop with online menu and WhatsApp integration.', ru: 'Лендинг для кофейни с онлайн-меню и интеграцией WhatsApp.' },
-        { en: 'Landing page for a massage studio in Almaty: calm service presentation, SEO base and a quick booking path.', ru: 'Лендинг для студии массажа в Алматы: спокойная подача услуг, SEO-база и быстрый переход к записи.' },
         { en: 'View site', ru: 'Смотреть кейс' },
         { en: 'Fake testimonials for now, shaped to show how this section will feel with real client feedback.', ru: 'Пока это фейковые отзывы, чтобы показать, как блок будет выглядеть с реальными отзывами клиентов.' },
         { en: 'MONONYXX turned our vague product idea into a polished launch-ready platform in weeks, not months.', ru: 'MONONYXX превратили нашу сырую идею продукта в аккуратную платформу, готовую к запуску, за недели, а не месяцы.' },
@@ -1272,6 +1229,35 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
         { en: 'minimum landing page launch time', ru: 'минимальный срок запуска лендинга' },
         { en: 'we calculate cost individually', ru: 'стоимость рассчитываем индивидуально' },
         { en: 'we accept projects from across the region', ru: 'принимаем проекты со всего региона' },
+        { en: 'Mononyxx — home', ru: 'Mononyxx — на главную' },
+        { en: 'Loading the Mononyxx website', ru: 'Загрузка сайта Mononyxx' },
+        { en: 'Open menu', ru: 'Открыть меню' },
+        { en: 'Close menu', ru: 'Закрыть меню' },
+        { en: 'Site navigation', ru: 'Навигация по сайту' },
+        { en: 'Primary navigation', ru: 'Основная навигация' },
+        { en: 'Language selection', ru: 'Выбор языка' },
+        { en: 'Areas of expertise', ru: 'Направления работы' },
+        { en: '02 / Selected work', ru: '02 / Избранные работы' },
+        { en: '04 / Approach', ru: '04 / Подход' },
+        { en: '05 / Pricing', ru: '05 / Стоимость' },
+        { en: 'Star Kids mobile app shown in an iPhone mockup', ru: 'Мобильное приложение Star Kids в мокапе iPhone' },
+        { en: 'Aura02 Coffee landing page shown in a phone mockup', ru: 'Лендинг кофейни Aura02 Coffee в мокапе смартфона' },
+        { en: 'Mononyxx — website and app development', ru: 'Mononyxx — разработка сайтов и приложений' },
+        { en: 'MONONYXX helps companies launch landing pages, corporate websites, online stores and mobile apps. We work with businesses in Almaty and across Kazakhstan. You can launch a new direction, refresh an outdated interface or build a digital product from scratch.', ru: 'MONONYXX помогает компаниям запускать лендинги, корпоративные сайты, интернет-магазины и мобильные приложения. Работаем с бизнесом в Алматы и по всему Казахстану. Можно заказать сайт для нового направления, обновить устаревший интерфейс или собрать цифровой продукт с нуля.' },
+        { en: 'Web development includes task analysis, structure, UI/UX design, frontend and backend, basic SEO setup and pre-launch testing. iOS and Android app development is delivered in stages: core scenarios and MVP first, then integrations, analytics and continued product growth.', ru: 'Веб-разработка включает аналитику задачи, структуру, UI/UX-дизайн, frontend и backend, базовую SEO-настройку и проверку перед запуском. Разработка приложений для iOS и Android строится по этапам: сначала ключевые сценарии и MVP, затем интеграции, аналитика и развитие продукта.' },
+        { en: '24h+', ru: '24ч+' },
+        { en: 'KZ/CIS', ru: 'KZ/СНГ' },
+        { en: 'How much does website development cost?', ru: 'Сколько стоит разработка сайта?' },
+        { en: 'The cost depends on the number of pages, design complexity, integrations and timeline. After a short conversation, we confirm the scope, price and project stages. Starting ranges are listed on the', ru: 'Стоимость зависит от количества страниц, дизайна, интеграций и сроков. После короткого разговора фиксируем объем работ, цену и этапы проекта. Стартовые ориентиры собраны на странице' },
+        { en: 'development pricing', ru: 'стоимости разработки' },
+        { en: 'How long does it take to build a website?', ru: 'Сколько времени занимает создание сайта?' },
+        { en: 'We determine the timeline after a short conversation about the task. A small landing page launches faster, while a corporate website or app requires separate design, development and testing stages. We agree on the schedule before work begins.', ru: 'Срок определяем после короткого разговора о задаче. Небольшой лендинг запускается быстрее, а корпоративный сайт или приложение требуют отдельных этапов проектирования, разработки и тестирования. До старта согласовываем календарный план.' },
+        { en: 'Is SEO included in development?', ru: 'Входит ли SEO в разработку?' },
+        { en: 'Basic development includes technical SEO setup: correct headings, metadata, responsive behavior, performance, sitemap and robots. Search promotion and ongoing content work are discussed separately.', ru: 'В базовую разработку входит техническая SEO-подготовка: корректные заголовки, метаданные, адаптивность, скорость, sitemap и robots. Продвижение по запросам и регулярная работа с контентом обсуждаются отдельно.' },
+        { en: 'Do you develop apps for iOS and Android?', ru: 'Разрабатываете приложения для iOS и Android?' },
+        { en: 'Yes. We create MVPs and complete iOS and Android apps, including the interface, backend, notifications, analytics and admin panel. The feature set follows the product\'s priority scenarios.', ru: 'Да. Создаем MVP и полноценные приложения для iOS и Android: интерфейс, backend, уведомления, аналитику и админ-панель. Состав функций определяем по приоритетным сценариям продукта.' },
+        { en: 'Is support available after launch?', ru: 'Есть ли поддержка после запуска?' },
+        { en: 'Yes. After handoff, we can agree on support, fixes, feature development and new integrations. The format depends on the update frequency and your team\'s needs.', ru: 'Да. После передачи проекта можно согласовать поддержку, исправления, развитие функциональности и подключение новых интеграций. Формат зависит от частоты обновлений и задач команды.' },
     ];
 
     const defaultLanguage = 'ru';
@@ -1287,6 +1273,20 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
     const translateText = (text, language) => {
         const entry = translationEntries.find((item) => item.en === text || item.ru === text);
         return entry ? entry[language] : text;
+    };
+
+    const whatsappMessages = {
+        ru: 'Здравствуйте! Хочу обсудить проект для бизнеса. Интересует сайт / приложение / автоматизация.',
+        en: "Hello! I'd like to discuss a business project. I'm interested in a website, app or automation.",
+    };
+    const whatsappBase = 'https://api.whatsapp.com/send/?phone=77089508019&type=phone_number&app_absent=0&text=';
+    const updateWhatsAppLinks = (language) => {
+        ['mobile-hero-wa-btn', 'floating-wa-btn'].forEach((id) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.href = whatsappBase + encodeURIComponent(whatsappMessages[language]);
+            }
+        });
     };
 
     const applyLanguage = (language, options = {}) => {
@@ -1321,6 +1321,14 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
             element.setAttribute('placeholder', translateText(element.getAttribute('placeholder'), language));
         });
 
+        document.querySelectorAll('[aria-label], [title], [alt]').forEach((element) => {
+            ['aria-label', 'title', 'alt'].forEach((attribute) => {
+                if (element.hasAttribute(attribute)) {
+                    element.setAttribute(attribute, translateText(element.getAttribute(attribute), language));
+                }
+            });
+        });
+
         document.querySelectorAll('[data-select-label]').forEach((label) => {
             const select = label.closest('[data-custom-select]');
             const selectedOption = select?.querySelector('.custom-select-option[aria-selected="true"]');
@@ -1330,9 +1338,33 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
         });
 
         document.documentElement.lang = language;
-        document.title = language === 'en'
-            ? 'Website and app development — Mononyxx | Kazakhstan'
-            : 'Разработка сайтов и приложений — Mononyxx | Алматы';
+        const seo = language === 'en'
+            ? {
+                title: 'Website and app development — Mononyxx | Kazakhstan',
+                description: 'Mononyxx designs and develops websites, mobile apps and automation for businesses in Kazakhstan, from strategy and UI/UX to launch and support.',
+                socialTitle: 'Website and app development — Mononyxx',
+                socialDescription: 'Websites, mobile apps and automation designed and developed end to end for businesses in Kazakhstan.',
+                keywords: 'website development Kazakhstan, mobile app development, business automation, UI UX design, web development Almaty',
+                locale: 'en_US',
+            }
+            : {
+                title: 'Разработка сайтов и приложений — Mononyxx | Алматы',
+                description: 'Mononyxx — разработка сайтов и мобильных приложений под ключ в Алматы и по Казахстану. Современный дизайн, SEO, быстрый запуск и поддержка.',
+                socialTitle: 'Разработка сайтов и приложений — Mononyxx',
+                socialDescription: 'Создаём сайты и мобильные приложения под ключ. Современный дизайн, SEO-оптимизация, быстрый запуск и поддержка.',
+                keywords: 'разработка сайтов Алматы, создание сайта под ключ, разработка мобильных приложений, веб разработка Казахстан, заказать сайт Алматы, разработка приложений iOS Android',
+                locale: 'ru_KZ',
+            };
+        document.title = seo.title;
+        document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description);
+        document.querySelector('meta[name="keywords"]')?.setAttribute('content', seo.keywords);
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo.socialTitle);
+        document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.socialDescription);
+        document.querySelector('meta[property="og:locale"]')?.setAttribute('content', seo.locale);
+        document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.socialTitle);
+        document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.socialDescription);
+        document.querySelector('meta[property="og:image:alt"]')?.setAttribute('content', translateText(document.querySelector('meta[property="og:image:alt"]')?.getAttribute('content') || '', language));
+        updateWhatsAppLinks(language);
         localStorage.setItem(languageStorageKey, language);
         if (shouldPersistChoice) {
             localStorage.setItem(languageChoiceStorageKey, 'manual');
@@ -1386,10 +1418,15 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 
     if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
         const setMobileMenuOpen = (isOpen) => {
+            const isEnglish = getCurrentLanguage() === 'en';
             mobileMenu.classList.toggle('menu-open', isOpen);
             mobileMenuButton.setAttribute('aria-expanded', String(isOpen));
-            mobileMenuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-            mobileMenuIcon.textContent = isOpen ? 'close' : 'menu';
+            mobileMenuButton.setAttribute('aria-label', isOpen
+                ? (isEnglish ? 'Close menu' : 'Закрыть меню')
+                : (isEnglish ? 'Open menu' : 'Открыть меню'));
+            mobileMenuIcon.textContent = isOpen
+                ? (isEnglish ? 'Close' : 'Закрыть')
+                : (isEnglish ? 'Menu' : 'Меню');
         };
 
         mobileMenuButton.addEventListener('click', () => {
@@ -1428,10 +1465,11 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
             event.preventDefault();
 
             if (mobileMenu && mobileMenuButton && mobileMenuIcon) {
+                const isEnglish = getCurrentLanguage() === 'en';
                 mobileMenu.classList.remove('menu-open');
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
-                mobileMenuButton.setAttribute('aria-label', 'Open navigation menu');
-                mobileMenuIcon.textContent = 'menu';
+                mobileMenuButton.setAttribute('aria-label', isEnglish ? 'Open menu' : 'Открыть меню');
+                mobileMenuIcon.textContent = isEnglish ? 'Menu' : 'Меню';
             }
 
             scrollToSection(targetSection);
@@ -1576,7 +1614,14 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
 
     document.querySelectorAll('[data-lang-control]').forEach((button) => {
         button.addEventListener('click', () => {
-            applyLanguage(button.dataset.langControl, { persistChoice: true });
+            const language = button.dataset.langControl;
+            applyLanguage(language, { persistChoice: true });
+            if (mobileMenuButton) {
+                const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-label', isOpen
+                    ? (language === 'en' ? 'Close menu' : 'Закрыть меню')
+                    : (language === 'en' ? 'Open menu' : 'Открыть меню'));
+            }
         });
     });
 
@@ -1677,12 +1722,7 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
         button.href = 'https://api.whatsapp.com/send/?phone=77089508019&text=' + encodeURIComponent(message) + '&type=phone_number&app_absent=0';
     });
 
-    const WA_HERO_TEXT = 'Здравствуйте! Хочу обсудить проект для бизнеса. Интересует сайт / приложение / автоматизация.';
-    const WA_BASE = 'https://api.whatsapp.com/send/?phone=77089508019&type=phone_number&app_absent=0&text=';
-    ['mobile-hero-wa-btn', 'floating-wa-btn'].forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) el.href = WA_BASE + encodeURIComponent(WA_HERO_TEXT);
-    });
+    updateWhatsAppLinks(getCurrentLanguage());
 
     leadForm?.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -1709,6 +1749,7 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
             projectType: selectedProjectType,
             budget: normalizedBudget,
             description: document.getElementById('description')?.value.trim() || '',
+            privacyConsent: document.getElementById('privacy-consent')?.checked === true,
         };
 
         if (
@@ -1718,7 +1759,8 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
             !document.getElementById('project-type')?.value ||
             !budgetValue ||
             (budgetValue === 'custom' && !customBudgetValue) ||
-            !payload.description
+            !payload.description ||
+            !payload.privacyConsent
         ) {
             setLeadMessage('Please fill in all required fields.', 'error');
             return;
@@ -1758,4 +1800,5 @@ View case <span class="material-symbols-outlined text-sm">arrow_forward</span>
         }
     });
 </script>
+<script src="/js/home-v2.js?v=20260714-13"></script>
 </body></html>

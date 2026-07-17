@@ -3,7 +3,9 @@
     { "source": "/pricing", "destination": "/tseny/", "permanent": true },
     { "source": "/pricing.html", "destination": "/tseny/", "permanent": true },
     { "source": "/cases", "destination": "/portfolio/", "permanent": true },
-    { "source": "/contacts", "destination": "/kontakty/", "permanent": true }
+    { "source": "/contacts", "destination": "/kontakty/", "permanent": true },
+    { "source": "/quiz", "destination": "/kontakty/", "permanent": true },
+    { "source": "/quiz.html", "destination": "/kontakty/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/code.html" },
@@ -12,8 +14,10 @@
     { "source": "/portfolio", "destination": "/portfolio/index.html" },
     { "source": "/tseny", "destination": "/tseny/index.html" },
     { "source": "/kontakty", "destination": "/kontakty/index.html" },
+    { "source": "/podderzhka", "destination": "/podderzhka/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
     { "source": "/cases/starkids", "destination": "/cases/starkids.html" },
-    { "source": "/demo/starkids", "destination": "/demo/starkids.html" },
-    { "source": "/quiz", "destination": "/quiz.html" }
+    { "source": "/demo/starkids", "destination": "/demo/starkids.html" }
   ]
 }
