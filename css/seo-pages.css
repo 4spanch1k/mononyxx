@@ -411,6 +411,8 @@ h3 { margin-bottom: 14px; font-size: clamp(23px, 2.5vw, 34px); line-height: 1.05
 
 .support-note { margin-top: 30px; padding: 22px 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); color: #555; }
 .support-note strong { color: var(--ink); }
+.subscription-minimum-note { margin: 16px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.subscription-minimum-note a { color: var(--ink); text-underline-offset: 3px; }
 
 /* General cards retained for content and contact pages */
 .card { display: flex; flex-direction: column; padding: 30px; border: 1px solid var(--line-strong); background: var(--surface); }
@@ -433,6 +435,11 @@ h3 { margin-bottom: 14px; font-size: clamp(23px, 2.5vw, 34px); line-height: 1.05
 .portfolio-case__media { position: sticky; top: 112px; display: grid; place-items: center; align-self: start; min-height: clamp(420px, 55vw, 720px); background: #ecece9; overflow: hidden; }
 .portfolio-case__media img { width: 86%; height: 86%; object-fit: contain; transition: transform .7s cubic-bezier(.22, 1, .36, 1); }
 .portfolio-case:hover .portfolio-case__media img { transform: scale(1.035); }
+.portfolio-case__media--solo { background: radial-gradient(circle at 74% 18%, rgba(210, 169, 101, .3), transparent 34%), linear-gradient(145deg, #453d33 0%, #181511 100%); }
+.portfolio-device { position: relative; width: min(52%, 320px); aspect-ratio: 390 / 844; overflow: hidden; border: 8px solid #111; border-radius: 48px; background: #111; box-shadow: 0 28px 44px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.12); }
+.portfolio-device::before { content: ""; position: absolute; top: 8px; left: 50%; z-index: 2; width: 34%; height: 15px; border-radius: 999px; background: #090909; transform: translateX(-50%); }
+.portfolio-device img { width: 100%; height: 100%; object-fit: cover; border-radius: 39px; }
+.portfolio-case:hover .portfolio-device img { transform: none; }
 .portfolio-case__body { align-self: center; }
 .portfolio-case__body h2 { margin: 16px 0 26px; }
 .portfolio-case__lead { color: var(--muted); font-size: clamp(17px, 1.6vw, 21px); line-height: 1.6; }
