@@ -637,15 +637,27 @@ body.menu-lock .studio-header {
   transform: rotate(45deg);
 }
 
+.studio-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
 .studio-capabilities {
   border-top: 1px solid var(--studio-line-dark);
 }
 
 .studio-capabilities__row {
   display: grid;
-  grid-template-columns: 42px 1fr auto;
+  grid-template-columns: 42px 34px 1fr auto;
+  gap: 12px;
   align-items: center;
-  min-height: 46px;
+  min-height: 58px;
   border-bottom: 1px solid var(--studio-line-dark);
   color: #b7b7b7;
   font: 500 11px/1.2 "IBM Plex Mono", monospace;
@@ -656,6 +668,16 @@ body.menu-lock .studio-header {
 .studio-capabilities__row:hover {
   padding-left: 9px;
   color: var(--studio-white);
+}
+
+.studio-capabilities__row .studio-icon {
+  width: 27px;
+  height: 27px;
+  transition: transform 220ms ease;
+}
+
+.studio-capabilities__row:hover .studio-icon {
+  transform: rotate(-5deg) scale(1.08);
 }
 
 .studio-capabilities__row span:last-child {
@@ -724,7 +746,7 @@ body.menu-lock .studio-header {
 #services .grid > a {
   position: relative;
   display: grid !important;
-  grid-template-columns: 52px minmax(220px, .7fr) minmax(0, 1.3fr) 40px;
+  grid-template-columns: 52px 68px minmax(220px, .7fr) minmax(0, 1.3fr) 40px;
   column-gap: clamp(22px, 3vw, 48px);
   align-items: start;
   min-height: 190px;
@@ -751,7 +773,25 @@ body.menu-lock .studio-header {
 }
 
 #services .grid > a > div:first-child {
-  display: none;
+  display: grid !important;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  margin: 0 !important;
+  border: 1px solid var(--studio-line);
+  color: var(--studio-ink) !important;
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+#services .grid > a > div:first-child .studio-icon {
+  width: 34px;
+  height: 34px;
+}
+
+#services .grid > a:hover > div:first-child {
+  background: var(--studio-black);
+  color: var(--studio-white) !important;
+  transform: rotate(-4deg);
 }
 
 #services .grid > a h3 {
@@ -1087,12 +1127,25 @@ body.menu-lock .studio-header {
 #process .grid > div:last-child { border-right: 0; }
 
 #process .grid > div > div:first-child {
-  width: auto !important;
+  width: 100% !important;
   height: auto !important;
-  margin: 0 0 56px !important;
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 0 42px !important;
   border: 0 !important;
   background: transparent !important;
   font: 500 10px/1 "IBM Plex Mono", monospace !important;
+}
+
+.studio-step-mark .studio-icon {
+  width: 38px;
+  height: 38px;
+  transition: transform 220ms ease;
+}
+
+#process .grid > div:hover .studio-step-mark .studio-icon {
+  transform: translateY(-4px) rotate(-4deg);
 }
 
 #process h3 {
@@ -1153,7 +1206,7 @@ body.menu-lock .studio-header {
 
 .studio-proof__item {
   display: grid;
-  grid-template-columns: 52px minmax(160px, .7fr) minmax(180px, 1.3fr);
+  grid-template-columns: 42px 58px minmax(160px, .7fr) minmax(180px, 1.3fr);
   gap: 22px;
   padding: 28px 0 32px;
   border-bottom: 1px solid var(--studio-line);
@@ -1162,6 +1215,26 @@ body.menu-lock .studio-header {
 .studio-proof__number {
   padding-top: 5px;
   font: 500 10px/1 "IBM Plex Mono", monospace;
+}
+
+.studio-proof__icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--studio-line);
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.studio-proof__icon .studio-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.studio-proof__item:hover .studio-proof__icon {
+  background: var(--studio-black);
+  color: var(--studio-white);
+  transform: rotate(-4deg);
 }
 
 .studio-proof__item h3 {
@@ -1258,7 +1331,7 @@ body.menu-lock .studio-header {
 
 .pricing-gateway__row {
   display: grid;
-  grid-template-columns: 42px 1fr auto;
+  grid-template-columns: 42px 44px 1fr auto;
   gap: 18px;
   align-items: center;
   min-height: 74px;
@@ -1276,6 +1349,16 @@ body.menu-lock .studio-header {
   letter-spacing: -.035em;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+.pricing-gateway__row .studio-icon {
+  width: 31px;
+  height: 31px;
+  transition: transform 220ms ease;
+}
+
+.pricing-gateway__row:hover .studio-icon {
+  transform: translateY(-3px) rotate(-4deg);
 }
 
 .pricing-gateway__row strong {
@@ -1372,6 +1455,17 @@ body.menu-lock .studio-header {
   background: transparent !important;
   color: var(--studio-ink) !important;
   box-shadow: none !important;
+}
+
+.studio-card-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 34px;
+  transition: transform 220ms ease;
+}
+
+.studio-about__stats > div:hover .studio-card-icon {
+  transform: translateY(-4px) rotate(-5deg);
 }
 
 .studio-about__stats > div > div {
@@ -1541,7 +1635,7 @@ body > footer > div {
   }
 
   .studio-proof__item {
-    grid-template-columns: 42px minmax(140px, .75fr) minmax(0, 1.25fr);
+    grid-template-columns: 36px 50px minmax(140px, .75fr) minmax(0, 1.25fr);
     gap: 18px;
   }
 
@@ -1606,7 +1700,7 @@ body > footer > div {
   }
 
   #services .grid > a {
-    grid-template-columns: 48px minmax(180px, .62fr) minmax(0, 1.38fr) 40px;
+    grid-template-columns: 44px 60px minmax(180px, .62fr) minmax(0, 1.38fr) 40px;
     column-gap: clamp(18px, 2.5vw, 30px);
   }
 }
@@ -1646,12 +1740,14 @@ body > footer > div {
 
   .studio-menu__main {
     align-items: flex-start;
-    padding-top: 110px;
+    overflow-y: auto;
+    padding-top: clamp(84px, 14svh, 110px);
+    padding-bottom: 84px;
   }
 
   .line-nav__item {
     grid-template-columns: 48px 34px 1fr;
-    min-height: 78px;
+    min-height: clamp(60px, 10svh, 78px);
   }
 
   .line-nav__text {
@@ -1719,19 +1815,35 @@ body > footer > div {
   }
 
   #services .grid > a {
-    grid-template-columns: 42px 1fr auto;
+    grid-template-columns: 34px 52px minmax(0, 1fr) 36px;
+    column-gap: 12px;
     min-height: 0;
     padding-block: 26px !important;
   }
 
+  #services .grid > a > div:first-child {
+    width: 46px;
+    height: 46px;
+  }
+
+  #services .grid > a > div:first-child .studio-icon {
+    width: 28px;
+    height: 28px;
+  }
+
   #services .grid > a h3 {
+    grid-column: 3;
     padding-right: 12px;
   }
 
   #services .grid > a p {
-    grid-column: 2 / -1;
+    grid-column: 3 / -1;
     margin-top: 18px !important;
     padding-right: 0;
+  }
+
+  #services .grid > a > span:last-child {
+    grid-column: 4;
   }
 
   .case-stories__head {
@@ -1779,7 +1891,7 @@ body > footer > div {
 
   #process .grid > div {
     display: grid !important;
-    grid-template-columns: 46px 1fr;
+    grid-template-columns: 58px 1fr;
     min-height: 0;
     padding: 22px 0 !important;
     border-right: 0;
@@ -1788,6 +1900,10 @@ body > footer > div {
 
   #process .grid > div > div:first-child {
     grid-row: 1 / span 2;
+    width: 42px !important;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
     margin: 0 !important;
   }
 
@@ -1800,11 +1916,12 @@ body > footer > div {
   }
 
   .studio-proof__item {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 32px 48px 1fr;
+    gap: 14px;
   }
 
   .studio-proof__item p {
-    grid-column: 2;
+    grid-column: 3;
   }
 
   .studio-quote {
@@ -1812,12 +1929,12 @@ body > footer > div {
   }
 
   .pricing-gateway__row {
-    grid-template-columns: 34px 1fr;
+    grid-template-columns: 30px 36px 1fr;
     padding-block: 18px;
   }
 
   .pricing-gateway__row span:last-child {
-    grid-column: 2;
+    grid-column: 3;
   }
 
   body > footer .flex.gap-8 {

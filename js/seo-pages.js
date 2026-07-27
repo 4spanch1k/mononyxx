@@ -17,6 +17,7 @@
     ['Кейсы', 'Cases'],
     ['Цены', 'Pricing'],
     ['Поддержка', 'Support'],
+    ['О компании', 'About us'],
     ['Контакты', 'Contacts'],
     ['Обсудить проект', 'Discuss a project'],
     ['Обсудить поддержку', 'Discuss support'],
@@ -253,6 +254,56 @@
     ['Обсудить задачу', 'Discuss the task'],
   ];
 
+  const aboutEntries = [
+    ['05 / О компании', '05 / About us'],
+    ['Собираем цифровые продукты без разрыва между идеей и запуском.', 'We build digital products without a gap between the idea and the launch.'],
+    ['MONONYXX — digital-студия из Алматы. Проектируем сайты, приложения и автоматизацию для бизнеса в Казахстане и СНГ. Одна команда отвечает за структуру, интерфейс, разработку и запуск.', 'MONONYXX is a digital studio based in Almaty. We design websites, apps and automation for businesses in Kazakhstan and the CIS. One team owns the structure, interface, development and launch.'],
+    ['Смотреть работы', 'View work'],
+    ['Зачем существует студия', 'Why the studio exists'],
+    ['Чтобы бизнес получал не набор красивых экранов, а цельный продукт, который можно запустить, проверить и развивать.', 'So a business receives more than a set of attractive screens: a complete product that can be launched, tested and developed.'],
+    ['Мы соединяем продуктовую логику, дизайн и разработку в одном процессе. Поэтому решения не теряются между разными подрядчиками, а клиент понимает, что происходит с проектом на каждом этапе.', 'We connect product logic, design and development in one process. Decisions do not get lost between contractors, and the client understands what is happening at every stage.'],
+    ['01 / Что делаем', '01 / What we do'],
+    ['Закрываем весь путь продукта', 'We cover the entire product journey'],
+    ['Подключаемся на этапе идеи, обновления существующего сервиса или подготовки нового направления. Состав команды и этапы подбираем под задачу.', 'We join at the idea stage, while updating an existing service or preparing a new direction. The team and stages are shaped around the task.'],
+    ['Сайты и e-commerce', 'Websites and e-commerce'],
+    ['Лендинги и многостраничные сайты, которые объясняют ценность продукта, укрепляют доверие и ведут к заявке или покупке.', 'Landing pages and multi-page websites that explain the product value, build trust and lead to an inquiry or purchase.'],
+    ['Приложения и MVP', 'Apps and MVPs'],
+    ['Проектируем ключевые сценарии, интерфейс и техническую основу, чтобы быстрее проверить продукт и подготовить его к росту.', 'We design core journeys, the interface and technical foundation to validate the product faster and prepare it for growth.'],
+    ['Автоматизация процессов', 'Process automation'],
+    ['Связываем формы, CRM, уведомления, ботов и внутреннюю логику, чтобы сократить ручные действия и не терять обращения.', 'We connect forms, CRM, notifications, bots and internal logic to reduce manual work and keep inquiries from getting lost.'],
+    ['Развитие после запуска', 'Development after launch'],
+    ['Поддерживаем работающий продукт: обновляем контент, улучшаем интерфейс, проверяем техническую часть и планируем следующие изменения.', 'We support live products by updating content, improving the interface, checking the technical foundation and planning the next changes.'],
+    ['02 / Процесс', '02 / Process'],
+    ['Работа построена вокруг понятного результата', 'The process is built around a clear result'],
+    ['До старта фиксируем задачу, этапы и границы проекта. В процессе показываем промежуточный результат, чтобы решения оставались прозрачными.', 'Before work begins, we confirm the task, stages and project boundaries. We show progress throughout the process so decisions stay transparent.'],
+    ['Разбираем задачу', 'Understand the task'],
+    ['Уточняем аудиторию, бизнес-цель, ограничения и ожидаемый результат.', 'We clarify the audience, business goal, constraints and expected result.'],
+    ['Собираем структуру', 'Shape the structure'],
+    ['Строим сценарии и приоритеты до того, как начинать визуальную часть.', 'We define journeys and priorities before starting the visual work.'],
+    ['Проектируем интерфейс', 'Design the interface'],
+    ['Создаём дизайн-систему и адаптивные экраны с понятной иерархией.', 'We create a design system and responsive screens with a clear hierarchy.'],
+    ['Разрабатываем', 'Develop'],
+    ['Собираем frontend, backend и интеграции, затем тестируем ключевые сценарии.', 'We build the frontend, backend and integrations, then test the core journeys.'],
+    ['Запускаем и передаём', 'Launch and hand off'],
+    ['Проверяем продукт, передаём доступы и определяем формат дальнейшего развития.', 'We verify the product, hand over access and define the format for further development.'],
+    ['03 / Принципы', '03 / Principles'],
+    ['Что получает клиент в работе с нами', 'What clients receive when working with us'],
+    ['Одна команда', 'One team'],
+    ['Дизайн и разработка принимают решения вместе, поэтому идея не искажается при передаче.', 'Design and development make decisions together, so the idea is not distorted during handoffs.'],
+    ['Видимый процесс', 'Visible process'],
+    ['Клиент видит этапы и промежуточный результат, а не ждёт финальный экран вслепую.', 'The client sees the stages and progress instead of waiting blindly for a final screen.'],
+    ['Зафиксированные границы', 'Confirmed boundaries'],
+    ['Объём, стоимость и результат согласуются до старта. Новые задачи не прячутся в смете.', 'Scope, price and the result are agreed before work starts. New tasks are not hidden in the estimate.'],
+    ['Основа для развития', 'Built to evolve'],
+    ['Проектируем продукт так, чтобы после запуска его можно было дополнять без полной пересборки.', 'We design the product so it can grow after launch without a complete rebuild.'],
+    ['04 / География', '04 / Geography'],
+    ['Алматы — база. Работаем по всему Казахстану и СНГ.', 'Based in Almaty. Working across Kazakhstan and the CIS.'],
+    ['Обсуждение, согласование экранов и передача проекта проходят онлайн. Решения, сроки и доступы фиксируем так же прозрачно, как при личной работе.', 'Discussion, screen approvals and project handoff happen online. Decisions, timelines and access remain as transparent as in person.'],
+    ['Следующий продукт', 'The next product'],
+    ['Расскажите, что нужно запустить или улучшить.', 'Tell us what needs to be launched or improved.'],
+    ['Можно начать со ссылки, короткого описания или голосового сообщения. Мы зададим уточняющие вопросы и предложим реалистичный формат работы.', 'Start with a link, a short description or a voice message. We will ask focused questions and suggest a realistic format.'],
+  ];
+
   const websiteEntries = [
     ['Сайты для бизнеса', 'Websites for business'],
     ['Разработка сайтов в Алматы под ключ', 'End-to-end website development in Almaty'],
@@ -324,6 +375,8 @@
         ? contactEntries
         : page === 'portfolio'
           ? portfolioEntries
+          : page === 'about'
+            ? aboutEntries
           : page === 'websites'
             ? websiteEntries
             : page === 'apps'
@@ -393,6 +446,20 @@
         description: 'Mononyxx case studies: tasks, decisions and results for Star Kids, Solo Space and Myoneuromassage.',
         socialTitle: 'Website and app case studies — Mononyxx',
         socialDescription: 'More than screens: context, task, decisions and results for each project.',
+      },
+    },
+    about: {
+      ru: {
+        title: 'О компании Mononyxx — digital-студия из Алматы',
+        description: 'Mononyxx проектирует и запускает сайты, приложения и автоматизацию для бизнеса. О подходе студии, процессе работы и принципах сотрудничества.',
+        socialTitle: 'О компании Mononyxx',
+        socialDescription: 'Одна команда от первой схемы до запуска цифрового продукта.',
+      },
+      en: {
+        title: 'About Mononyxx — digital product studio in Almaty',
+        description: 'Mononyxx designs and launches websites, apps and automation for businesses. Learn about our approach, process and collaboration principles.',
+        socialTitle: 'About Mononyxx',
+        socialDescription: 'One team from the first scheme to a launched digital product.',
       },
     },
     websites: {
