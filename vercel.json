@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/razrabotka-prilozheniy", "destination": "/meta-lead-system/", "permanent": true },
     { "source": "/pricing", "destination": "/tseny/", "permanent": true },
     { "source": "/pricing.html", "destination": "/tseny/", "permanent": true },
     { "source": "/cases", "destination": "/portfolio/", "permanent": true },
@@ -13,7 +14,6 @@
     { "source": "/razrabotka-prilozheniy", "destination": "/razrabotka-prilozheniy/index.html" },
     { "source": "/portfolio", "destination": "/portfolio/index.html" },
     { "source": "/tseny", "destination": "/tseny/index.html" },
-    { "source": "/o-kompanii", "destination": "/o-kompanii/index.html" },
     { "source": "/kontakty", "destination": "/kontakty/index.html" },
     { "source": "/podderzhka", "destination": "/podderzhka/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },

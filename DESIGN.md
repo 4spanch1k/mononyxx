@@ -1,159 +1,154 @@
----
-name: Mononyxx
-colors:
-  surface: '#faf9f6'
-  surface-dim: '#dbdad7'
-  surface-bright: '#faf9f6'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f4f3f1'
-  surface-container: '#efeeeb'
-  surface-container-high: '#e9e8e5'
-  surface-container-highest: '#e3e2e0'
-  on-surface: '#1a1c1a'
-  on-surface-variant: '#4c4546'
-  inverse-surface: '#2f312f'
-  inverse-on-surface: '#f2f1ee'
-  outline: '#7e7576'
-  outline-variant: '#cfc4c5'
-  surface-tint: '#5e5e5e'
-  primary: '#000000'
-  on-primary: '#ffffff'
-  primary-container: '#1b1b1b'
-  on-primary-container: '#848484'
-  inverse-primary: '#c6c6c6'
-  secondary: '#725a39'
-  on-secondary: '#ffffff'
-  secondary-container: '#fbdbb0'
-  on-secondary-container: '#765f3d'
-  tertiary: '#000000'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#1b1c1c'
-  on-tertiary-container: '#858383'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#e2e2e2'
-  primary-fixed-dim: '#c6c6c6'
-  on-primary-fixed: '#1b1b1b'
-  on-primary-fixed-variant: '#474747'
-  secondary-fixed: '#feddb3'
-  secondary-fixed-dim: '#e1c299'
-  on-secondary-fixed: '#281801'
-  on-secondary-fixed-variant: '#584324'
-  tertiary-fixed: '#e4e2e1'
-  tertiary-fixed-dim: '#c8c6c6'
-  on-tertiary-fixed: '#1b1c1c'
-  on-tertiary-fixed-variant: '#474747'
-  background: '#faf9f6'
-  on-background: '#1a1c1a'
-  surface-variant: '#e3e2e0'
-typography:
-  display:
-    fontFamily: Bodoni Moda
-    fontSize: 72px
-    fontWeight: '600'
-    lineHeight: '1.1'
-    letterSpacing: -0.02em
-  h1:
-    fontFamily: Bodoni Moda
-    fontSize: 48px
-    fontWeight: '500'
-    lineHeight: '1.2'
-    letterSpacing: -0.01em
-  h2:
-    fontFamily: Bodoni Moda
-    fontSize: 32px
-    fontWeight: '500'
-    lineHeight: '1.3'
-    letterSpacing: 0em
-  h3:
-    fontFamily: Hanken Grotesk
-    fontSize: 24px
-    fontWeight: '600'
-    lineHeight: '1.4'
-    letterSpacing: 0.02em
-  body-lg:
-    fontFamily: Hanken Grotesk
-    fontSize: 18px
-    fontWeight: '400'
-    lineHeight: '1.8'
-    letterSpacing: 0.01em
-  body-md:
-    fontFamily: Hanken Grotesk
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: '1.6'
-    letterSpacing: 0.01em
-  label-caps:
-    fontFamily: Hanken Grotesk
-    fontSize: 12px
-    fontWeight: '700'
-    lineHeight: '1.2'
-    letterSpacing: 0.15em
-rounded:
-  sm: 0.125rem
-  DEFAULT: 0.25rem
-  md: 0.375rem
-  lg: 0.5rem
-  xl: 0.75rem
-  full: 9999px
-spacing:
-  unit: 8px
-  container-max-width: 1280px
-  gutter: 24px
-  margin-mobile: 20px
-  margin-desktop: 64px
-  section-padding: 120px
----
+# Mononyxx — правила дизайна сайта
 
-## Brand & Style
+Этот файл — источник решений для новых страниц и изменений в существующих. Если локальный паттерн страницы противоречит этому документу, сохраняем рабочую композицию страницы и приводим новые элементы к её правилам, а не делаем «перерисовку ради перерисовки».
 
-The design system is rooted in the intersection of high-fashion editorial and functional minimalism. It targets an audience that values restraint, precision, and quiet luxury. The visual language avoids the noise of modern "SaaS" aesthetics in favor of a calm, confident presence that allows content to breathe.
+## 1. Суть визуального языка
 
-The style is defined by extensive negative space, a rigid grid structure, and a deliberate lack of ornamentation. It leans heavily into **Minimalism** with an **Editorial** lens, treating every screen like a page in a premium physical publication. The goal is to evoke a sense of exclusivity and timelessness through perfect alignment and high-contrast composition.
+**Тёмный редакционный минимализм с тёплой материальностью.** Mononyxx должен выглядеть как уверенная продуктовая студия: спокойно, точно и дорого. Дизайн продаёт через иерархию, реальные интерфейсы и ясный путь к действию — не через декоративные эффекты, «технологичные» паттерны и набор карточек.
 
-## Colors
+Каждая секция отвечает только на один вопрос:
 
-The palette is strictly monochromatic with a singular organic accent. **Deep Black (#000000)** is used for primary branding and high-impact typography to establish authority. **Warm Off-White (#FAF9F6)** serves as the primary canvas, providing a softer, more premium feel than pure digital white.
+1. Что получит клиент?
+2. Как это решает его задачу?
+3. Почему можно доверять Mononyxx?
+4. Как начать разговор?
 
-**Charcoal (#333333)** is reserved for body text to reduce eye strain while maintaining high legibility. **Subtle Beige (#D2B48C)** is applied sparingly as a signature accent for interactive states or specific callouts, grounding the digital experience in a tactile, earth-toned luxury. No gradients are permitted; color application must be flat and intentional.
+## 2. Непереговорные принципы
 
-## Typography
+- Один главный визуальный акцент на секцию: крупный заголовок, интерфейс, фото или сценарий — не всё одновременно.
+- Много воздуха, чёткая сетка и тонкие разделители важнее теней, карточек и декоративных рамок.
+- Интерфейсы и кейсы показываем как доказательство результата, а не как украшение.
+- Текст говорит на языке бизнеса: бронь, оплата, время команды, заявки, продажи, запуск. Не используем абстрактные «инновационные решения» и «дизайн-философию».
+- Не придумываем цифры, сроки, гарантии, клиентов, метрики или интеграции. Неподтверждённые факты помечаем `[УТОЧНИТЬ]` или HTML-комментарием.
+- Не добавляем «AI glow», лишние градиенты, стеклянные карточки, иконки без функции и SaaS-сетки из одинаковых блоков.
 
-This design system employs a high-contrast typographic pairing. Headlines use **Bodoni Moda**, a sophisticated serif that brings editorial drama and elegance. These should be set with tight leading and slight negative letter-spacing for a modern, "Vogue-esque" appearance.
+## 3. Цвет и поверхности
 
-Supporting text utilizes **Hanken Grotesk**, an airy and contemporary sans-serif. Body text must maintain a generous line height (minimum 1.6x) to ensure the interface feels spacious and unhurried. Small labels and secondary metadata should be set in uppercase with increased letter-spacing to create a technical, curated look that balances the expressive nature of the serif headings.
+| Роль | Токен / цвет | Использование |
+| --- | --- | --- |
+| Основной фон | `#f4f3ee` | тёплый светлый фон, навигация, спокойные секции |
+| Белая поверхность | `#ffffff` | контрастные светлые секции и формы |
+| Основной текст | `#1e211e` | заголовки и основной текст |
+| Тёмная сцена | `#070807` / `#1e211e` | hero, кейсы, сильные CTA |
+| Вторичный текст | `rgba(30,33,30,.65)` | пояснения, метаданные |
+| Линия | `rgba(30,33,30,.18)` | разделители, рамки, сетка |
+| Акцент | `#ed7257` | только состояние hover, малый сигнал или точечный акцент |
 
-## Layout & Spacing
+Правило контраста: текст на фото и тёмной сцене размещаем только в спокойной зоне кадра и при необходимости усиливаем мягкой виньеткой. Виньетка — это плавное затемнение краёв, а не сетка, жёсткий градиент или непрозрачная плашка.
 
-The layout philosophy is built on a **Fixed Grid** system that prioritizes centered, curated content over fluid density. Large-scale desktop views utilize a 12-column grid with generous 64px margins to frame content like a gallery piece.
+## 4. Типографика
 
-Vertical spacing is intentional and aggressive. Sections are separated by large "breathing rooms" (120px+), forcing the user to focus on one narrative block at a time. All spacing follows an 8px base unit, ensuring that while the layout feels free-form, it is mathematically disciplined and aligned.
+Типографика едина для кириллицы и латиницы. Актуальная система подключена в `css/type-system.css`.
 
-## Elevation & Depth
+| Роль | Шрифт | Правило |
+| --- | --- | --- |
+| Интерфейс по умолчанию | Inter | системный UI, нейтральный текст |
+| Крупные заголовки | Manrope | плотный набор, `letter-spacing: -0.06em…-0.08em` |
+| Абзацы и объяснения | PT Sans | спокойный ритм, `line-height: 1.5…1.65` |
+| CTA, навигация, действия | Geist | среднее или полужирное начертание |
+| Метки, номера, подписи | Geist Mono | верхний регистр только для коротких меток, увеличенный трекинг |
+| Цены и крупные числа | Fira Sans | табличные цифры (`tabular-nums`) |
 
-Hierarchy is established through **Tonal Layers** rather than dramatic shadows. Surfaces primarily use the Warm Off-White base, with secondary elements appearing on Pure White to create a subtle lift.
+### Иерархия
 
-When shadows are used, they are "Ambient Shadows"—extremely diffused, low-opacity (#000000 at 4-6%), and with a large blur radius. They should appear as a natural light falloff rather than a digital effect. Interaction depth is communicated through fine 1px borders in Light Gray (#F2F2F2) or Charcoal (#333333), maintaining a flat, sophisticated profile.
+- `h1`: одна ясная коммерческая мысль; на desktop — обычно до 2–3 строк.
+- `h2`: смысл секции, а не подпись к визуалу.
+- Лейбл над заголовком: 10–11px, моноширинный, uppercase, letter-spacing около `.1em`.
+- Основной текст: 16–21px, ограниченная ширина строки, без полотен.
+- Не использовать больше двух крупных текстовых акцентов в одном экране.
 
-## Shapes
+## 5. Сетка и отступы
 
-The design system uses a "Soft" approach to geometry. To maintain the editorial feel, corners are not aggressively rounded. A consistent **4px to 8px radius** is applied to buttons, input fields, and cards. This slight rounding softens the starkness of the black-and-white palette without losing the architectural precision of the grid. Larger containers may use the 8px radius, while smaller utility elements like checkboxes stay at 4px.
+- Рабочий контейнер: `width: min(100% - 48px, 1240px)`; на мобильном — минимум 18px от краёв.
+- Базовый вертикальный ритм: 8px; крупные расстояния — 24 / 48 / 80 / 120+ px.
+- Отступ секции: `clamp(84px, 12vw, 164px)`.
+- На desktop предпочтительны асимметричные две колонки; на mobile — одна колонка с сохранением приоритета контента.
+- Разделители — 1px, малоконтрастные. Они заменяют визуальный шум из карточек и теней.
+- Ничего не должно перекрывать соседний контент при прокрутке. `position: sticky` используем только если заголовок не мешает чтению списка; иначе — обычный поток документа.
 
-## Components
+## 6. Hero-блок
 
-### Buttons
-Primary buttons are solid Black (#000000) with White text, featuring a subtle 4px corner radius. Secondary buttons are outlined in 1px Charcoal with a "ghost" background. Hover states for both involve a subtle shift to the Beige (#D2B48C) accent or a gentle opacity change.
+Hero — это постер услуги, а не каталог функций.
 
-### Input Fields
-Inputs are minimalist, defined by a single bottom border or a very light gray 1px frame. Focus states transition the border color to Black. Labels sit above the field in the `label-caps` typographic style.
+Обязательная последовательность:
 
-### Cards
-Cards are treated as frames for content. They use either a subtle Light Gray border or an extremely soft ambient shadow against the off-white background. No background color change is needed unless highlighting a specific "featured" state.
+1. Короткая метка направления.
+2. Заголовок, называющий результат или проблему клиента.
+3. Одна поясняющая фраза.
+4. Главный CTA и второстепенная ссылка.
+5. Подтверждающий ценовой ориентир, если он согласован.
+6. Один сильный визуал: реальный экран продукта, цельный мокап или предметная фотография.
 
-### Chips & Tags
-Tags are small, pill-shaped with 1px Charcoal outlines and `label-caps` text. They should never have bright backgrounds.
+Для продуктовых hero используем цельный мокап устройства с корректным корпусом — не обрезанный screenshot, не абстрактные обои и не коллаж из нескольких телефонов. Фон должен усиливать интерфейс мягкой виньеткой и оставлять достаточный контраст для текста.
 
-### Navigation
-The navigation bar is transparent or solid Off-White, utilizing wide spacing between menu items. Links use the sans-serif font in a medium weight, with a thin 1px underline appearing only on hover to maintain a clean aesthetic.
+## 7. Фото, мокапы и кейсы
+
+- Используем реальные фото бизнеса, пространства, продукта или качественно сгенерированные, но правдоподобные изображения.
+- В кадре должен быть один главный предмет; фон поддерживает, а не конкурирует.
+- Изображения без вшитого чужого текста, логотипов и UI-коллажей.
+- Мокап показывается целиком, в естественной пропорции (`object-fit: contain`), без срезания корпуса.
+- Кейс — это доказательство подхода: контекст → задача → что сделали → результат для бизнеса.
+- Результат описываем через до/после сценарий. Пример: «бронь без звонка администратору», а не «собрали дизайн-систему».
+
+## 8. Компоненты
+
+### Кнопки и ссылки
+
+- Основная кнопка: контрастная заливка, короткий глагол (`Получить расчёт`, `Обсудить проект`).
+- Вторичное действие: текстовая ссылка со стрелкой, без превращения в ещё одну тяжёлую кнопку.
+- Высота кнопки — не менее 52px; скругление сдержанное. Пилюли допустимы для выбора в формах и одного финального CTA.
+- Hover — небольшой подъём и изменение цвета; анимация быстрая, около 200ms.
+
+### Списки и УТП
+
+- Предпочтительны нумерованные строки `01 / 02 / 03`, разделённые тонкими линиями.
+- В каждой строке: номер, короткий заголовок, конкретное пояснение.
+- Не собирать УТП в разноцветные карточки и не повторять один и тот же смысл разными словами.
+
+### Формы
+
+- Сначала объясняем выгоду заполнения, затем задаём только вопросы, необходимые для следующего шага.
+- Варианты ответа — чипы с ясным активным состоянием.
+- Ошибка понятна и видима; фокус всегда заметен с клавиатуры.
+- Если форма передаёт данные в WhatsApp, прямо сообщаем, что сайт не хранит ответы.
+
+### Навигация
+
+- Фиксированная светлая шапка с тонким нижним разделителем и лёгким blur.
+- Один первичный текстовый CTA и кнопка меню.
+- Навигация должна оставаться функциональной и читаемой поверх любой секции.
+
+## 9. Движение
+
+- Движение подчёркивает порядок, а не привлекает внимание само по себе.
+- Базовый паттерн: аккуратное появление снизу (`opacity + translateY`) при первой загрузке.
+- Hover — не более 2–3px движения.
+- Никаких бесконечных анимаций, параллакса ради параллакса и тяжёлых эффектов на мобильном.
+- Обязательно учитываем `prefers-reduced-motion`.
+
+## 10. Адаптивность и доступность
+
+- Проверяем минимум desktop и mobile; на узком экране колонки переходят в одну без горизонтального скролла.
+- Используем `minmax(0, 1fr)` и `min-width: 0` для текстовых колонок, если есть риск переполнения.
+- Интерактивные элементы имеют видимый `:focus-visible`.
+- Изображения получают осмысленный `alt`; декоративные — пустой `alt`.
+- Контраст основного текста соответствует WCAG AA: минимум 4.5:1.
+- Размер кликабельной зоны — не меньше 44px, а для основной кнопки — 52px.
+
+## 11. Контент-проверка перед публикацией
+
+Перед тем как считать секцию готовой, проверить:
+
+- Заголовок понятен без подзаголовка.
+- Текст объясняет выгоду, а не процесс студии.
+- В секции есть один главный визуальный или один главный тезис.
+- Нет неподтверждённых обещаний и фальшивых метрик.
+- CTA отвечает на следующий логичный шаг пользователя.
+- В мобильной версии текст, заголовки и мокапы не конфликтуют и не перекрываются.
+
+## 12. Технические источники правды
+
+- Общая типографика: `css/type-system.css`.
+- Базовая сетка, header и доступность: `css/seo-pages.css`.
+- Правила страницы приложений: `css/apps.css`, `apps/index.html`, `js/apps-page.js`.
+- При изменении токенов или шрифтов сначала обновляем этот документ, затем CSS и только потом конкретные страницы.

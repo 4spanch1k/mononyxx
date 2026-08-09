@@ -641,17 +641,74 @@ h3 { margin-bottom: 14px; font-size: clamp(23px, 2.5vw, 34px); line-height: 1.05
 .about-location { overflow: hidden; }
 .about-location__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
-  gap: clamp(36px, 7vw, 110px);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+  gap: clamp(38px, 6vw, 96px);
+  align-items: end;
 }
 .about-location h2 { max-width: 900px; margin: 20px 0 0; }
-.about-location__grid > p:last-child { grid-column: 1; max-width: 720px; margin: 0; color: var(--muted); font-size: 17px; }
-.about-location__orbit { position: relative; grid-column: 2; grid-row: 1 / span 2; color: var(--ink); }
-.about-location__orbit svg { display: block; width: min(100%, 430px); margin-inline: auto; fill: none; stroke: currentColor; stroke-width: 1; animation: about-orbit 24s linear infinite; }
-.about-location__orbit span { position: absolute; inset: 50% auto auto 50%; font: 600 11px/1 "IBM Plex Mono", monospace; transform: translate(-50%, -50%); }
-
-@keyframes about-orbit { to { transform: rotate(360deg); } }
+.about-location__grid > p:last-child { grid-column: 2; grid-row: 1; max-width: 520px; margin: 0; color: var(--muted); font-size: 17px; }
+.about-location__map {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  width: 100%;
+  min-width: 0;
+  margin: clamp(34px, 4vw, 64px) 0 0;
+}
+.about-location__map-canvas {
+  position: relative;
+  width: min(100%, 920px);
+  aspect-ratio: 30 / 17;
+  margin-inline: auto;
+}
+.about-location__silhouette {
+  position: absolute;
+  inset: 0;
+  color: var(--ink);
+  background-image: radial-gradient(circle, currentColor 0 2px, transparent 2.25px);
+  background-position: 50% 50%;
+  background-size: 12px 12px;
+  opacity: .5;
+  -webkit-mask: url("../assets/maps/kazakhstan-outline.svg") center / contain no-repeat;
+  mask: url("../assets/maps/kazakhstan-outline.svg") center / contain no-repeat;
+}
+.about-location__pin {
+  position: absolute;
+  z-index: 2;
+  top: 78.5%;
+  left: 74.5%;
+  width: 14px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 7px var(--bg), 0 0 0 8px var(--ink);
+  transform: translate(-50%, -50%);
+}
+.about-location__label {
+  position: absolute;
+  z-index: 1;
+  top: 78.5%;
+  left: 74.5%;
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 17px;
+  color: #fff;
+  background: var(--ink);
+  border-radius: 999px;
+  font: 500 10px/1.25 "IBM Plex Mono", monospace;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, calc(-100% - 25px));
+}
+.about-location__label::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 24px;
+  background: var(--ink);
+  content: "";
+}
 
 .site-footer { padding: 38px 0; border-top: 1px solid var(--line); color: var(--muted); font: 500 10px/1.5 "IBM Plex Mono", monospace; text-transform: uppercase; }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 20px; }
@@ -737,12 +794,13 @@ h3 { margin-bottom: 14px; font-size: clamp(23px, 2.5vw, 34px); line-height: 1.05
   .principle-grid article .about-icon { justify-self: start; }
   .principle-grid h3 { overflow-wrap: anywhere; }
   .about-location__grid { grid-template-columns: 1fr; }
-  .about-location__orbit { grid-column: 1; grid-row: auto; }
-  .about-location__grid > p:last-child { grid-column: 1; }
+  .about-location__grid > p:last-child { grid-column: 1; grid-row: 2; }
+  .about-location__map { grid-column: 1; grid-row: 3; width: 100%; margin-top: 10px; }
+  .about-location__silhouette { background-size: 10px 10px; }
+  .about-location__label { padding: 9px 13px; font-size: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }
-  .about-location__orbit svg { animation: none; }
 }
