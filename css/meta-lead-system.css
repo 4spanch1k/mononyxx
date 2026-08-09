@@ -149,6 +149,12 @@ body.mls-page > main { overflow: clip; }
 .mls-input::placeholder { color: rgba(255,255,255,.36); }
 .mls-input:focus { border-color: #fff; }
 .mls-input--textarea { min-height: 104px; resize: vertical; }
+.mls-consent { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.58); font: 400 13px/1.45 var(--font-editorial, sans-serif); cursor: pointer; }
+.mls-consent input { width: 16px; height: 16px; flex: 0 0 auto; margin: 2px 0 0; accent-color: var(--mls-accent); }
+.mls-consent a { color: #fff; text-underline-offset: 3px; }
+.mls-form .mls-button:hover { transform: none; border-color: #000; background: #000; color: #fff; }
+.mls-form .mls-button:active { transform: none; }
+.mls-form .mls-button:disabled { cursor: wait; opacity: .68; transform: none; }
 .mls-form__note { margin: 4px 0 0; color: rgba(255,255,255,.55); font: 400 14px/1.45 var(--font-editorial, sans-serif); }
 .mls-form__status { min-height: 22px; margin: 0; color: #fff; font: 400 14px/1.4 var(--font-editorial, sans-serif); }
 .mls-footer { padding: 22px 0; background: var(--mls-night); color: rgba(255,255,255,.56); }

@@ -193,7 +193,13 @@ html:lang(en) .legal-footer .wrap[data-lang-copy="en"] { display: flex; }
     gap: 28px;
   }
 
-  .legal-hero h1 { font-size: clamp(48px, 14vw, 68px); }
+  .legal-hero h1 {
+    max-inline-size: 100%;
+    font-size: clamp(38px, 9vw, 46px);
+    line-height: .94;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
   .legal-hero__meta { margin-top: 28px; }
   .legal-section { padding-block: 72px; }
   .legal-intro { margin-bottom: 64px; font-size: 18px; }

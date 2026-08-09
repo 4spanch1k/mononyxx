@@ -1,5 +1,4 @@
 (() => {
-  const phoneNumber = '77089508019';
   const form = document.querySelector('[data-lead-form]');
   const scrollTargets = document.querySelectorAll('[data-scroll-target]');
 
@@ -13,27 +12,61 @@
     });
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const status = form.querySelector('[data-form-status]');
     const name = form.elements.name.value.trim();
     const contact = form.elements.contact.value.trim();
     const business = form.elements.business.value.trim();
+    const privacyConsent = form.elements['privacy-consent'].checked;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const defaultSubmitMarkup = submitButton?.innerHTML;
 
-    if (!name || !contact || !business) {
+    if (!name || !contact || !business || !privacyConsent) {
       status.textContent = 'Заполните имя, контакт и кратко расскажите о бизнесе.';
       form.querySelector(':invalid')?.focus();
       return;
     }
 
-    const message = [
-      'Здравствуйте! Хочу получить план запуска Meta Lead System.',
-      `Имя: ${name}`,
-      `Телефон / WhatsApp: ${contact}`,
-      `Бизнес: ${business}`,
-    ].join('\n');
-    status.textContent = 'Открываем WhatsApp с вашим сообщением…';
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    if (!/^\+?[0-9\s()-]{7,20}$/.test(contact)) {
+      status.textContent = 'Укажите корректный номер телефона или WhatsApp.';
+      form.elements.contact.focus();
+      return;
+    }
+
+    const payload = {
+      language: 'ru',
+      name,
+      contactMethod: 'whatsapp',
+      contactMethodLabel: 'Телефон / WhatsApp',
+      contactValue: contact,
+      projectType: 'Meta Lead System',
+      budget: '149 000 ₸ / месяц + рекламный бюджет',
+      description: business,
+      privacyConsent,
+    };
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправляем…';
+    status.textContent = 'Отправляем заявку в Telegram…';
+
+    try {
+      const result = await fetch('/api/send-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!result.ok) throw new Error('Failed to send lead');
+
+      form.reset();
+      status.textContent = 'Заявка отправлена. Скоро свяжемся с вами.';
+    } catch {
+      status.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = defaultSubmitMarkup;
+    }
   });
 
   if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
