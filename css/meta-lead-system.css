@@ -78,6 +78,9 @@ body.mls-page > main { overflow: clip; }
 /* Cases */
 .mls-cases__intro { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(36px, 8vw, 120px); margin-bottom: clamp(46px, 7vw, 86px); }
 .mls-cases__intro .mls-copy { margin-top: 0; }
+.mls-cases__aside { min-width: 0; }
+.mls-cases__visual { width: min(100%, 430px); aspect-ratio: 2 / 3; margin: 32px 0 0 auto; }
+.mls-cases__visual img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .mls-case { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); border-top: 1px solid var(--mls-line); }
 .mls-case + .mls-case { margin-top: 54px; }
 .mls-case__image { min-height: 520px; overflow: hidden; background: #292825; }
@@ -93,6 +96,9 @@ body.mls-page > main { overflow: clip; }
 .mls-case__more p { max-width: 550px; margin: 0; color: var(--mls-muted); font: 400 18px/1.5 var(--font-editorial, sans-serif); }
 
 /* Comparison and qualification */
+.mls-comparison__aside { min-width: 0; }
+.mls-comparison__visual { width: min(100%, 440px); aspect-ratio: 3 / 4; margin: 20px 0 0 auto; }
+.mls-comparison__visual img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .mls-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--mls-line); border-left: 1px solid var(--mls-line); }
 .mls-comparison__item { min-width: 0; min-height: 380px; padding: clamp(28px, 4vw, 56px); border-right: 1px solid var(--mls-line); border-bottom: 1px solid var(--mls-line); }
 .mls-comparison__item--system { background: var(--mls-ink); color: #fff; }
@@ -104,6 +110,9 @@ body.mls-page > main { overflow: clip; }
 .mls-path span { display: inline-flex; align-items: center; gap: 8px; }
 .mls-path span:not(:last-child)::after { content: '→'; color: var(--mls-accent); }
 .mls-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(38px, 8vw, 110px); }
+.mls-fit__aside { min-width: 0; }
+.mls-fit__visual { width: min(100%, 365px); aspect-ratio: 2 / 3; margin: 20px 0 0 auto; }
+.mls-fit__visual img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .mls-fit__list { border-top: 1px solid var(--mls-line); }
 .mls-fit__list h3 { margin: 0; padding: 18px 0; border-bottom: 1px solid var(--mls-line); font: 600 23px/1 var(--font-display, sans-serif); letter-spacing: -.05em; }
 .mls-fit__list ul { display: grid; gap: 14px; padding: 24px 0 0; margin: 0; list-style: none; }
@@ -198,6 +207,9 @@ html.gsap-enabled .mls-animate { visibility: hidden; }
   .mls-flow__note { grid-column: 1 / -1; }
   .mls-case { grid-template-columns: 1fr; }
   .mls-cases__intro { margin-bottom: 38px; }
+  #cases .mls-cases__visual { display: none; }
+  .mls-comparison__visual { display: none; }
+  .mls-fit__visual { display: none; }
   .mls-case + .mls-case { margin-top: 28px; }
   .mls-case__image { min-height: 360px; }
   .mls-case__body { min-height: 0; padding: 28px 0 0; border-right: 0; border-bottom: 0; }

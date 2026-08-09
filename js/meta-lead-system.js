@@ -22,9 +22,27 @@
     const submitButton = form.querySelector('button[type="submit"]');
     const defaultSubmitMarkup = submitButton?.innerHTML;
 
-    if (!name || !contact || !business || !privacyConsent) {
-      status.textContent = 'Заполните имя, контакт и кратко расскажите о бизнесе.';
-      form.querySelector(':invalid')?.focus();
+    if (!name) {
+      status.textContent = 'Укажите имя, чтобы мы знали, как к вам обратиться.';
+      form.elements.name.focus();
+      return;
+    }
+
+    if (!contact) {
+      status.textContent = 'Укажите телефон или WhatsApp для связи.';
+      form.elements.contact.focus();
+      return;
+    }
+
+    if (!business) {
+      status.textContent = 'Коротко расскажите, чем занимается ваш бизнес.';
+      form.elements.business.focus();
+      return;
+    }
+
+    if (!privacyConsent) {
+      status.textContent = 'Подтвердите согласие на обработку данных, чтобы отправить заявку.';
+      form.elements['privacy-consent'].focus();
       return;
     }
 
