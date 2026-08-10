@@ -585,56 +585,15 @@ body.menu-lock .studio-header {
 }
 
 .studio-arrow {
-  position: relative;
-  display: inline-block;
+  display: block;
   flex: 0 0 16px;
   width: 16px;
   height: 16px;
-  color: currentColor;
-}
-
-.studio-arrow::before,
-.studio-arrow::after {
-  content: "";
-  position: absolute;
-  box-sizing: border-box;
-}
-
-.studio-arrow--external::before {
-  top: 2px;
-  right: 2px;
-  width: 9px;
-  height: 9px;
-  border-top: 1.5px solid currentColor;
-  border-right: 1.5px solid currentColor;
-}
-
-.studio-arrow--external::after {
-  top: 7px;
-  left: 2px;
-  width: 13px;
-  height: 1.5px;
-  background: currentColor;
-  transform: rotate(-45deg);
-  transform-origin: center;
-}
-
-.studio-arrow--down::before {
-  top: 1px;
-  left: 7px;
-  width: 1.5px;
-  height: 13px;
-  background: currentColor;
-}
-
-.studio-arrow--down::after {
-  right: 2px;
-  bottom: 2px;
-  width: 8px;
-  height: 8px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .studio-icon {

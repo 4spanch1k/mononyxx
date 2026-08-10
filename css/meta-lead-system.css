@@ -23,7 +23,7 @@ body.mls-page > main { overflow: clip; }
 .mls-display { margin: 0; max-width: 1000px; font: 600 clamp(46px, 6.6vw, 92px)/.95 var(--font-display, sans-serif); letter-spacing: -.075em; }
 .mls-copy { max-width: 720px; margin: 28px 0 0; color: var(--mls-muted); font: 400 clamp(18px, 1.8vw, 24px)/1.48 var(--font-editorial, sans-serif); }
 .mls-section--dark .mls-copy { color: var(--mls-night-muted); }
-.mls-arrow { font-size: 1.15em; line-height: .8; }
+.mls-arrow { display: block; flex: 0 0 16px; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .mls-mobile-only { display: none; }
 
 .mls-button {
@@ -39,7 +39,8 @@ body.mls-page > main { overflow: clip; }
 .mls-button--dark:hover { color: var(--mls-ink); background: #fff; border-color: #fff; }
 .mls-button--light { background: #fff; color: var(--mls-ink); }
 .mls-text-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: inherit; font: 600 13px/1.2 var(--font-action, sans-serif); text-decoration: none; }
-.mls-text-link:hover .mls-arrow { transform: translate(3px, -2px); }
+.mls-text-link:hover .mls-arrow--external { transform: translate(2px, -2px); }
+.mls-text-link:hover .mls-arrow--down { transform: translateY(2px); }
 
 /* Hero */
 .mls-hero { position: relative; min-height: max(760px, calc(100svh - 82px)); padding: clamp(70px, 9vw, 126px) 0 54px; background: var(--mls-night); color: #fff; }
