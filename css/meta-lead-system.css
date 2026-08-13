@@ -38,6 +38,8 @@ body.mls-page > main { overflow: clip; }
 .mls-button--dark { background: var(--mls-ink); color: #fff; }
 .mls-button--dark:hover { color: var(--mls-ink); background: #fff; border-color: #fff; }
 .mls-button--light { background: #fff; color: var(--mls-ink); }
+.mls-button--outline { border-color: rgba(255,255,255,.82); background: transparent; color: #fff; }
+.mls-button--outline:hover { border-color: #fff; background: #fff; color: var(--mls-ink); }
 .mls-text-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: inherit; font: 600 13px/1.2 var(--font-action, sans-serif); text-decoration: none; }
 .mls-text-link:hover .mls-arrow--external { transform: translate(2px, -2px); }
 .mls-text-link:hover .mls-arrow--down { transform: translateY(2px); }
@@ -153,6 +155,43 @@ body.mls-page > main { overflow: clip; }
 .mls-form-section { background: var(--mls-ink); color: #fff; }
 .mls-form-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr); gap: clamp(42px, 9vw, 120px); }
 .mls-form-layout .mls-copy { color: var(--mls-night-muted); }
+.mls-quiz { display: grid; gap: 22px; }
+.mls-quiz [hidden] { display: none !important; }
+.mls-quiz__progress { display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,.62); font: 500 10px/1.3 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.mls-quiz__progress-line { display: block; flex: 1 1 auto; height: 1px; overflow: hidden; background: var(--mls-night-line); }
+.mls-quiz__progress-line > span { display: block; width: 25%; height: 100%; background: #fff; transition: width .24s ease; }
+.mls-quiz__step { min-width: 0; margin: 0; padding: 0; border: 0; }
+.mls-quiz__step legend { max-width: 620px; margin: 0 0 20px; padding: 0; color: #fff; font: 500 clamp(26px, 2.75vw, 38px)/1.08 var(--font-display, sans-serif); letter-spacing: -.055em; }
+.mls-quiz__options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.mls-quiz__options label { position: relative; display: flex; min-height: 72px; align-items: center; padding: 16px 18px; border: 1px solid var(--mls-night-line); color: rgba(255,255,255,.82); cursor: pointer; font: 400 17px/1.25 var(--font-editorial, sans-serif); transition: border-color .18s ease, background .18s ease, color .18s ease; }
+.mls-quiz__options label:hover { border-color: rgba(255,255,255,.68); }
+.mls-quiz__options input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.mls-quiz__options label:has(input:checked) { border-color: #fff; background: #fff; color: var(--mls-ink); }
+.mls-quiz__options label:has(input:focus-visible) { outline: 2px solid var(--mls-accent); outline-offset: 3px; }
+.mls-quiz__custom-answer { display: grid; gap: 8px; margin-top: 14px; color: rgba(255,255,255,.66); font: 500 10px/1.3 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.mls-quiz__custom-answer input { width: 100%; min-height: 52px; padding: 12px 0; border: 0; border-bottom: 1px solid var(--mls-night-line); border-radius: 0; outline: 0; background: transparent; color: #fff; font: 400 18px/1.4 var(--font-editorial, sans-serif); letter-spacing: normal; text-transform: none; }
+.mls-quiz__custom-answer input::placeholder { color: rgba(255,255,255,.36); }
+.mls-quiz__custom-answer input:focus { border-color: #fff; }
+.mls-quiz__actions { display: flex; align-items: center; gap: 18px; }
+.mls-quiz__actions .mls-button { margin-left: auto; }
+.mls-quiz__back { padding: 8px 0; border: 0; background: transparent; color: rgba(255,255,255,.68); cursor: pointer; font: 500 11px/1.3 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.mls-quiz__back:hover { color: #fff; }
+.mls-quiz__back:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.mls-quiz .mls-button--light:hover { transform: none; border-color: #000; background: #000; color: #fff; }
+.mls-quiz .mls-button--light:active { transform: none; }
+.mls-quiz .mls-button--light:disabled { cursor: not-allowed; opacity: .42; transform: none; }
+.mls-quiz__result { padding: 28px; border: 1px solid rgba(255,255,255,.36); background: rgba(255,255,255,.045); outline: 0; }
+.mls-quiz__result .mls-label { margin-bottom: 18px; color: rgba(255,255,255,.66); }
+.mls-quiz__result h3 { max-width: 580px; margin: 0; font: 500 clamp(30px, 3.3vw, 46px)/1 var(--font-display, sans-serif); letter-spacing: -.06em; }
+.mls-quiz__result > p:not(.mls-label):not(.mls-quiz__price):not(.mls-quiz__price-note) { max-width: 580px; margin: 18px 0 0; color: rgba(255,255,255,.72); font: 400 18px/1.45 var(--font-editorial, sans-serif); }
+.mls-quiz__price { margin: 28px 0 0; color: #fff; font: 500 clamp(44px, 5vw, 66px)/.95 var(--font-numeric, sans-serif); letter-spacing: -.07em; font-variant-numeric: tabular-nums; }
+.mls-quiz__price span { color: rgba(255,255,255,.6); font: 500 11px/1.4 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.mls-quiz__price-note { max-width: 560px; margin: 16px 0 0; color: rgba(255,255,255,.56); font: 400 14px/1.45 var(--font-editorial, sans-serif); }
+.mls-button--whatsapp { width: 100%; border-color: #25d366; background: #25d366; color: #07130b; transform: none; transition: background .22s ease, border-color .22s ease, color .22s ease; }
+.mls-button--whatsapp:hover { border-color: #25d366; background: #25d366; color: #07130b; transform: none; }
+.mls-button--whatsapp.is-opening { border-color: #fff; background: #fff; color: var(--mls-ink); }
+.mls-button--whatsapp:active { transform: none; }
+.mls-button--whatsapp[aria-disabled="true"] { pointer-events: none; }
 .mls-form { display: grid; gap: 18px; }
 .mls-field { display: grid; gap: 8px; }
 .mls-field label { color: rgba(255,255,255,.66); font: 500 10px/1.3 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
@@ -194,6 +233,8 @@ html.gsap-enabled .mls-animate { visibility: hidden; }
   .mls-hero__content { min-height: 0; }
   .mls-hero h1 { font-size: clamp(44px, 12.8vw, 66px); }
   .mls-hero__lead { margin-top: 22px; font-size: 18px; }
+  .mls-hero__actions { align-items: stretch; flex-direction: column; gap: 12px; }
+  .mls-hero__actions .mls-button { width: 100%; }
   .mls-hero__price { margin-top: 27px; }
   .mls-hero__tools { gap: 12px 18px; margin-top: 26px; }
   .mls-tool__icon { width: 32px; height: 32px; }
@@ -236,6 +277,7 @@ html.gsap-enabled .mls-animate { visibility: hidden; }
   .mls-price__amount { font-size: clamp(59px, 17vw, 78px); }
   .mls-faq details:nth-child(n + 4) { display: none; }
   .mls-form-layout { gap: 44px; }
+  .mls-quiz__options { grid-template-columns: 1fr; }
   .mls-whatsapp-float { right: 18px; bottom: 18px; width: 54px; height: 54px; }
   .mls-footer__inner { align-items: flex-start; flex-direction: column; }
 }
@@ -246,13 +288,15 @@ html.gsap-enabled .mls-animate { visibility: hidden; }
   .mls-section--price, .mls-form-section { padding: 78px 0; }
   .mls-display { font-size: clamp(41px, 12vw, 57px); }
   .mls-copy { font-size: 18px; }
-  .mls-hero__actions { align-items: stretch; flex-direction: column; }
   .mls-button { width: 100%; }
-  .mls-hero__actions .mls-text-link { justify-content: center; }
   .mls-case__image { min-height: 330px; }
   .mls-case--secondary .mls-case__image { min-height: 200px; }
   .mls-case__image img { object-position: center top; }
   .mls-faq summary { min-height: 70px; font-size: 25px; }
+  .mls-quiz__actions { align-items: stretch; flex-direction: column-reverse; }
+  .mls-quiz__actions .mls-button { margin-left: 0; }
+  .mls-quiz__back { min-height: 44px; }
+  .mls-quiz__result { padding: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
