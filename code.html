@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="ru"><head>
+<script src="/js/meta-pixel.js?v=20260820-1"></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script>
@@ -1651,6 +1652,7 @@ try {
     const leadForm = document.getElementById('lead-form');
     const leadSubmit = document.getElementById('lead-submit');
     const leadFormMessage = document.getElementById('lead-form-message');
+    let leadSubmissionInFlight = false;
 
     const setLeadMessage = (messageKey, type) => {
         if (!leadFormMessage) {
@@ -1740,6 +1742,10 @@ try {
             return;
         }
 
+        if (leadSubmissionInFlight) {
+            return;
+        }
+
         const language = getCurrentLanguage();
         const selectedProjectType = document.querySelector('#project-type')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
         const selectedBudget = document.querySelector('#budget')?.closest('[data-custom-select]')?.querySelector('[data-select-label]')?.textContent?.trim() || '';
@@ -1781,6 +1787,7 @@ try {
         }
 
         const defaultSubmitText = translateText('Request a Project', language);
+        leadSubmissionInFlight = true;
         leadSubmit.disabled = true;
         leadSubmit.textContent = translateText('Sending...', language);
         leadFormMessage?.classList.add('hidden');
@@ -1798,12 +1805,17 @@ try {
                 throw new Error('Failed to send lead');
             }
 
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+
             leadForm.reset();
             document.querySelectorAll('[data-custom-select]').forEach(resetCustomSelect);
             setLeadMessage('Request successfully sent', 'success');
         } catch (error) {
             setLeadMessage('Failed to send request. Please try again.', 'error');
         } finally {
+            leadSubmissionInFlight = false;
             leadSubmit.disabled = false;
             leadSubmit.textContent = defaultSubmitText;
         }
